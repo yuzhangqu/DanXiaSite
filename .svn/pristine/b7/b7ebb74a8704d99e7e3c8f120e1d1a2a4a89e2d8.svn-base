@@ -1,0 +1,197 @@
+package com.dx.action;
+
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.dx.bean.TbBasicinfo;
+import com.dx.bean.TbLandmarkscene;
+import com.dx.dao.TbBasicinfoDAO;
+import com.dx.servlet.MyDataClass;
+import com.opensymphony.xwork2.ActionContext;
+
+public class MapAction {
+    private String name;
+    private String longtitude;
+    private String latitude;
+    private HttpServletRequest request;
+    private Map session;
+    private List<String> longtitudeList;
+    private List<String> latitudeList;
+    private List<String> sList;
+    private List<TbBasicinfo>infoList;
+    private TbBasicinfo info;
+    private TbBasicinfoDAO dao;
+    
+    private String dfm2d(String input) {
+    	int i = 0, j = 0;
+    	double res = 0;
+    	boolean done = false;
+    	j = input.indexOf('°');
+    	if (j != -1) {
+    		done = true;
+    		res += Double.parseDouble(input.substring(i, j));
+    		i = j + 1;
+    	}
+    	
+    	j = input.indexOf('′');
+    	if (j != -1) {
+    		done = true;
+    		res += Double.parseDouble(input.substring(i, j)) / 60;
+    		i = j + 1;
+    	}
+    	
+    	j = input.indexOf('″');
+    	if (j != -1) {
+    		done = true;
+    		res += Double.parseDouble(input.substring(i, j)) / 3600;
+    	}
+    	return done ? Double.toString(res) : input;
+    }
+    
+	public String execute(){
+		longtitudeList = new ArrayList();
+		latitudeList = new ArrayList();
+		sList = new ArrayList();
+        infoList = dao.findAll();
+        String temp;
+        int count;
+        for(int i =0 ; i <infoList.size(); i++){
+        	
+        	info = infoList.get(i);    
+        	name = info.getNameCurrent();
+        	latitude = dfm2d(info.getTbGeologyinfo().getCenterLatitude());
+        	longtitude = dfm2d(info.getTbGeologyinfo().getCenterLongitude());
+        	Set<TbLandmarkscene> tbLandmarkscenes = (Set<TbLandmarkscene>) info.getTbLandmarkscenes();
+        	count = 0;
+			temp = "<div style='width:400px;'><div align='center'><h4 style='margin:0 0 5px 0;padding:0.2em 0'>"
+					+ name
+					+ "</h4><br><div class='container' id='idTransformView2'> <ul class='slider slider2' id='idSlider2'>";
+			for (TbLandmarkscene ldm : tbLandmarkscenes) {
+				if (ldm.getPic() != null && ldm.getPic().length() != 0) {
+					count++;
+					temp += "<li><img src='" + MyDataClass.landmarkScenePathVir + ldm.getPic() + "'/></li>";
+				}
+			}
+			temp += "</ul> <ul class='num' id='idNum2'>";
+			for (int j = 1; j <= count; j++) {
+				temp += "<li>" + j + "</li>";
+			}
+			temp += "</ul> </div></div><br><p style='margin:0;line-height:1.5;font-size:13px;text-indent:2em'>" //Script might be injected here 
+					+ name
+					+ "，地处"
+					+ info.getRegionProvince()
+					+ "，"
+					+ info.getRegionCity()
+					+ "，"
+					+ info.getRegionDistrict()
+					+ "，"
+					+ info.getRegionSpecification()
+					+ "。中心纬度"
+					+ info.getTbGeologyinfo().getCenterLatitude()
+					+ "， 中心经度"
+					+ info.getTbGeologyinfo().getCenterLongitude()
+					+ "，连续面积"
+					+ info.getTbGeologyinfo().getReliefContinuousArea()
+					+ "平方公里。" + "</p></div>";
+
+			if (name != null && name.length() != 0) {
+				if (latitude != null && latitude.length() != 0) {
+					if (longtitude != null && longtitude.length() != 0) {
+						if (temp != null && temp.length() != 0) {
+							longtitudeList.add(longtitude);
+							latitudeList.add(latitude);
+							sList.add(temp);
+							
+						}
+					}
+				}
+			}
+		
+        }
+        
+    	session = ActionContext.getContext().getSession();
+		session.put("longtitudeList",longtitudeList);
+		session.put("latitudeList", latitudeList);
+		session.put("sList", sList);
+    	return "success";
+    	
+    }
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getLongtitude() {
+		return longtitude;
+	}
+	public void setLongtitude(String longtitude) {
+		this.longtitude = longtitude;
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+	public Map getSession() {
+		return session;
+	}
+	public void setSession(Map session) {
+		this.session = session;
+	}
+	
+	public List<String> getLongtitudeList() {
+		return longtitudeList;
+	}
+	public void setLongtitudeList(List<String> longtitudeList) {
+		this.longtitudeList = longtitudeList;
+	}
+	public List<String> getLatitudeList() {
+		return latitudeList;
+	}
+	public void setLatitudeList(List<String> latitudeList) {
+		this.latitudeList = latitudeList;
+	}
+	public List<String> getsList() {
+		return sList;
+	}
+	public void setsList(List<String> sList) {
+		this.sList = sList;
+	}
+	public List<TbBasicinfo> getInfoList() {
+		return infoList;
+	}
+	public void setInfoList(List<TbBasicinfo> infoList) {
+		this.infoList = infoList;
+	}
+	public TbBasicinfo getInfo() {
+		return info;
+	}
+	public void setInfo(TbBasicinfo info) {
+		this.info = info;
+	}
+	public TbBasicinfoDAO getDao() {
+		return dao;
+	}
+	public void setDao(TbBasicinfoDAO dao) {
+		this.dao = dao;
+	}
+
+
+    
+}

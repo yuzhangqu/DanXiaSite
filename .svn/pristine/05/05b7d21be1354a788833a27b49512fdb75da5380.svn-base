@@ -1,0 +1,15 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%> 
+ <div class="footer">
+                <div >版权：全国丹霞地貌基础数据调查项目组&nbsp;&nbsp;&nbsp;
+					<a href="http://weibo.com/SandstoneLandforms">
+					<img  src="img/weibo.jpg" style="vertical-align:bottom;height:25px;width:25px"/>
+					</a>
+				</div>
+				
+                <div>电话： 862084113980  传真：8620 84113980 mail: danxiadimaoxitong@126.com 网址：http://tcloud.sjtu.edu.cn:8888</div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

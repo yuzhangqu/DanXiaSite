@@ -1,0 +1,105 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%> 
+<%@ taglib uri="/struts-tags" prefix="s" %>  
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"> 
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="css/maincss.css" />
+     <link href="css/bootstrap.css" rel="stylesheet">
+    <title>丹霞地貌信息系统</title>
+     <script src="http://code.jquery.com/jquery.js"></script>
+ <script src="js/bootstrap.js"></script>
+</head>
+<body>
+    <div class="indexmain">
+        <div class="main">
+            <img class="title" src="img/index2.jpg" alt="" />
+            
+           
+					<div class="content_pos">
+            	<div class="row-fluid">
+					<div class="span1">
+					</div>				
+					<div class="span7">
+                    	<br>
+						<h1>丹霞介绍</h1>
+                        <br>
+                        
+                        <h3><a id="tips1"></a>丹霞历史：</h3>
+                            <p style="font-size:18px; line-height: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1928年冯景兰等在广东省仁化县丹霞山考察，此后他将“丹霞”二字引入地球科学，命名“丹霞层”。1939年，陈国达正式使用“丹霞地形”术语，这个在中国诞生的地貌学名称已经使用了80多年，并于2009年被《国家地理杂志》评为中国地理学“百年大发现”最重要的发现之一。
+                            </p><br><br>
+                        
+                        <h3><a id="tips2"></a>丹霞形态：</h3>
+                            <p style="font-size:18px; line-height: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;丹霞地貌是“有陡崖的陆相红层地貌”。它是一种沉积在内陆盆地的红色岩层，这种岩层在千百万年的地质变化过程中，被水切割侵蚀，形成了红色山块群。
+                            </p><br><br>
+                        
+                        <h3><a id="tips3"></a>丹霞分布：</h3>
+							<p style="font-size:18px; line-height: 30px;">
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;丹霞地貌主要分布在中国、美国西部、中欧和澳大利亚等地，以中国分布最广。在中国亚热带湿润区，温带湿润区、半湿润区、半干旱和干旱区、青藏高原高寒区都有丹霞地貌分布。其中主要集中在东南丘陵区、环四川盆地区和甘肃—青海为中心的西北地区。根据黄进最新的数据，目前在中国已经发现并确认的丹霞地貌已达900多处。
+                            </p><br><br>
+                            
+                        <h3><a id="tips4"></a>研究背景：</h3>
+								<p style="font-size:18px; line-height: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;丹霞在中国已经有80多年的研究历史。从20世纪20年代开始，中国学者经历了初创、成型和发展三个阶段的研究，作为地貌学一个新领域的丹霞地貌研究已日趋成型。
+                                </p>
+								<h4> 初创阶段(1928-1949)：</h4>
+								<p style="font-size:18px; line-height: 30px;">
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;将丹霞作为一类独特的地貌类型予以关注始于上世纪20年代后期。1928年，冯景兰等首次将构成广东丹霞山奇特地貌的红层及粤北相应地层命名为“丹霞层”（冯景兰等,1928），引起了学术界的关注。1938年，陈国达首次提出“丹霞山地形”的概念，1939年使用了“丹霞地形”的术语（陈国达,1938,1939）。以后丹霞层（演变为丹霞群、丹霞组）和丹霞地形（演变为丹霞地貌）的概念便被沿用下来。
+                            1940年代，一批学者分别对丹霞层等中国南方红层的地层、岩性、构造及地貌发育等方面进行了不同程度的研究与论述(陈国达, 1935,1938, 1940; 徐瑞麟, 1937; 冯景兰, 1940; 曾昭璇, 1943; 吴尚时, 曾昭璇, 1946,1948)。标志着丹霞地貌走上学术研究的舞台。这一阶段关于丹霞的研究范围主要限于中国东南部地区，开始了作为一种独立地貌类型的学术研究，故被称为初创阶段。
+                                <h4>成型阶段(1950-1990)：</h4>
+								<p style="font-size:18px; line-height: 30px;">
+									&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中华人民共和国成立后，在大规模的区域地质调查和综合科学考察中，丹霞地貌的概念得到广泛使用。曾昭璇1960年出版了《岩石地形学》，首次将红层地貌作为独立的岩石地貌类型进行了总结论述。黄进（1961）在编制广东省地貌图时把丹霞地貌作为一种独立的地貌类型，并首次对“丹霞地貌”进行了定义。1980年，曾昭璇、黄少敏在《中国自然地理•地貌》一书中，专题讨论了中国红层的分布、岩石学特征、地貌发育过程和地貌特点。到1982年，黄进总结了近水平红层在湿润气候条件下坡面发育的基本方式和坡面特点。同时，各地许多学者也对河北(陈传康, 1985; 赵佩心, 1988)、甘肃(张林源, 1981; 黄可光, 1987; 陈致均等, 1989)、福建(刘振中, 1984)、广东(张竹贤等, 1986; 张长俊等,1986; 徐行等,1990, 周红健,1990)、四川(张彦儒, 1988)等地的丹霞地貌及其利用开展了一定的调查研究。
+									这个阶段大规模的科学考察为丹霞地貌研究积累了大量资料，对各地红层有了更为科学的论述。丹霞地貌的概念得到了广泛的传播，作为一个独立的地貌类型的学术研究已形成体系。
+                                </p>
+							   <h4>大发展阶段(1991年以来)：</h4>
+								<p style="font-size:18px; line-height: 30px;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;在1991年之前，丹霞地貌的研究处于个别的、零散的、具体问题研究阶段。1990年黄进主持了第一个丹霞地貌研究的国家自然科学基金项目，也开始了他的中国丹霞地貌的全面考察；在陈传康和黄进等人的推动下，1991年在广东丹霞山召开了第一届全国丹霞地貌旅游开发学术讨论会，并成立了研究会，标志着丹霞地貌研究进入大发展阶段。从1990年代以来，黄进对中国28个省、市、自治区的800多处丹霞地貌进行了考察，并带动各地学者把研究推向深入。 这个阶段，丹霞研究在全国展开，呈现出空前活跃的发展局面；丹霞地貌成为当代中国地貌学的一个重要生长点，并直接或间接地服务于经济建设，得到学术界与社会的高度关注。同时，中国学者逐步推动了丹霞地貌的国际研究与交流，最终实现了丹霞地貌走向世界。
+								</p><br><br>
+                        <h3><a id="tips5"></a>项目背景</h3>
+                            <p style="font-size:18px; line-height: 30px;">
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;目前丹霞地貌的研究以传统纸质文档为主体，以文字信息为主的描述，辅以粗略的图片为补充，难以给人生动的印象，不利于丹霞地貌知识的传播，不利于丹霞地貌的学习与研究；缺乏与时代向适应的信息技术手段，不便于查阅与更新，不利于丹霞地貌研究的长期发展。妨碍丹霞地貌社会关注度的增强，最终制约丹霞地貌研究的发展。<br/><br/>
+							
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于国内丹霞地貌80多年的研究积累，在丹霞地貌全国调查、地质地貌基础研究、现代实验方法定量研究的基础上，运用计算机技术进行数据集成，形成具有独立科学体系和方法体系的数据库，是建立丹霞地貌科学体系的基础工程，将使得丹霞地貌学科走向规范和成熟。<br/><br/>
+							
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;因此，用计算机技术完成丹霞地貌数据可视化，建立可以自由访问、互动的数据基础和平台，使这些基础数据迅速变成全球可视的资讯，同时提供反映数据内在关联性的量化信息，并进而形成全球实时更新系统，加快丹霞地貌全球研究的进程。<br/><br/>
+							</p>
+                        <h3><a id="tips6"></a>项目目标</h3>
+							<p style="font-size:18px; line-height: 30px;">
+                        	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;建设丹霞地貌基础数据服务平台，为丹霞地貌区提供开发利用基础资料，为科教旅游、生态修复和灾害防治等应用研究提供全面的技术信息服务。丹霞地貌区的科教旅游是一项主要的旅游功能，是提升旅游开发科技文化含量的重要抓手；同时，红层和丹霞地貌区的生态退化、土地退化、崩塌和滑坡灾害的预防和治理，需要获得丹霞地貌基础科学的支撑。但目前大部分的丹霞地貌区在旅游开发、道路修建、城镇居民点建设的规划设计中，缺少基础研究。本项目的成果可以为应用领域的研究者提供最全面的、权威的、系统性的科学支撑。<br/><br/>
+
+							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;综上所述，针对在中国具有代表性的丹霞地貌区的数据采集和数据平台的建设，在学术和应用等方面都具有深远的意义。
+                            </p><br><br><br><br>
+                       
+ 					</div>
+                    <div class="span3">
+                    	<br><br><br><br><br><br>
+                        <img src="img/danxia1.jpg" alt="" name="赤水丹霞" width="297" height="202">
+                        <p class="text-center">赤水丹霞</p>
+                        <br><br><br><br><br><br><br><br><br><br><br><br>
+                        <img src="img/danxia2.jpg" alt="" name="泰宁丹霞" width="297" height="202">
+                        <p class="text-center">泰宁丹霞</p>
+                        <br><br><br><br><br><br><br><br><br><br><br><br>
+                        <img src="img/danxia3.jpg" alt="" name="丹霞山" width="297" height="202">
+                        <p class="text-center">丹霞山</p>
+                        <br><br><br><br><br><br><br><br><br><br><br><br>
+						 <img src="img/danxia6.jpg" alt="" name="江郎山" width="297" height="202">
+						<p class="text-center">江郎山</p>
+                        <br><br><br><br><br><br><br><br><br><br><br><br>
+						 <img src="img/danxia5.jpg" alt="" name="龙虎山" width="297" height="202">
+						<p class="text-center">龙虎山</p>
+                        <br><br><br><br><br><br><br><br><br><br><br><br>
+						<img src="img/danxia7.jpg" alt="" name="崀山" width="297" height="202">
+						<p class="text-center">崀山</p>
+                        <br><br><br><br><br><br><br><br><br><br><br><br>
+                        <img src="img/danxia4.jpg" alt="" name="龙虎山泸溪河" width="297" height="202">
+                        <p class="text-center">龙虎山泸溪河</p>
+                        <br><br><br><br>
+                    </div>
+ </div>
+   </div>
+ 
+
+ 
+          
+           
+            <div style="clear: both"></div>
+          <%@include file="footer_frame.jsp"%>

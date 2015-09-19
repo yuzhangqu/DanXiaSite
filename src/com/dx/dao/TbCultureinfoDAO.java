@@ -1,0 +1,226 @@
+package com.dx.dao;
+
+import java.util.List;
+
+import org.hibernate.LockMode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import com.dx.bean.TbCultureinfo;
+
+/**
+ 	* A data access object (DAO) providing persistence and search support for TbCultureinfo entities.
+ 			* Transaction control of the save(), update() and delete() operations 
+		can directly support Spring container-managed transactions or they can be augmented	to handle user-managed Spring transactions. 
+		Each of these methods provides additional information for how to configure it for the desired type of transaction control. 	
+	 * @see com.dx.dao.TbCultureinfo
+  * @author MyEclipse Persistence Tools 
+ */
+
+public class TbCultureinfoDAO extends HibernateDaoSupport  {
+	     private static final Logger log = LoggerFactory.getLogger(TbCultureinfoDAO.class);
+		//property constants
+	public static final String NATION = "nation";
+	public static final String RELIGION = "religion";
+	public static final String ARCHITECTURE = "architecture";
+	public static final String ANTIQUITY = "antiquity";
+	public static final String CUSTOM = "custom";
+	public static final String CULTURE_DESCRIPTION = "cultureDescription";
+	public static final String USE_TYPE = "useType";
+	public static final String USE_DEGREE = "useDegree";
+	public static final String TRANSPORT = "transport";
+	public static final String PROTECT_CONDITION = "protectCondition";
+	public static final String USE_DESCRIPTION = "useDescription";
+	public static final String CULTURE_OTHER_INFO = "cultureOtherInfo";
+
+
+
+	protected void initDao() {
+		//do nothing
+	}
+    
+    public void save(TbCultureinfo transientInstance) {
+        log.debug("saving TbCultureinfo instance");
+        try {
+            getHibernateTemplate().save(transientInstance);
+            log.debug("save successful");
+        } catch (RuntimeException re) {
+            log.error("save failed", re);
+            throw re;
+        }
+    }
+    
+	public void delete(TbCultureinfo persistentInstance) {
+        log.debug("deleting TbCultureinfo instance");
+        try {
+            getHibernateTemplate().delete(persistentInstance);
+            log.debug("delete successful");
+        } catch (RuntimeException re) {
+            log.error("delete failed", re);
+            throw re;
+        }
+    }
+    
+    public TbCultureinfo findById( java.lang.Integer id) {
+        log.debug("getting TbCultureinfo instance with id: " + id);
+        try {
+            TbCultureinfo instance = (TbCultureinfo) getHibernateTemplate()
+                    .get("com.dx.bean.TbCultureinfo", id);
+            return instance;
+        } catch (RuntimeException re) {
+            log.error("get failed", re);
+            throw re;
+        }
+    }
+    
+    
+    public List findByExample(TbCultureinfo instance) {
+        log.debug("finding TbCultureinfo instance by example");
+        try {
+            List results = getHibernateTemplate().findByExample(instance);
+            log.debug("find by example successful, result size: " + results.size());
+            return results;
+        } catch (RuntimeException re) {
+            log.error("find by example failed", re);
+            throw re;
+        }
+    }    
+    
+    public List findByProperty(String propertyName, Object value) {
+      log.debug("finding TbCultureinfo instance with property: " + propertyName
+            + ", value: " + value);
+      try {
+         String queryString = "from TbCultureinfo as model where model." 
+         						+ propertyName + "= ?";
+		 return getHibernateTemplate().find(queryString, value);
+      } catch (RuntimeException re) {
+         log.error("find by property name failed", re);
+         throw re;
+      }
+	}
+
+	public List findByNation(Object nation
+	) {
+		return findByProperty(NATION, nation
+		);
+	}
+	
+	public List findByReligion(Object religion
+	) {
+		return findByProperty(RELIGION, religion
+		);
+	}
+	
+	public List findByArchitecture(Object architecture
+	) {
+		return findByProperty(ARCHITECTURE, architecture
+		);
+	}
+	
+	public List findByAntiquity(Object antiquity
+	) {
+		return findByProperty(ANTIQUITY, antiquity
+		);
+	}
+	
+	public List findByCustom(Object custom
+	) {
+		return findByProperty(CUSTOM, custom
+		);
+	}
+	
+	public List findByCultureDescription(Object cultureDescription
+	) {
+		return findByProperty(CULTURE_DESCRIPTION, cultureDescription
+		);
+	}
+	
+	public List findByUseType(Object useType
+	) {
+		return findByProperty(USE_TYPE, useType
+		);
+	}
+	
+	public List findByUseDegree(Object useDegree
+	) {
+		return findByProperty(USE_DEGREE, useDegree
+		);
+	}
+	
+	public List findByTransport(Object transport
+	) {
+		return findByProperty(TRANSPORT, transport
+		);
+	}
+	
+	public List findByProtectCondition(Object protectCondition
+	) {
+		return findByProperty(PROTECT_CONDITION, protectCondition
+		);
+	}
+	
+	public List findByUseDescription(Object useDescription
+	) {
+		return findByProperty(USE_DESCRIPTION, useDescription
+		);
+	}
+	
+	public List findByCultureOtherInfo(Object cultureOtherInfo
+	) {
+		return findByProperty(CULTURE_OTHER_INFO, cultureOtherInfo
+		);
+	}
+	
+
+	public List findAll() {
+		log.debug("finding all TbCultureinfo instances");
+		try {
+			String queryString = "from TbCultureinfo";
+		 	return getHibernateTemplate().find(queryString);
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
+	
+    public TbCultureinfo merge(TbCultureinfo detachedInstance) {
+        log.debug("merging TbCultureinfo instance");
+        try {
+            TbCultureinfo result = (TbCultureinfo) getHibernateTemplate()
+                    .merge(detachedInstance);
+            log.debug("merge successful");
+            return result;
+        } catch (RuntimeException re) {
+            log.error("merge failed", re);
+            throw re;
+        }
+    }
+
+    public void attachDirty(TbCultureinfo instance) {
+        log.debug("attaching dirty TbCultureinfo instance");
+        try {
+            getHibernateTemplate().saveOrUpdate(instance);
+            log.debug("attach successful");
+        } catch (RuntimeException re) {
+            log.error("attach failed", re);
+            throw re;
+        }
+    }
+    
+    public void attachClean(TbCultureinfo instance) {
+        log.debug("attaching clean TbCultureinfo instance");
+        try {
+            getHibernateTemplate().lock(instance, LockMode.NONE);
+            log.debug("attach successful");
+        } catch (RuntimeException re) {
+            log.error("attach failed", re);
+            throw re;
+        }
+    }
+
+	public static TbCultureinfoDAO getFromApplicationContext(ApplicationContext ctx) {
+    	return (TbCultureinfoDAO) ctx.getBean("TbCultureinfoDAO");
+	}
+}

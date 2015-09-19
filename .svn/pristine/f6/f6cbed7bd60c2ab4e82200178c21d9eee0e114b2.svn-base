@@ -1,0 +1,59 @@
+package com.dx.action;
+
+import com.dx.bean.TbUserinfo;
+import com.dx.dao.TbUserinfoDAO;
+import java.util.*;
+
+public class RegisterAction {
+	private String userName;
+	private String password;
+	private String userType;
+	private TbUserinfoDAO dao;
+
+	public String execute() {
+
+		List<TbUserinfo> temp = (List<TbUserinfo>) dao.findByUserName(userName);
+		System.out.println("aa");
+		if (temp.size() != 0)
+			return "false";
+		else {
+			TbUserinfo userInfo = new TbUserinfo(userName, password, "admin");
+			dao.save(userInfo);
+			LogInAction log = new LogInAction();
+            log.LogIn(userName);
+			return "success";
+		}
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getUserType() {
+		return userType;
+	}
+
+	public void setUserType(String userType) {
+		this.userType = userType;
+	}
+
+	public TbUserinfoDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(TbUserinfoDAO dao) {
+		this.dao = dao;
+	}
+}

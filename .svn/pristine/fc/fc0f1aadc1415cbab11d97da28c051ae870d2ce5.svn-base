@@ -1,0 +1,63 @@
+package com.dx.bean;
+
+import java.util.HashSet;
+import java.util.Set;
+
+/**
+ * TbLakelevel entity. @author MyEclipse Persistence Tools
+ */
+
+public class TbLakelevel implements java.io.Serializable {
+
+	// Fields
+
+	private String lakeLevelId;
+	private String lakeLevelName;
+	private Set tbBasicinfos = new HashSet(0);
+
+	// Constructors
+
+	/** default constructor */
+	public TbLakelevel() {
+	}
+
+	/** minimal constructor */
+	public TbLakelevel(String lakeLevelId) {
+		this.lakeLevelId = lakeLevelId;
+	}
+
+	/** full constructor */
+	public TbLakelevel(String lakeLevelId, String lakeLevelName,
+			Set tbBasicinfos) {
+		this.lakeLevelId = lakeLevelId;
+		this.lakeLevelName = lakeLevelName;
+		this.tbBasicinfos = tbBasicinfos;
+	}
+
+	// Property accessors
+
+	public String getLakeLevelId() {
+		return this.lakeLevelId;
+	}
+
+	public void setLakeLevelId(String lakeLevelId) {
+		this.lakeLevelId = lakeLevelId;
+	}
+
+	public String getLakeLevelName() {
+		return this.lakeLevelName;
+	}
+
+	public void setLakeLevelName(String lakeLevelName) {
+		this.lakeLevelName = lakeLevelName;
+	}
+
+	public Set getTbBasicinfos() {
+		return this.tbBasicinfos;
+	}
+
+	public void setTbBasicinfos(Set tbBasicinfos) {
+		this.tbBasicinfos = tbBasicinfos;
+	}
+
+}

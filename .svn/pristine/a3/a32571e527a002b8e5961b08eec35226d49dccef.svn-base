@@ -1,0 +1,27 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ page import="com.dx.servlet.Counter"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="maincss.css">
+<title>丹霞地貌信息系统</title>
+<script type="text/javascript" src="js/jquery.js"></script>
+<script src="js/bootstrap.js"></script>
+
+</head>
+
+<body>
+	<div class="indexmain">
+		<div class="main">
+			<img class="title" src="img/index2.jpg" alt="" /> <br> <br>
+			<div class="content_long">
+				<h2 style="text-align:center">丹霞交流论坛建设中...</h2>
+				<div class="content_pos"></div>
+			</div>
+
+			<div style="clear: both"></div>
+			<%@include file="footer_frame.jsp"%>

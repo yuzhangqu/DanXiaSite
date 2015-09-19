@@ -1,0 +1,45 @@
+package com.dx.action;
+
+import java.util.Map;
+
+import com.dx.bean.TbBasicinfo;
+import com.dx.dao.TbBasicinfoDAO;
+
+public class deleteInfoAction {
+   private int basicId;
+   private TbBasicinfoDAO dao;
+   private TbBasicinfo info;
+   
+   public String execute(){
+
+	   info = dao.findById(basicId);
+	   dao.delete(info);
+	   info = null;
+	   return "success";
+   }
+
+public int getBasicId() {
+	return basicId;
+}
+
+public void setBasicId(int basicId) {
+	this.basicId = basicId;
+}
+
+public TbBasicinfoDAO getDao() {
+	return dao;
+}
+
+public void setDao(TbBasicinfoDAO dao) {
+	this.dao = dao;
+}
+
+public TbBasicinfo getInfo() {
+	return info;
+}
+
+public void setInfo(TbBasicinfo info) {
+	this.info = info;
+}
+   
+}

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+    <constant name= "struts.multipart.maxSize" value="999999999" />
+	<package name="demo-default" extends="struts-default" namespace="/">
+		<action name="displayNews" class="displayN">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		<action name="Toenglish" class="com.dx.action.ToenglishAction">
+			<result type="chain" name="success">displayNews</result>
+		</action>
+		<action name="Tochinese" class="com.dx.action.TochineseAction">
+			<result type="chain" name="success">displayNews</result>
+		</action>
+		<action name="Switch" class="com.dx.action.SwitchAction">
+			<result type="chain" name="success">displayNews</result>
+		</action>
+		
+		<action name="searchNewsAll" class="searchNewsAll">
+			<result name="success">/searchNewsAll.jsp</result>
+		</action>
+		<action name="saveNews" class="saveNews">
+			<result type="chain" name="success">displayNews</result>
+		</action>
+		<action name="deleteNews" class="deleteNews">
+			<result name="success" type="chain">searchNewsAll</result>
+		</action>
+		<action name="searchNewsContent" class="searchNewsContent">
+			<result name="success">/searchNewsContent.jsp</result>
+		</action>
+		
+		<action name="listTitbits" class="listTitbits">
+			<result name="success">/listTitbits.jsp</result>
+		</action>
+		<action name="saveTitbits" class="saveTitbits">
+			<result name="success" type="chain">listTitbits</result>
+		</action>
+		<action name="deleteTitbits" class="deleteTitbits">
+			<result name="success" type="chain">listTitbits</result>
+		</action>
+		<action name="showTitbits" class="showTitbits">
+			<result name="success">/showTitbits.jsp</result>
+		</action>
+		
+		<action name="Map" class="Map">
+			<result name="success">/DMap.jsp</result>
+		</action>
+		
+		
+		
+		
+		<!--  
+		<action name="searchGeneralInfo" class="searchGeneralInfo">
+			<result name="success">/searchInfo.jsp</result>
+		</action>
+		
+		<action name="searchUpdate" class="searchUpdate">
+			<result name="success">/updateInfo.jsp</result>
+		</action>
+		
+		<action name="searchDeleteInfo" class="searchDeleteInfo">
+			<result name="success">/deleteInfo.jsp</result>
+		</action>
+		
+		<action name="updateInfo" class="updateInfo">
+			<result name="success">/dataupdate.jsp</result>
+		</action>
+		
+		<action name="saveUpdateInfo" class="saveUpdateInfo">
+			<result name="success">/updateInfo.jsp</result>
+		</action>
+		
+		<action name="infoDisplay" class="infoDisplay">
+			<result name="success">/InfoContent.jsp</result>
+		</action>
+		<action name="dataDisplay" class="dataDisplay">
+			<result name="success">/datasave.jsp</result>
+		</action>
+		-->
+		
+		
+	</package>
+</struts>    

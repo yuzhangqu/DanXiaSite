@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+
+	<package name="demo-default" extends="struts-default"
+		namespace="/">
+
+		<action name="register" class="register">
+			<result name="success">/mainn.jsp</result>
+			<result name="false">/registerError.jsp</result>
+		</action>
+		<action name="displayNews" class="displayN">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		<action name="logIn" class="login">
+			<result name="success">/mainn.jsp</result>
+			<result name="false">/logInError.jsp</result>
+		</action>
+		<action name="logOut" class="com.dx.action.LogOutAction">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		<action name="searchNewsAll" class="searchNewsAll">
+			<result name="success">/searchNewsAll.jsp</result>
+		</action>
+		<action name="saveinfo" class="saveInfo">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		
+		<action name="searchNewsContent" class="searchNewsContent">
+			<result name="success">/searchNewsContent.jsp</result>
+		</action>
+		
+	</package>
+</struts>    

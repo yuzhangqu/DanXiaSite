@@ -1,0 +1,966 @@
+package com.dx.action;
+
+import java.util.Iterator;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+import org.hibernate.mapping.Array;
+
+import com.dx.bean.TbAuditinfo;
+import com.dx.bean.TbBasicinfo;
+import com.dx.bean.TbCultureinfo;
+import com.dx.bean.TbCulturescene;
+import com.dx.bean.TbEnvironmentinfo;
+import com.dx.bean.TbGeneralpic;
+import com.dx.bean.TbGeologyinfo;
+import com.dx.bean.TbGeologyscene;
+import com.dx.bean.TbInvestigatorinfo;
+import com.dx.bean.TbLandmarkscene;
+import com.dx.dao.TbAuditinfoDAO;
+import com.dx.dao.TbBasicinfoDAO;
+import com.dx.dao.TbCultureinfoDAO;
+import com.dx.dao.TbEnvironmentinfoDAO;
+import com.dx.dao.TbGeneralpicDAO;
+import com.dx.dao.TbGeologyinfoDAO;
+import com.dx.dao.TbInvestigatorinfoDAO;
+import com.dx.servlet.MyDataClass;
+
+public class DisplayInfoContentAction {
+	private String nameCurrent;
+	private String regionProvince;
+	private String regionCity;
+	private Integer detailID;
+	private TbBasicinfo detailBasicInfo;
+	private TbGeologyinfo detailGeologyInfo;
+	private TbInvestigatorinfo detailInvestigatorInfo;
+	private TbAuditinfo detailAuditInfo;
+	private TbCultureinfo detailCultureInfo;
+	private TbEnvironmentinfo detailEnvironmentInfo;
+	private String lake1;
+	private String XXstone;
+	private String XXstonejiaocuo;
+	private String fensha;
+	private String nizhi;
+	private String pendi;
+	private String pendilocation;
+	private String pendimap;
+	private String dashitu;
+	private String chanzhuangpic1; 
+	private String chanzhuangpic2;
+	private String zhengdimao;
+	private String fudimao;
+	private String danti;
+	private String qunti;
+	private String yapo;
+	private String zonghe;
+	private String dili;
+	private String lakedes;
+	private String XXstonedes;
+	private String XXstonejiaocuodes;
+	private String fenshades;
+	private String nizhides;
+	private String pendides;
+	private String pendilocationdes;
+	private String pendimapdes;
+	private String dashitudes;
+	private String chanzhuangpic1des; 
+	private String chanzhuangpic2des;
+	private String zhengdimaodes;
+	private String fudimaodes;
+	private String dantides;
+	private String quntides;
+	private String yapodes;
+	private String zonghedes;
+	private String dilides;
+
+	
+	private String biaozhi1;
+	private String biaozhi2;
+	private String biaozhi3;
+	private String biaozhi4;
+	private String biaozhi5;
+	
+	private String dizhi1;
+	private String dizhi2;
+	private String dizhi3;
+	private String dizhi4;
+	private String dizhi5;
+	
+	private String wenhua1;
+	private String wenhua2;
+	private String wenhua3;
+	private String wenhua4;
+	private String wenhua5;
+	private HttpServletRequest request;
+	
+
+	private TbBasicinfoDAO bdao;
+	private String id;
+	
+	
+	public String execute(){
+		Integer myId = Integer.parseInt(id);
+		detailBasicInfo = bdao.findById(myId);
+		detailGeologyInfo = detailBasicInfo.getTbGeologyinfo();
+		detailInvestigatorInfo = detailBasicInfo.getTbInvestigatorinfo(); 
+		detailAuditInfo = detailBasicInfo.getTbAuditinfo();
+		detailCultureInfo = detailBasicInfo.getTbCultureinfo();
+		detailEnvironmentInfo = detailBasicInfo.getTbEnvironmentinfo();
+
+        if(detailBasicInfo.getTbGeneralpic().getLakeLevelPic()!=null){
+		 lake1= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getLakeLevelPic();
+		}
+        else{
+         lake1 = MyDataClass.generalPicPath + "\\no.jpg";
+        }
+        if(detailBasicInfo.getTbGeneralpic().getConglomeratePic()!=null){
+        	XXstone = MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getConglomeratePic();
+   		}
+           else{
+        	   XXstone = MyDataClass.generalPicPath + "\\no.jpg";
+           }
+        if(detailBasicInfo.getTbGeneralpic().getSandstonePic()!=null){
+        	XXstonejiaocuo= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getSandstonePic();
+   		}
+           else{
+        	   XXstonejiaocuo = MyDataClass.generalPicPath + "\\no.jpg";
+           }
+        if(detailBasicInfo.getTbGeneralpic().getSiltstonePic()!=null){
+        	fensha= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getSiltstonePic();
+   		}
+           else{
+        	   fensha = MyDataClass.generalPicPath + "\\no.jpg";
+           }
+        if(detailBasicInfo.getTbGeneralpic().getClayPic()!=null){
+        	nizhi= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getClayPic();
+   		}
+           else{
+        	   nizhi = MyDataClass.generalPicPath + "\\no.jpg";
+           }
+        if(detailBasicInfo.getTbGeneralpic().getBasinGeologyPic()!=null){
+        	pendi= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getBasinGeologyPic();
+   		}
+           else{
+        	   pendi = MyDataClass.generalPicPath + "\\no.jpg";
+           }
+        if(detailBasicInfo.getTbGeneralpic().getBasinPositionPic()!=null){
+        	pendilocation= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getBasinPositionPic();
+   		}
+           else{
+        	   pendilocation = MyDataClass.generalPicPath + "\\no.jpg";
+           }
+        if(detailBasicInfo.getTbGeneralpic().getBasinLinePic()!=null){
+        	pendimap= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getBasinLinePic();
+   		}
+           else{
+        	   pendimap = MyDataClass.generalPicPath + "\\no.jpg";
+           }
+        if(detailBasicInfo.getTbGeneralpic().getTerrainPic()!=null){
+        	dashitu= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getTerrainPic();
+   		}
+           else{
+        	   dashitu = MyDataClass.generalPicPath + "\\no.jpg";
+           }
+        if(detailBasicInfo.getTbGeneralpic().getChanzhuangPic1()!=null){
+        	chanzhuangpic1= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getChanzhuangPic1(); 
+      		}
+              else{
+            	  chanzhuangpic1 = MyDataClass.generalPicPath + "\\no.jpg";
+              }
+           if(detailBasicInfo.getTbGeneralpic().getChanzhuangPic2()!=null){
+        	   chanzhuangpic2= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getChanzhuangPic2();
+         		}
+                 else{
+                	 chanzhuangpic2 = MyDataClass.generalPicPath + "\\no.jpg";
+                 }
+           if(detailBasicInfo.getTbGeneralpic().getPositiveReliefPic()!=null){
+        	   zhengdimao= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getPositiveReliefPic();
+         		}
+                 else{
+                	 zhengdimao = MyDataClass.generalPicPath + "\\no.jpg";
+                 }
+           if(detailBasicInfo.getTbGeneralpic().getNegativeReliefPic()!=null){
+        	   fudimao= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getNegativeReliefPic();
+       		}
+               else{
+            	   fudimao = MyDataClass.generalPicPath + "\\no.jpg";
+               }
+           if(detailBasicInfo.getTbGeneralpic().getReliefPic()!=null){
+        	   danti= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getReliefPic();
+       		}
+               else{
+            	   danti = MyDataClass.generalPicPath + "\\no.jpg";
+               }
+           if(detailBasicInfo.getTbGeneralpic().getDependentShapePic()!=null){
+        	   qunti= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getDependentShapePic();
+       		}
+               else{
+            	   qunti = MyDataClass.generalPicPath + "\\no.jpg";
+               }
+           if(detailBasicInfo.getTbGeneralpic().getSlopeShapePic()!=null){
+        	   yapo= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getSlopeShapePic();
+         		}
+                 else{
+                	 yapo = MyDataClass.generalPicPath + "\\no.jpg";
+                 }
+           if(detailBasicInfo.getTbGeneralpic().getOverallScenePic()!=null){
+        	   zonghe= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getOverallScenePic();
+         		}
+                 else{
+                	 zonghe = MyDataClass.generalPicPath + "\\no.jpg";
+                 }
+           if(detailBasicInfo.getTbGeneralpic().getOverallEnvironmentPic()!=null){
+        	   dili= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getOverallEnvironmentPic();
+         		}
+                 else{
+                	 dili = MyDataClass.generalPicPath + "\\no.jpg";
+                 }
+
+		
+		lakedes = detailBasicInfo.getTbGeneralpic().getLakeLevelPicDescription();
+		XXstonedes = MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getConglomeratePicDescription();
+		XXstonejiaocuodes = MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getSandstonePicDescription();
+		fenshades= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getSiltsstonePicDescription();
+		nizhides= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getClayPicDescription();
+		pendides= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getBasinGeologyPicDescription();
+		pendilocationdes= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getBasinPositionPicDescription();
+		pendimapdes= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getBasinLinePicDescription();
+		dashitudes= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getTerrainPicDescription();
+		chanzhuangpic1des= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getChanzhuangPic1description();
+		chanzhuangpic2des= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getChanzhuangPic2description();
+		zhengdimaodes= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getPositiveReliefPicDecsription();
+		fudimaodes= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getNegativeReliefPicDecsription();
+		dantides= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getReliefPicDescription();
+		quntides= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getDependentShapePicDescription();
+		yapodes= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getSlopeShapePicDescription();
+		zonghedes= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getOverallScenePicDescription();
+		dilides= MyDataClass.generalPicPath + detailBasicInfo.getTbGeneralpic().getOverallEnvironmentPicDescription();
+		System.out.println(zonghedes);
+		
+		
+		java.util.Set<TbCulturescene> c = detailBasicInfo.getTbCulturescenes();
+		System.out.println(c.toString());
+		return "success";
+		}
+		
+	
+	
+
+	public String getLake1() {
+		return lake1;
+	}
+
+
+	public void setLake1(String lake1) {
+		this.lake1 = lake1;
+	}
+
+
+	public String getXXstone() {
+		return XXstone;
+	}
+
+
+	public void setXXstone(String xXstone) {
+		XXstone = xXstone;
+	}
+
+
+	public String getXXstonejiaocuo() {
+		return XXstonejiaocuo;
+	}
+
+
+	public void setXXstonejiaocuo(String xXstonejiaocuo) {
+		XXstonejiaocuo = xXstonejiaocuo;
+	}
+
+
+	public String getFensha() {
+		return fensha;
+	}
+
+
+	public void setFensha(String fensha) {
+		this.fensha = fensha;
+	}
+
+
+	public String getNizhi() {
+		return nizhi;
+	}
+
+
+	public void setNizhi(String nizhi) {
+		this.nizhi = nizhi;
+	}
+
+
+	public String getPendi() {
+		return pendi;
+	}
+
+
+	public void setPendi(String pendi) {
+		this.pendi = pendi;
+	}
+
+
+	public String getPendilocation() {
+		return pendilocation;
+	}
+
+
+	public void setPendilocation(String pendilocation) {
+		this.pendilocation = pendilocation;
+	}
+
+
+	public String getPendimap() {
+		return pendimap;
+	}
+
+
+	public void setPendimap(String pendimap) {
+		this.pendimap = pendimap;
+	}
+
+
+	public String getDashitu() {
+		return dashitu;
+	}
+
+
+	public void setDashitu(String dashitu) {
+		this.dashitu = dashitu;
+	}
+
+
+	public String getChanzhuangpic2() {
+		return chanzhuangpic2;
+	}
+
+
+	public void setChanzhuangpic2(String chanzhuangpic2) {
+		this.chanzhuangpic2 = chanzhuangpic2;
+	}
+
+
+	public String getZhengdimao() {
+		return zhengdimao;
+	}
+
+
+	public void setZhengdimao(String zhengdimao) {
+		this.zhengdimao = zhengdimao;
+	}
+
+
+	public String getFudimao() {
+		return fudimao;
+	}
+
+
+	public void setFudimao(String fudimao) {
+		this.fudimao = fudimao;
+	}
+
+
+	public String getDanti() {
+		return danti;
+	}
+
+
+	public void setDanti(String danti) {
+		this.danti = danti;
+	}
+
+
+	public String getQunti() {
+		return qunti;
+	}
+
+
+	public void setQunti(String qunti) {
+		this.qunti = qunti;
+	}
+
+
+	public String getYapo() {
+		return yapo;
+	}
+
+
+	public void setYapo(String yapo) {
+		this.yapo = yapo;
+	}
+
+
+	public String getZonghe() {
+		return zonghe;
+	}
+
+
+	public void setZonghe(String zonghe) {
+		this.zonghe = zonghe;
+	}
+
+
+	public String getDili() {
+		return dili;
+	}
+
+
+	public void setDili(String dili) {
+		this.dili = dili;
+	}
+
+
+
+	public String getLakedes() {
+		return lakedes;
+	}
+
+
+
+
+	public void setLakedes(String lakedes) {
+		this.lakedes = lakedes;
+	}
+
+
+
+
+	public String getXXstonedes() {
+		return XXstonedes;
+	}
+
+
+
+
+	public void setXXstonedes(String xXstonedes) {
+		XXstonedes = xXstonedes;
+	}
+
+
+
+
+	public String getXXstonejiaocuodes() {
+		return XXstonejiaocuodes;
+	}
+
+
+
+
+	public void setXXstonejiaocuodes(String xXstonejiaocuodes) {
+		XXstonejiaocuodes = xXstonejiaocuodes;
+	}
+
+
+
+
+	public String getFenshades() {
+		return fenshades;
+	}
+
+
+
+
+	public void setFenshades(String fenshades) {
+		this.fenshades = fenshades;
+	}
+
+
+
+
+	public String getNizhides() {
+		return nizhides;
+	}
+
+
+
+
+	public void setNizhides(String nizhides) {
+		this.nizhides = nizhides;
+	}
+
+
+
+
+	public String getPendides() {
+		return pendides;
+	}
+
+
+
+
+	public void setPendides(String pendides) {
+		this.pendides = pendides;
+	}
+
+
+
+
+	public String getPendilocationdes() {
+		return pendilocationdes;
+	}
+
+
+
+
+	public void setPendilocationdes(String pendilocationdes) {
+		this.pendilocationdes = pendilocationdes;
+	}
+
+
+
+
+	public String getPendimapdes() {
+		return pendimapdes;
+	}
+
+
+
+
+	public void setPendimapdes(String pendimapdes) {
+		this.pendimapdes = pendimapdes;
+	}
+
+
+
+
+	public String getDashitudes() {
+		return dashitudes;
+	}
+
+
+
+
+	public void setDashitudes(String dashitudes) {
+		this.dashitudes = dashitudes;
+	}
+
+
+
+
+	public String getChanzhuangpic1des() {
+		return chanzhuangpic1des;
+	}
+
+
+
+
+	public void setChanzhuangpic1des(String chanzhuangpic1des) {
+		this.chanzhuangpic1des = chanzhuangpic1des;
+	}
+
+
+
+
+	public String getChanzhuangpic2des() {
+		return chanzhuangpic2des;
+	}
+
+
+
+
+	public void setChanzhuangpic2des(String chanzhuangpic2des) {
+		this.chanzhuangpic2des = chanzhuangpic2des;
+	}
+
+
+
+
+	public String getZhengdimaodes() {
+		return zhengdimaodes;
+	}
+
+
+
+
+	public void setZhengdimaodes(String zhengdimaodes) {
+		this.zhengdimaodes = zhengdimaodes;
+	}
+
+
+
+
+	public String getFudimaodes() {
+		return fudimaodes;
+	}
+
+
+
+
+	public void setFudimaodes(String fudimaodes) {
+		this.fudimaodes = fudimaodes;
+	}
+
+
+
+
+	public String getDantides() {
+		return dantides;
+	}
+
+
+
+
+	public void setDantides(String dantides) {
+		this.dantides = dantides;
+	}
+
+
+
+
+	public String getQuntides() {
+		return quntides;
+	}
+
+
+
+
+	public void setQuntides(String quntides) {
+		this.quntides = quntides;
+	}
+
+
+
+
+	public String getYapodes() {
+		return yapodes;
+	}
+
+
+
+
+	public void setYapodes(String yapodes) {
+		this.yapodes = yapodes;
+	}
+
+
+
+
+	public String getZonghedes() {
+		return zonghedes;
+	}
+
+
+
+
+	public void setZonghedes(String zonghedes) {
+		this.zonghedes = zonghedes;
+	}
+
+
+
+
+	public String getDilides() {
+		return dilides;
+	}
+
+
+
+
+	public void setDilides(String dilides) {
+		this.dilides = dilides;
+	}
+
+
+
+
+	public String getBiaozhi1() {
+		return biaozhi1;
+	}
+
+
+	public void setBiaozhi1(String biaozhi1) {
+		this.biaozhi1 = biaozhi1;
+	}
+
+
+	public String getBiaozhi2() {
+		return biaozhi2;
+	}
+
+
+	public void setBiaozhi2(String biaozhi2) {
+		this.biaozhi2 = biaozhi2;
+	}
+
+
+	public String getBiaozhi3() {
+		return biaozhi3;
+	}
+
+
+	public void setBiaozhi3(String biaozhi3) {
+		this.biaozhi3 = biaozhi3;
+	}
+
+
+	public String getBiaozhi4() {
+		return biaozhi4;
+	}
+
+
+	public void setBiaozhi4(String biaozhi4) {
+		this.biaozhi4 = biaozhi4;
+	}
+
+
+	public String getBiaozhi5() {
+		return biaozhi5;
+	}
+
+
+	public void setBiaozhi5(String biaozhi5) {
+		this.biaozhi5 = biaozhi5;
+	}
+
+
+	public String getDizhi1() {
+		return dizhi1;
+	}
+
+
+	public void setDizhi1(String dizhi1) {
+		this.dizhi1 = dizhi1;
+	}
+
+
+	public String getDizhi2() {
+		return dizhi2;
+	}
+
+
+	public void setDizhi2(String dizhi2) {
+		this.dizhi2 = dizhi2;
+	}
+
+
+	public String getDizhi3() {
+		return dizhi3;
+	}
+
+
+	public void setDizhi3(String dizhi3) {
+		this.dizhi3 = dizhi3;
+	}
+
+
+	public String getDizhi4() {
+		return dizhi4;
+	}
+
+
+	public void setDizhi4(String dizhi4) {
+		this.dizhi4 = dizhi4;
+	}
+
+
+	public String getDizhi5() {
+		return dizhi5;
+	}
+
+
+	public void setDizhi5(String dizhi5) {
+		this.dizhi5 = dizhi5;
+	}
+
+
+	public String getWenhua1() {
+		return wenhua1;
+	}
+
+
+	public void setWenhua1(String wenhua1) {
+		this.wenhua1 = wenhua1;
+	}
+
+
+	public String getWenhua2() {
+		return wenhua2;
+	}
+
+
+	public void setWenhua2(String wenhua2) {
+		this.wenhua2 = wenhua2;
+	}
+
+
+	public String getWenhua3() {
+		return wenhua3;
+	}
+
+
+	public void setWenhua3(String wenhua3) {
+		this.wenhua3 = wenhua3;
+	}
+
+
+	public String getWenhua4() {
+		return wenhua4;
+	}
+
+
+	public void setWenhua4(String wenhua4) {
+		this.wenhua4 = wenhua4;
+	}
+
+
+	public String getWenhua5() {
+		return wenhua5;
+	}
+
+
+	public void setWenhua5(String wenhua5) {
+		this.wenhua5 = wenhua5;
+	}
+
+
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+
+
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+
+
+	public String getChanzhuangpic1() {
+		return chanzhuangpic1;
+	}
+
+
+	public void setChanzhuangpic1(String chanzhuangpic1) {
+		this.chanzhuangpic1 = chanzhuangpic1;
+	}
+
+
+	public String getNameCurrent() {
+		return nameCurrent;
+	}
+
+
+	public void setNameCurrent(String nameCurrent) {
+		this.nameCurrent = nameCurrent;
+	}
+
+
+	public String getRegionProvince() {
+		return regionProvince;
+	}
+
+
+	public void setRegionProvince(String regionProvince) {
+		this.regionProvince = regionProvince;
+	}
+
+
+	public String getRegionCity() {
+		return regionCity;
+	}
+
+
+	public void setRegionCity(String regionCity) {
+		this.regionCity = regionCity;
+	}
+
+
+	public Integer getDetailID() {
+		return detailID;
+	}
+
+
+	public void setDetailID(Integer detailID) {
+		this.detailID = detailID;
+	}
+
+
+	public TbBasicinfo getDetailBasicInfo() {
+		return detailBasicInfo;
+	}
+
+
+	public void setDetailBasicInfo(TbBasicinfo detailBasicInfo) {
+		this.detailBasicInfo = detailBasicInfo;
+	}
+
+
+	public TbGeologyinfo getDetailGeologyInfo() {
+		return detailGeologyInfo;
+	}
+
+
+	public void setDetailGeologyInfo(TbGeologyinfo detailGeologyInfo) {
+		this.detailGeologyInfo = detailGeologyInfo;
+	}
+
+
+	public TbInvestigatorinfo getDetailInvestigatorInfo() {
+		return detailInvestigatorInfo;
+	}
+
+
+	public void setDetailInvestigatorInfo(TbInvestigatorinfo detailInvestigatorInfo) {
+		this.detailInvestigatorInfo = detailInvestigatorInfo;
+	}
+
+
+	public TbAuditinfo getDetailAuditInfo() {
+		return detailAuditInfo;
+	}
+
+
+	public void setDetailAuditInfo(TbAuditinfo detailAuditInfo) {
+		this.detailAuditInfo = detailAuditInfo;
+	}
+
+
+	public TbCultureinfo getDetailCultureInfo() {
+		return detailCultureInfo;
+	}
+
+
+	public void setDetailCultureInfo(TbCultureinfo detailCultureInfo) {
+		this.detailCultureInfo = detailCultureInfo;
+	}
+
+
+	public TbEnvironmentinfo getDetailEnvironmentInfo() {
+		return detailEnvironmentInfo;
+	}
+
+
+	public void setDetailEnvironmentInfo(TbEnvironmentinfo detailEnvironmentInfo) {
+		this.detailEnvironmentInfo = detailEnvironmentInfo;
+	}
+
+
+	public TbBasicinfoDAO getBdao() {
+		return bdao;
+	}
+
+
+	public void setBdao(TbBasicinfoDAO bdao) {
+		this.bdao = bdao;
+	}
+
+
+	public String getId() {
+		return id;
+	}
+
+
+	public void setId(String id) {
+		this.id = id;
+	}
+
+	
+	
+	
+}

@@ -1,0 +1,726 @@
+<%@ page language="java" import="java.util.*" pageEncoding="gbk"%>
+<%@ taglib uri="/struts-tags" prefix="s" %> 
+<%
+String path = request.getContextPath();
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+%>
+
+<!DOCTYPE HTML>
+<html>
+<head>
+		<title>丹霞地貌信息系统</title>
+		<script type="text/javascript" src="js/jquery.js"></script> 
+        <script type="text/javascript" src="js/jquery.i18n.properties-1.0.9.js"></script> 
+        <script type="text/javascript">
+        function init(){       
+		var myName="<%=session.getAttribute("userName")%>"; 
+		if(myName == "null")
+		{
+			
+			window.location.href="mainn.jsp";
+
+		}
+		else{
+			
+		}
+		}
+		</script>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		<meta name="description" content="" />
+		<meta name="keywords" content="" />
+		<link href="http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600" rel="stylesheet" type="text/css" />
+		<!--[if lte IE 8]><script src="js/html5shiv.js"></script><![endif]-->
+		<script src="js/jquery.min.js"></script>
+		<script src="js/skel.min.js"></script>
+		<script src="js/skel-panels.min.js"></script>
+		<script src="js/init.js"></script>
+		<noscript>
+			<link rel="stylesheet" href="css/skel-noscript.css" />
+			<link rel="stylesheet" href="css/style.css" />
+			<link rel="stylesheet" href="css/style-wide.css" />
+		</noscript>
+		<!--[if lte IE 9]><link rel="stylesheet" href="css/ie9.css" /><![endif]-->
+		<!--[if lte IE 8]><link rel="stylesheet" href="css/ie8.css" /><![endif]-->
+	</head>
+	<body onload="init()">
+		<!-- Header -->
+			<div id="header" class="skel-panels-fixed">
+				<div class="top">
+					<!-- Nav -->
+						<nav id="nav">
+							<ul>
+								<li><a href="#top" id="top-link" class="skel-panels-ignoreHref"><span class="icon icon-th">基本信息</span></a></li>
+								<li><a href="#portfolio" id="portfolio-link" class="skel-panels-ignoreHref"><span class="icon icon-th">地理地貌</span></a></li>
+								<li><a href="#about" id="about-link" class="skel-panels-ignoreHref"><span class="icon icon-th">自然环境</span></a></li>
+								<li><a href="#contact" id="contact-link" class="skel-panels-ignoreHref"><span class="icon icon-th">地方文化</span></a></li>
+								<li><a href="#contact2" id="top-link" class="skel-panels-ignoreHref"><span class="icon icon-th">联系人员</span></a></li>
+								<li><a href="#contact8" id="about-link" class="skel-panels-ignoreHref"><span class="icon icon-th">审核信息</span></a></li>
+							</ul>
+						</nav>
+						
+				</div>
+				
+			
+			</div>
+
+		<!-- Main -->
+			<div id="main">
+			
+				<!-- 基本信息 -->
+				<form method="post" action="updateinfo" id="form" enctype="multipart/form-data">
+					<section id="top" class="one">
+						<div class="container">
+					
+							<header>
+							</header>
+							<h3>名称:</h3>
+								<div class="row half">
+								
+								  
+									<div style="display:none"><input type="text" class="text" name="detailBasicInfo.basicId" value="${detailBasicInfo.basicId}" placeholder="现名" /></div>
+									<div class="2u"><span>现名:</span></div>
+									<div class="2u"><input type="text" class="text" name="detailBasicInfo.nameCurrent" value="${detailBasicInfo.nameCurrent}" placeholder="现名" /></div>
+									<div class="2u"><span>别名:</span></div>
+									<div class="3u"><input type="text" class="text" name="detailBasicInfo.nameOther" value="${detailBasicInfo.nameOther}"placeholder="别名" /></div>
+								</div>
+								<h3>政区位置:</h3>
+								<div class="row half">
+								<div class="2u"><span>省:</span></div>
+								<div class="2u"><input type="text" class="text" name="detailBasicInfo.regionProvince" value="${detailBasicInfo.regionProvince}" placeholder="省" /></div>
+								<div class="1u"><span>市:</span></div>
+								<div class="2u"><input type="text" class="text" name="detailBasicInfo.regionCity" value="${detailBasicInfo.regionCity}"placeholder="市" /></div>
+								<div class="1u"><span>县，市，区:</span></div>
+								<div class="2u"><input type="text" class="text" name="detailBasicInfo.regionDistrict" value="${detailBasicInfo.regionDistrict}"placeholder="县、市、区" /></div>
+								</div>
+								<div class="row half">
+								<div class="2u"><span>具体描述:</span></div>
+									<div class="8u">
+										<input type="text" class="text" name="detailBasicInfo.regionSpecification" value="${detailBasicInfo.regionSpecification}"placeholder="具体描述">
+									</div>
+								</div>
+								<h3>管理机构:</h3>
+								
+								<div class="row half">
+								    <div class="2u"><span>名称:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailBasicInfo.agencyName"value="${detailBasicInfo.agencyName}" placeholder="名称" /></div>
+								    <div class="1u"><span>隶属:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailBasicInfo.agencyAffiliation"value="${detailBasicInfo.agencyAffiliation}" placeholder="隶属" /></div>
+								    <div class="1u"><span>办公地址:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailBasicInfo.agencyOfficePosition"value="${detailBasicInfo.agencyOfficePosition}" placeholder="办公地址" /></div>
+								    </div>
+								 <div class="row half">   
+								    <div class="2u"><span>联系人:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailBasicInfo.agencyLinkman" value="${detailBasicInfo.agencyLinkman}"placeholder="联系人" /></div>
+								    <div class="1u"><span>手机:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailBasicInfo.agencyMobilePhone"value="${detailBasicInfo.agencyMobilePhone}" placeholder="手机" /></div>
+								    <div class="1u"><span>办公电话:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailBasicInfo.agencyOfficePhone" value="${detailBasicInfo.agencyOfficePhone}"placeholder="办公电话" /></div>
+								    </div>
+								 <div class="row half"> 
+								    <div class="2u"><span>传真:</span></div>  
+								    <div class="2u"><input type="text" class="text" name="detailBasicInfo.agencyFax" value="${detailBasicInfo.agencyFax}"placeholder="传真" /></div>
+								    <div class="1u"><span>网站:</span></div> 
+								    <div class="2u"><input type="text" class="text" name="detailBasicInfo.agencyWebsite" value="${detailBasicInfo.agencyWebsite}"placeholder="网站" /></div>
+								    <div class="1u"><span>电子邮件:</span></div> 
+								    <div class="2u"><input type="text" class="text" name="detailBasicInfo.agencyEmail" value="${detailBasicInfo.agencyEmail}"placeholder="电子邮件" /></div>
+								    </div>
+								  <div class="row half">
+								    <div class="2u"><span>其他:</span></div>   
+									<div class="8u">
+										<input type="text" class="text" name="detailBasicInfo.agencyOtherInfo" value="${detailBasicInfo.agencyOtherInfo}"placeholder="其他">
+									</div>
+								</div>
+							
+						</div>
+					</section>
+					
+				<!-- 地理地貌 -->
+					<section id="portfolio" class="two">
+						<div class="container">
+							<h3>经纬度：</h3>						
+							<div class="row half">
+								    <div class="2u"><span>北纬:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.northLatitude" value = "${detailGeologyInfo.northLatitude}"placeholder="北纬" /></div>
+								    <div class="2u"><span>南纬:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.southLatitude" value = "${detailGeologyInfo.southLatitude}" placeholder="南纬" /></div>
+								    </div>
+						    <div class="row half">
+								    <div class="2u"><span>东纬:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.eastLatitude" value = "${detailGeologyInfo.eastLatitude}" placeholder="东纬" /></div>
+								    <div class="2u"><span>西纬:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.westLatitude" value = "${detailGeologyInfo.westLatitude}"placeholder="西纬" /></div>
+								    </div>
+								 <div class="row half">   
+								    <div class="2u"><span>北经:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.northLongitude" value = "${detailGeologyInfo.northLongitude}"placeholder="北经" /></div>
+								    <div class="2u"><span>南经:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.southLongitude" value = "${detailGeologyInfo.southLongitude}"placeholder="南经" /></div>
+								    </div>
+								<div class="row half">
+								    <div class="2u"><span>东经:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.eastLongitude" value = "${detailGeologyInfo.eastLongitude}"placeholder="东经" /></div>
+								    <div class="2u"><span>西经:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.westLongitude" value = "${detailGeologyInfo.westLongitude}"placeholder="西经" /></div>
+								    </div>
+								 <div class="row half"> 
+								    <div class="2u"><span>中心纬度:</span></div>  
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.centerLatitude" value = "${detailGeologyInfo.centerLatitude}"placeholder="中心纬度" /></div>
+								    <div class="2u"><span>中心经度:</span></div> 
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.centerLongitude" value = "${detailGeologyInfo.centerLongitude}"placeholder="中心经度" /></div>
+								    </div>
+                             <h3>连续面积：</h3>
+                             <div class="row half"> 
+								    <div class="2u"><span>丹霞地貌连续分布面积:</span></div>  
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.reliefContinuousArea" value = "${detailGeologyInfo.reliefContinuousArea}"placeholder="丹霞地貌连续分布面积" /></div>
+								
+								    <div class="2u"><span>红层连续的分布面积:</span></div>  
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.redbedContinuousArea" value = "${detailGeologyInfo.redbedContinuousArea}"placeholder="红层连续的分布面积" /></div>
+								    </div>
+								    
+				             <div class="row half"> 
+								    <div class="2u"><span>红层盆地总面积:</span></div>  
+								    <div class="8u"><input type="text" class="text" name="detailGeologyInfo.redbedTotalArea" value = "${detailGeologyInfo.redbedTotalArea}"placeholder="红层盆地总面积" /></div>
+								    </div>
+							 <h3>海拔：</h3>	
+							 <div class="row half">   
+								    <div class="2u"><span>最低海拔:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.lowAltitude" value = "${detailGeologyInfo.lowAltitude}"placeholder="最低海拔" /></div>
+								    <div class="1u"><span>最高海拔:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.highAltitude" value = "${detailGeologyInfo.highAltitude}"placeholder="最高海拔" /></div>
+								    <div class="1u"><span>一般海拔:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.mediumAltitude" value = "${detailGeologyInfo.mediumAltitude}"placeholder="一般海拔" /></div>
+								    </div>
+							 <h3>红层时代：</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>红层时代:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.redbedAge" value = "${detailGeologyInfo.redbedAge}"placeholder="红层时代" /></div>
+								    <div class="2u"><span>红层时代说明:</span></div>
+								    <div class="4u"><input type="text" class="text" name="detailGeologyInfo.redbedAgeDescription" value = "${detailGeologyInfo.redbedAgeDescription}"placeholder="红层时代说明" /></div>
+								    </div>	
+							 <h3>地质名称：</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>地质名称1:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.stratumName1" value = "${detailGeologyInfo.stratumName1}"placeholder="地质名称1" /></div>
+								    <div class="2u"><span>地质名称1描述:</span></div>
+								    <div class="4u"><input type="text" class="text" name="detailGeologyInfo.stratumDescription1" value = "${detailGeologyInfo.stratumDescription1}"placeholder="地质名称1描述" /></div>
+								    </div>	
+						     <div class="row half">   
+								    <div class="2u"><span>地质名称2:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.stratumName2" value = "${detailGeologyInfo.stratumName2}" placeholder="地质名称2" /></div>
+								    <div class="2u"><span>地质名称2描述:</span></div>
+								    <div class="4u"><input type="text" class="text" name="detailGeologyInfo.stratumDescription2" value = "${detailGeologyInfo.stratumDescription2}"placeholder="地质名称2描述" /></div>
+								    </div>	
+							 <h3>地质厚度：</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>地质厚度名称1:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.thickName1" value = "${detailGeologyInfo.thickName1}"placeholder="地质厚度名称1" /></div>
+								    <div class="2u"><span>地质厚度1:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.thickness1" value = "${detailGeologyInfo.thickness1}"placeholder="地质厚度1" /></div>
+								    </div>	
+						     <div class="row half">   
+								    <div class="2u"><span>地质厚度名称2:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.thickName2" value = "${detailGeologyInfo.thickName2}"placeholder="地质厚度名称2" /></div>
+								    <div class="2u"><span>地质厚度2:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.thickness2" value = "${detailGeologyInfo.thickness2}"placeholder="地质厚度2" /></div>
+								    </div>	
+							 <h3>沉积相：</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>滨浅海相1:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.offshore1" value = "${detailGeologyInfo.offshore1}"placeholder="滨浅海相1" /></div>
+								    <div class="2u"><span>滨浅海相2:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.offshore2" value = "${detailGeologyInfo.offshore2}"placeholder="滨浅海相2" /></div>
+								    </div>
+						     <div class="row half">   
+								    <div class="2u"><span>风积相:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.eolianDeposit"value = "${detailGeologyInfo.eolianDeposit}" placeholder="风积相" /></div>
+								    <div class="2u"><span>风积相描述:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.eolianDepositDescription"value = "${detailGeologyInfo.eolianDepositDescription}" placeholder="风积相描述" /></div>
+								    </div>
+							 <h3>岩性描述-砾岩 砾砂岩</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>砾岩粒级:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.conglomerateSize"value = "${detailGeologyInfo.conglomerateSize}" placeholder="砾岩粒级" /></div>
+								    <div class="1u"><span>砾岩胶结物:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.conglomerateCement" value = "${detailGeologyInfo.conglomerateCement}"placeholder="砾岩胶结物" /></div>
+								    <div class="1u"><span>砾岩化石:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.conglomerateFossil" value = "${detailGeologyInfo.conglomerateFossil}"placeholder="砾岩化石" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>砾岩颜色:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.conglomerateColor" value = "${detailGeologyInfo.conglomerateColor}"placeholder="砾岩颜色" /></div>
+								    <div class="1u"><span>砾岩结构构造:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.conglomerateStructure"value = "${detailGeologyInfo.conglomerateStructure}" placeholder="砾岩结构构造" /></div>
+								    <div class="1u"><span>砾岩地貌表现:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.conglomerateAppearance" value = "${detailGeologyInfo.conglomerateAppearance}"placeholder="砾岩地貌表现" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>砾岩碎屑成分:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.conglomerateIngredient" value = "${detailGeologyInfo.conglomerateIngredient}"placeholder="砾岩碎屑成分" /></div>
+								    <div class="1u"><span>砾岩强度抗性:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.conglomerateResistence" value = "${detailGeologyInfo.conglomerateResistence}"placeholder="砾岩强度抗性" /></div>
+								    <div class="1u"><span>砾岩采样点:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.conglomeratePickup" value = "${detailGeologyInfo.conglomeratePickup}"placeholder="砾岩采样点" /></div>
+								    </div>
+							 <h3>岩性描述-砂岩</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>砂岩粒级:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.sandstoneSize"value = "${detailGeologyInfo.sandstoneSize}" placeholder="砂岩粒级" /></div>
+								    <div class="1u"><span>砂岩胶结物:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.sandstoneCement" value = "${detailGeologyInfo.sandstoneCement}"placeholder="砂岩胶结物" /></div>
+								    <div class="1u"><span>砂岩化石:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.sandstoneFossil"value = "${detailGeologyInfo.sandstoneFossil}" placeholder="砂岩化石" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>砂岩颜色:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.sandstoneColor"value = "${detailGeologyInfo.sandstoneColor}" placeholder="砂岩颜色" /></div>
+								    <div class="1u"><span>砂岩结构构造:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.sandstoneStructure"value = "${detailGeologyInfo.sandstoneStructure}" placeholder="砂岩结构构造" /></div>
+								    <div class="1u"><span>砂岩地貌表现:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.sandstoneAppearance" value = "${detailGeologyInfo.sandstoneAppearance}"placeholder="砂岩地貌表现" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>砂岩碎屑成分:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.sandstoneIngredient"value = "${detailGeologyInfo.sandstoneIngredient}" placeholder="砂岩碎屑成分" /></div>
+								    <div class="1u"><span>砂岩强度抗性:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.sandstoneResistence"value = "${detailGeologyInfo.sandstoneResistence}" placeholder="砂岩强度抗性" /></div>
+								    <div class="1u"><span>砂岩采样点:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.sandstonePickup" value = "${detailGeologyInfo.sandstonePickup}"placeholder="砂岩采样点" /></div>
+								    </div>
+						     <h3>岩性描述-粉砂岩</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>粉砂岩粒级:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.siltstoneSize" value = "${detailGeologyInfo.siltstoneSize}"placeholder="粉砂岩粒级" /></div>
+								    <div class="1u"><span>粉砂岩胶结物:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.siltstoneCement"value = "${detailGeologyInfo.siltstoneCement}" placeholder="粉砂岩胶结物" /></div>
+								    <div class="1u"><span>粉砂岩化石:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.siltstoneFossil" value = "${detailGeologyInfo.siltstoneFossil}"placeholder="粉砂岩化石" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>粉砂岩颜色:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.siltstoneColor"value = "${detailGeologyInfo.siltstoneColor}" placeholder="粉砂岩颜色" /></div>
+								    <div class="1u"><span>粉砂岩结构构造:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.siltstoneStructure" value = "${detailGeologyInfo.siltstoneStructure}"placeholder="粉砂岩结构构造" /></div>
+								    <div class="1u"><span>粉砂岩地貌表现:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.siltstoneAppearance" value = "${detailGeologyInfo.siltstoneAppearance}"placeholder="粉砂岩地貌表现" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>粉砂岩碎屑成分:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.siltstoneIngredient"value = "${detailGeologyInfo.siltstoneIngredient}" placeholder="粉砂岩碎屑成分" /></div>
+								    <div class="1u"><span>粉砂岩强度抗性:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.siltstoneResistence"value = "${detailGeologyInfo.siltstoneResistence}" placeholder="粉砂岩强度抗性" /></div>
+								    <div class="1u"><span>粉砂岩采样点:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.siltstonePickup"value = "${detailGeologyInfo.siltstonePickup}" placeholder="粉砂岩采样点" /></div>
+								    </div>
+							 <h3>岩性描述-粘土岩</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>粘土岩粒级:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.claySize" value = "${detailGeologyInfo.claySize}"placeholder="粘土岩粒级" /></div>
+								    <div class="1u"><span>粘土岩胶结物:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.clayCement"value = "${detailGeologyInfo.clayCement}" placeholder="粘土岩胶结物" /></div>
+								    <div class="1u"><span>粘土岩化石:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.clayFossil"value = "${detailGeologyInfo.clayFossil}" placeholder="粘土岩化石" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>粘土岩颜色:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.clayColor" value = "${detailGeologyInfo.clayColor}"placeholder="粘土岩颜色" /></div>
+								    <div class="1u"><span>粘土岩结构构造:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.clayStructure" value = "${detailGeologyInfo.clayStructure}"placeholder="粘土岩结构构造" /></div>
+								    <div class="1u"><span>粘土岩地貌表现:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.clayAppearance"value = "${detailGeologyInfo.clayAppearance}" placeholder="粘土岩地貌表现" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>粘土岩碎屑成分:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.clayIngredient"value = "${detailGeologyInfo.clayIngredient}" placeholder="粘土岩碎屑成分" /></div>
+								    <div class="1u"><span>粘土岩强度抗性:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.clayResistence"value = "${detailGeologyInfo.clayResistence}" placeholder="粘土岩强度抗性" /></div>
+								    <div class="1u"><span>粘土岩采样点:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.clayPickup"value = "${detailGeologyInfo.clayPickup}" placeholder="粘土岩采样点" /></div>
+								    </div>
+							 <h3>构造描述</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>大地构造位置:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.structurePosition" value = "${detailGeologyInfo.structurePosition}"placeholder="大地构造位置" /></div>
+								    <div class="1u"><span>新构造运动:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.structureMotion" value = "${detailGeologyInfo.structureMotion}"placeholder="新构造运动" /></div>
+								    <div class="1u"><span>断层:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.fault"value = "${detailGeologyInfo.fault}" placeholder="断层" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>盆地名称:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.basinName"value = "${detailGeologyInfo.basinName}" placeholder="盆地名称" /></div>
+								    <div class="1u"><span>主要构造线:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.structureLine" value = "${detailGeologyInfo.structureLine}"placeholder="主要构造线" /></div>
+								    <div class="1u"><span>节理:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.joint"value = "${detailGeologyInfo.joint}" placeholder="节理" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>盆地抬升年代:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.basinAge" value = "${detailGeologyInfo.basinAge}"placeholder="盆地抬升年代" /></div>
+								    <div class="1u"><span>褶皱:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.crumple" value = "${detailGeologyInfo.crumple}"placeholder="褶皱" /></div>
+								    <div class="1u"><span>构造描述:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.structureDescription"value = "${detailGeologyInfo.structureDescription}" placeholder="构造描述" /></div>
+								    </div>
+						     <h3>地貌单元</h3>
+						     <div class="row half">   
+								    <div class="2u"><span>大地貌单元:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.reliefUnit"value = "${detailGeologyInfo.reliefUnit}" placeholder="大地貌单元" /></div>
+								    <div class="2u"><span>大地貌部位:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.reliefPosition"value = "${detailGeologyInfo.reliefPosition}" placeholder="大地貌部位" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>地势:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.terrain"value = "${detailGeologyInfo.terrain}" placeholder="地势" /></div>
+								    <div class="2u"><span>其他描述 :</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.reliefDescription"value = "${detailGeologyInfo.reliefDescription}" placeholder="其他描述" /></div>
+								    </div>
+							 <h3>地貌类型</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>依据岩性:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.dependentType" value = "${detailGeologyInfo.dependentType}"placeholder="依据岩性" /></div>
+								    <div class="1u"><span>依据产状:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.dependentAppearance" value = "${detailGeologyInfo.dependentAppearance}"placeholder="依据产状" /></div>
+								    <div class="1u"><span>依据主动力:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.dependentForce"value = "${detailGeologyInfo.dependentForce}" placeholder="依据主动力" /></div>
+								    </div>
+							 <div class="row half">   
+								    <div class="2u"><span>正地貌崖坡类型:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.slopeType"value = "${detailGeologyInfo.slopeType}" placeholder="正地貌崖坡类型" /></div>
+								    <div class="1u"><span>正地貌山石:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.slopeRock"value = "${detailGeologyInfo.slopeRock}" placeholder="正地貌山石" /></div>
+								    <div class="1u"><span>正地貌崩积体:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.slopeBody"value = "${detailGeologyInfo.slopeBody}" placeholder="正地貌崩积体" /></div>
+								    </div>
+						     <div class="row half">   
+								    <div class="2u"><span>负地貌丹霞沟谷:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.danxiaRavine"value = "${detailGeologyInfo.danxiaRavine}" placeholder="负地貌丹霞沟谷" /></div>
+								    <div class="1u"><span>负地貌崖壁岩槽:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.danxiaWall"value = "${detailGeologyInfo.danxiaWall}" placeholder="负地貌崖壁岩槽" /></div>
+								    <div class="1u"><span>负地貌丹霞洞穴:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.danxiaCave"value = "${detailGeologyInfo.danxiaCave}"placeholder="负地貌丹霞洞穴" /></div>
+								    </div>
+						     <div class="row half">
+						            <div class="2u"><span>负地貌丹霞穿洞与石拱:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.danxiaValt"value = "${detailGeologyInfo.danxiaValt}" placeholder="负地貌丹霞穿洞与石拱" /></div>
+								    <div class="1u"><span>依据群体形态:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.dependentShape"value = "${detailGeologyInfo.dependentShape}" placeholder="依据群体形态" /></div>
+								    <div class="1u"><span>依据发育阶段:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailGeologyInfo.dependentStage"value = "${detailGeologyInfo.dependentStage}" placeholder="依据发育阶段" /></div>
+						            </div>
+						     <div class="row half">   
+								    <div class="2u"><span>地貌类型其他描述:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailGeologyInfo.dependentDescription"value = "${detailGeologyInfo.dependentDescription}" placeholder="地貌类型其他描述" /></div>
+								    </div>
+						     <h3>坡面特征</h3>
+						     <div class="row half">
+						            <div class="2u"><span>陡崖高度最大高度:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.cliffMaxHeight"value = "${detailGeologyInfo.cliffMaxHeight}" placeholder="陡崖高度最大高度" /></div>
+								    <div class="2u"><span>陡崖高度一般高度:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.cliffMediumHeight"value = "${detailGeologyInfo.cliffMediumHeight}" placeholder="陡崖高度一般高度" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>陡崖坡度最大坡度:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.cliffMaxGradient" value = "${detailGeologyInfo.cliffMaxGradient}"placeholder="陡崖坡度最大坡度" /></div>
+								    <div class="2u"><span>陡崖高度一般坡度:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.cliffMediumGradient"value = "${detailGeologyInfo.cliffMediumGradient}" placeholder="陡崖高度一般坡度" /></div>
+						            </div>
+						     <div class="row half">   
+								    <div class="2u"><span>坡面形态:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.slopeShape"value = "${detailGeologyInfo.slopeShape}" placeholder="坡面形态" /></div>
+								    <div class="2u"><span>边角特点:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.cornerType" value = "${detailGeologyInfo.cornerType}"placeholder="边角特点" /></div>
+								    </div>
+								    <div class="row half">  
+								    <div class="2u"><span>坡面特征其它描述:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailGeologyInfo.slopeDescription"value = "${detailGeologyInfo.slopeDescription}" placeholder="坡面特征其它描述" /></div>
+								    </div>
+						    <h3>重要景观</h3>
+						     <div class="row half">
+						            <div class="2u"><span>标志性景观:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.landmarkScene"value = "${detailGeologyInfo.landmarkScene}" placeholder="标志性景观" /></div>
+								    <div class="2u"><span>个性化景观:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.specialScene"value = "${detailGeologyInfo.specialScene}" placeholder="个性化景观" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>地貌造型:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.reliefStructure"value = "${detailGeologyInfo.reliefStructure}" placeholder="地貌造型" /></div>
+								    <div class="2u"><span>综合景观:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailGeologyInfo.overallScene"value = "${detailGeologyInfo.overallScene}" placeholder="综合景观" /></div>
+						            </div>
+						</div>
+						
+					</section>
+                
+				<!-- 自然环境 -->
+					<section id="about" class="three">
+						<div class="container">
+                            <h3>气候</h3>
+							<div class="row half">
+						            <div class="2u"><span>气候类型:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailEnvironmentInfo.climateType" value="${detailEnvironmentInfo.climateType} "placeholder="气候类型" /></div>
+						            </div>
+                            <div class="row half">
+						            <div class="2u"><span>元月均温:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.jauTemperature" value="${detailEnvironmentInfo.jauTemperature} "placeholder="元月均温" /></div>
+								    <div class="2u"><span>七月均温:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.julTemperature" value="${detailEnvironmentInfo.julTemperature} "placeholder="七月均温" /></div>
+						            </div>
+						    <div class="row half">
+						            <div class="2u"><span>年均温:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.yearTemperature" value="${detailEnvironmentInfo.yearTemperature} "placeholder="年均温" /></div>
+								    <div class="2u"><span>年降水量:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.yearPrecipitation" value="${detailEnvironmentInfo.yearPrecipitation} "placeholder="年降水量" /></div>
+						            </div>
+						    <h3>河流1</h3>
+						    <div class="row half">
+						            <div class="2u"><span>流域面积:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.waterArea1" value="${detailEnvironmentInfo.waterArea1} "placeholder="流域面积" /></div>
+								    <div class="2u"><span>总径流量:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.flowQuantity1" value="${detailEnvironmentInfo.flowQuantity1} "placeholder="总径流量" /></div>
+								    </div>
+							<div class="row half">	    
+								    <div class="2u"><span>区内流程:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.flowDirection1"value="${detailEnvironmentInfo.flowDirection1} " placeholder="区内流程" /></div>
+								    <div class="2u"><span>丰水期:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.waterTime1"value="${detailEnvironmentInfo.waterTime1} " placeholder="丰水期" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>描述:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailEnvironmentInfo.waterDescription1"value="${detailEnvironmentInfo.waterDescription1} " placeholder="描述" /></div>
+						            </div>
+						     <h3>河流2</h3>
+						    <div class="row half">
+						            <div class="2u"><span>流域面积:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.waterArea2"value="${detailEnvironmentInfo.waterArea2} " placeholder="流域面积" /></div>
+								    <div class="2u"><span>总径流量:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.flowQuantity2" value="${detailEnvironmentInfo.flowQuantity2} "placeholder="总径流量" /></div>
+								    </div>
+							<div class="row half">	    
+								    <div class="2u"><span>区内流程:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.flowDirection2" value="${detailEnvironmentInfo.flowDirection2} "placeholder="区内流程" /></div>
+								    <div class="2u"><span>丰水期:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.waterTime2"value="${detailEnvironmentInfo.waterTime2} " placeholder="丰水期" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>描述:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailEnvironmentInfo.waterDescription2" value="${detailEnvironmentInfo.waterDescription2} "placeholder="描述" /></div>
+						            </div>
+						     <h3>植被</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>植被类型:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.plantType" value="${detailEnvironmentInfo.plantType} "placeholder="植被类型" /></div>
+								    <div class="2u"><span>植物种类数:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.plantQuantity"value="${detailEnvironmentInfo.plantQuantity} " placeholder="植物种类数" /></div>
+								    </div>
+							 <div class="row half">	    
+								    <div class="2u"><span>特色植物:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailEnvironmentInfo.specialPlant"value="${detailEnvironmentInfo.specialPlant} " placeholder="特色植物" /></div>
+								    </div>
+							 <h3>动物</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>动物种类数:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.animalQuantity" value="${detailEnvironmentInfo.animalQuantity} "placeholder="动物种类数" /></div>
+								    <div class="2u"><span>特色动物:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.specialAnimal" value="${detailEnvironmentInfo.specialAnimal} "placeholder="特色动物" /></div>
+								    </div>
+						     <h3>其它自然环境描述</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>综合自然地理环境:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.overallEnvironment"value="${detailEnvironmentInfo.overallEnvironment} " placeholder="综合自然地理环境" /></div>
+								    <div class="2u"><span>森林覆盖率:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.forestCoverage"value="${detailEnvironmentInfo.forestCoverage} " placeholder="森林覆盖率" /></div>
+								    </div>
+						     <div class="row half">   
+								    <div class="2u"><span>水土流失与荒漠化迹象:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.desertSign"value="${detailEnvironmentInfo.desertSign} " placeholder="水土流失与荒漠化迹象" /></div>
+								    <div class="2u"><span>红层生态问题:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.ecologySign" value="${detailEnvironmentInfo.ecologySign} "placeholder="红层生态问题" /></div>
+								    </div>
+						     <h3>地质环境</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>崩塌灾害点数:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.disasterQuantity"value="${detailEnvironmentInfo.disasterQuantity} " placeholder="崩塌灾害点数" /></div>
+								    <div class="2u"><span>最近崩塌灾害:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.recentDisaster"value="${detailEnvironmentInfo.recentDisaster} " placeholder="最近崩塌灾害" /></div>
+								    </div>
+							 <div class="row half">  
+								    <div class="2u"><span>滑坡灾害点数:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.landsllideQuantity" value="${detailEnvironmentInfo.landsllideQuantity} "placeholder="滑坡灾害点数" /></div>
+								    <div class="2u"><span>最近滑坡灾害:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.recentLandslide" value="${detailEnvironmentInfo.recentLandslide} "placeholder="最近滑坡灾害" /></div>
+								    </div>
+						      <div class="row half">  
+								    <div class="2u"><span>泥石流灾害点数:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.mudslideQuantity" value="${detailEnvironmentInfo.mudslideQuantity} "placeholder="泥石流灾害点数" /></div>
+								    <div class="2u"><span>最近泥石流灾害:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailEnvironmentInfo.recentMudslide" value="${detailEnvironmentInfo.recentMudslide} "placeholder="最近泥石流灾害" /></div>
+								    </div>
+							  <div class="row half">   
+								    <div class="2u"><span>地质环境描述:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailEnvironmentInfo.geologyDescription" value="${detailEnvironmentInfo.geologyDescription} "placeholder="地质环境描述" /></div>
+								    </div>
+							   <div class="row half">  
+								    <div class="2u"><span>其他地质环境问题:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailEnvironmentInfo.environmentProblem" value="${detailEnvironmentInfo.environmentProblem} "placeholder="其他地质环境问题" /></div>
+								    </div>
+						</div>
+					</section>
+			
+				<!-- 地方文化 -->
+					<section id="contact" class="four">
+						<div class="container">
+
+                            <h3>地方文化</h3>
+						    <div class="row half">
+						            <div class="2u"><span>民族</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailCultureInfo.nation" value="${detailCultureInfo.nation }"placeholder="民族" /></div>
+								    <div class="1u"><span>宗教:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailCultureInfo.religion" value="${detailCultureInfo.religion }"placeholder="宗教" /></div>
+								    <div class="1u"><span>建筑:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailCultureInfo.architecture"value="${ detailCultureInfo.architecture}" placeholder="建筑" /></div>
+								    </div>
+						    <div class="row half"> 
+								    <div class="2u"><span>史迹:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailCultureInfo.antiquity"value="${ detailCultureInfo.antiquity}" placeholder="史迹" /></div>
+								    <div class="2u"><span>民俗活动:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailCultureInfo.custom" value="${detailCultureInfo.custom }"placeholder="民俗活动" /></div>
+								    </div>
+							<div class="row half"> 
+								    <div class="2u"><span>地方文化描述:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailCultureInfo.cultureDescription"value="${detailCultureInfo.cultureDescription }" placeholder="地方文化描述" /></div>
+								    </div>
+						     <h3>利用现状</h3>
+							 <div class="row half">   
+								    <div class="2u"><span>利用类型:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailCultureInfo.useType"value="${detailCultureInfo.useType }" placeholder="利用类型" /></div>
+								    <div class="2u"><span>利用程度:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailCultureInfo.useDegree"value="${ detailCultureInfo.useDegree}" placeholder="利用程度" /></div>
+								    </div>
+						     <div class="row half">   
+								    <div class="2u"><span>交通与设施:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailCultureInfo.transport" value="${ detailCultureInfo.transport}"placeholder="交通与设施" /></div>
+								    <div class="2u"><span>保护状况:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailCultureInfo.protectCondition"value="${detailCultureInfo.protectCondition }" placeholder="保护状况" /></div>
+								    </div>
+						     <div class="row half"> 
+							        <div class="2u"><span>利用现状描述:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailCultureInfo.useDescription" value="${detailCultureInfo.useDescription }"placeholder="利用现状描述" /></div>
+								    </div>
+							 <h3>其他说明</h3>
+						     <div class="row half">
+						            <div class="2u"><span>其他说明:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailCultureInfo.cultureOtherInfo" value="${detailCultureInfo.cultureOtherInfo }"placeholder="其他说明" /></div>
+						            </div>
+						</div>
+					</section>
+					
+					<section id="contact2" class="five">
+						<div class="container">
+
+                            <h3>调查人员信息</h3>
+						     <div class="row half">
+						            <div class="2u"><span>姓名:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorName"value="${detailInvestigatorInfo.investigatorName }" placeholder="姓名" /></div>
+								    <div class="1u"><span>性别:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorSex"value="${detailInvestigatorInfo.investigatorSex }" placeholder="性别" /></div>
+						            <div class="1u"><span>年龄:</span></div>
+								    <div class="2u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorAge"value="${detailInvestigatorInfo.investigatorAge }" placeholder="年龄" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>工作单位:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorCompany" value="${detailInvestigatorInfo.investigatorCompany }"placeholder="工作单位" /></div>
+						            <div class="2u"><span>技术职务:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorPosition" value="${detailInvestigatorInfo.investigatorPosition }"placeholder="技术职务" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>通信地址:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorMailAddr" value="${detailInvestigatorInfo.investigatorMailAddr }"placeholder="通信地址" /></div>
+						        
+						            <div class="2u"><span>邮政编码:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorPostcode"value="${detailInvestigatorInfo.investigatorPostcode }" placeholder="邮政编码" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>电话:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorPhone" value="${detailInvestigatorInfo.investigatorPhone }"placeholder="电话" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>传真:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorFax"value="${detailInvestigatorInfo.investigatorFax }" placeholder="传真" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>Email:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorEmail"value="${detailInvestigatorInfo.investigatorEmail }" placeholder="Email" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>提交时间:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailInvestigatorInfo.investigatorSubmitTime" value="${detailInvestigatorInfo.investigatorSubmitTime }"placeholder="提交时间" /></div>
+						            </div>
+						</div>
+					</section>
+					
+					
+					<section id="contact8" class="eleven">
+						<div class="container">
+
+                            <h3>审核人员信息</h3>
+						     <div class="row half">
+						            <div class="2u"><span>审核意见:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailAuditInfo.suggestions" value="${detailAuditInfo.suggestions }"placeholder="审核意见" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>签字:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailAuditInfo.signature" value="${detailAuditInfo.signature }"placeholder="签字" /></div>
+						            
+						            <div class="2u"><span>职位/职务:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailAuditInfo.responsibility" value="${ detailAuditInfo.responsibility}"placeholder="职位/职务" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>工作单位:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailAuditInfo.company" value="${detailAuditInfo.company }"placeholder="工作单位" /></div>
+						     
+						            <div class="2u"><span>通信地址:</span></div>
+								    <div class="3u"><input type="text" class="text" name="detailAuditInfo.address"value="${detailAuditInfo.address }" placeholder="通信地址" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>联系电话:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailAuditInfo.phone"value="${detailAuditInfo.phone }" placeholder="联系电话" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>传真:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailAuditInfo.fax" value="${ detailAuditInfo.fax}"placeholder="传真" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>电子邮件:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailAuditInfo.email"value="${detailAuditInfo.email }" placeholder="电子邮件" /></div>
+						            </div>
+						     <div class="row half">
+						            <div class="2u"><span>日期:</span></div>
+								    <div class="8u"><input type="text" class="text" name="detailAuditInfo.date" value="${detailAuditInfo.date }"placeholder="日期" /></div>
+						            </div>
+							<br/>
+							<br/>
+							<br/>
+							<br/>
+                             <td><p><input value="保存" type="submit"/></p></td><td> <p><input type="button" class="btn btn-primary" value="返回" onclick="window.location.href='updateInfo.jsp'"/></p></td>
+						</div>
+					</section>
+					
+			</form>
+			</div>
+
+		<!-- Footer -->
+			<div id="footer">
+				
+				<!-- Copyright -->
+					<div class="copyright">
+						<p>版权：全国丹霞地貌基础数据调查项目组&nbsp;&nbsp;&nbsp;</p>
+						<a href="http://weibo.com/SandstoneLandforms">
+					    <img  src="img/weibo.jpg" style="vertical-align:bottom;height:25px;width:25px"/>
+					    </a>
+					    <p><div>电话： 862084113980  传真：8620 84113980 mail: danxiadimaoxitong@126.com 网址：http://tcloud.sjtu.edu.cn:8888</div></p>
+						
+					</div>
+			</div>
+
+	</body>
+</html>

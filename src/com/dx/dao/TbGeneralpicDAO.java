@@ -1,0 +1,394 @@
+package com.dx.dao;
+
+import java.util.List;
+
+import org.hibernate.LockMode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import com.dx.bean.TbGeneralpic;
+
+/**
+ 	* A data access object (DAO) providing persistence and search support for TbGeneralpic entities.
+ 			* Transaction control of the save(), update() and delete() operations 
+		can directly support Spring container-managed transactions or they can be augmented	to handle user-managed Spring transactions. 
+		Each of these methods provides additional information for how to configure it for the desired type of transaction control. 	
+	 * @see com.dx.dao.TbGeneralpic
+  * @author MyEclipse Persistence Tools 
+ */
+
+public class TbGeneralpicDAO extends HibernateDaoSupport  {
+	     private static final Logger log = LoggerFactory.getLogger(TbGeneralpicDAO.class);
+		//property constants
+	public static final String LAKE_LEVEL_PIC = "lakeLevelPic";
+	public static final String LAKE_LEVEL_PIC_DESCRIPTION = "lakeLevelPicDescription";
+	public static final String CONGLOMERATE_PIC = "conglomeratePic";
+	public static final String CONGLOMERATE_PIC_DESCRIPTION = "conglomeratePicDescription";
+	public static final String SANDSTONE_PIC = "sandstonePic";
+	public static final String SANDSTONE_PIC_DESCRIPTION = "sandstonePicDescription";
+	public static final String SILTSTONE_PIC = "siltstonePic";
+	public static final String SILTSSTONE_PIC_DESCRIPTION = "siltsstonePicDescription";
+	public static final String CLAY_PIC = "clayPic";
+	public static final String CLAY_PIC_DESCRIPTION = "clayPicDescription";
+	public static final String BASIN_LINE_PIC = "basinLinePic";
+	public static final String BASIN_LINE_PIC_DESCRIPTION = "basinLinePicDescription";
+	public static final String BASIN_POSITION_PIC = "basinPositionPic";
+	public static final String BASIN_POSITION_PIC_DESCRIPTION = "basinPositionPicDescription";
+	public static final String BASIN_GEOLOGY_PIC = "basinGeologyPic";
+	public static final String BASIN_GEOLOGY_PIC_DESCRIPTION = "basinGeologyPicDescription";
+	public static final String TERRAIN_PIC = "terrainPic";
+	public static final String TERRAIN_PIC_DESCRIPTION = "terrainPicDescription";
+	public static final String CHANZHUANG_PIC1 = "chanzhuangPic1";
+	public static final String CHANZHUANG_PIC1DESCRIPTION = "chanzhuangPic1description";
+	public static final String CHANZHUANG_PIC2 = "chanzhuangPic2";
+	public static final String CHANZHUANG_PIC2DESCRIPTION = "chanzhuangPic2description";
+	public static final String POSITIVE_RELIEF_PIC = "positiveReliefPic";
+	public static final String POSITIVE_RELIEF_PIC_DECSRIPTION = "positiveReliefPicDecsription";
+	public static final String NEGATIVE_RELIEF_PIC = "negativeReliefPic";
+	public static final String NEGATIVE_RELIEF_PIC_DECSRIPTION = "negativeReliefPicDecsription";
+	public static final String RELIEF_PIC = "reliefPic";
+	public static final String RELIEF_PIC_DESCRIPTION = "reliefPicDescription";
+	public static final String DEPENDENT_SHAPE_PIC = "dependentShapePic";
+	public static final String DEPENDENT_SHAPE_PIC_DESCRIPTION = "dependentShapePicDescription";
+	public static final String SLOPE_SHAPE_PIC = "slopeShapePic";
+	public static final String SLOPE_SHAPE_PIC_DESCRIPTION = "slopeShapePicDescription";
+	public static final String OVERALL_SCENE_PIC = "overallScenePic";
+	public static final String OVERALL_SCENE_PIC_DESCRIPTION = "overallScenePicDescription";
+	public static final String OVERALL_ENVIRONMENT_PIC = "overallEnvironmentPic";
+	public static final String OVERALL_ENVIRONMENT_PIC_DESCRIPTION = "overallEnvironmentPicDescription";
+
+
+
+	protected void initDao() {
+		//do nothing
+	}
+    
+    public void save(TbGeneralpic transientInstance) {
+        log.debug("saving TbGeneralpic instance");
+        try {
+            getHibernateTemplate().save(transientInstance);
+            log.debug("save successful");
+        } catch (RuntimeException re) {
+            log.error("save failed", re);
+            throw re;
+        }
+    }
+    
+	public void delete(TbGeneralpic persistentInstance) {
+        log.debug("deleting TbGeneralpic instance");
+        try {
+            getHibernateTemplate().delete(persistentInstance);
+            log.debug("delete successful");
+        } catch (RuntimeException re) {
+            log.error("delete failed", re);
+            throw re;
+        }
+    }
+    
+    public TbGeneralpic findById( java.lang.Integer id) {
+        log.debug("getting TbGeneralpic instance with id: " + id);
+        try {
+            TbGeneralpic instance = (TbGeneralpic) getHibernateTemplate()
+                    .get("com.dx.bean.TbGeneralpic", id);
+            return instance;
+        } catch (RuntimeException re) {
+            log.error("get failed", re);
+            throw re;
+        }
+    }
+    
+    
+    public List findByExample(TbGeneralpic instance) {
+        log.debug("finding TbGeneralpic instance by example");
+        try {
+            List results = getHibernateTemplate().findByExample(instance);
+            log.debug("find by example successful, result size: " + results.size());
+            return results;
+        } catch (RuntimeException re) {
+            log.error("find by example failed", re);
+            throw re;
+        }
+    }    
+    
+    public List findByProperty(String propertyName, Object value) {
+      log.debug("finding TbGeneralpic instance with property: " + propertyName
+            + ", value: " + value);
+      try {
+         String queryString = "from TbGeneralpic as model where model." 
+         						+ propertyName + "= ?";
+		 return getHibernateTemplate().find(queryString, value);
+      } catch (RuntimeException re) {
+         log.error("find by property name failed", re);
+         throw re;
+      }
+	}
+
+	public List findByLakeLevelPic(Object lakeLevelPic
+	) {
+		return findByProperty(LAKE_LEVEL_PIC, lakeLevelPic
+		);
+	}
+	
+	public List findByLakeLevelPicDescription(Object lakeLevelPicDescription
+	) {
+		return findByProperty(LAKE_LEVEL_PIC_DESCRIPTION, lakeLevelPicDescription
+		);
+	}
+	
+	public List findByConglomeratePic(Object conglomeratePic
+	) {
+		return findByProperty(CONGLOMERATE_PIC, conglomeratePic
+		);
+	}
+	
+	public List findByConglomeratePicDescription(Object conglomeratePicDescription
+	) {
+		return findByProperty(CONGLOMERATE_PIC_DESCRIPTION, conglomeratePicDescription
+		);
+	}
+	
+	public List findBySandstonePic(Object sandstonePic
+	) {
+		return findByProperty(SANDSTONE_PIC, sandstonePic
+		);
+	}
+	
+	public List findBySandstonePicDescription(Object sandstonePicDescription
+	) {
+		return findByProperty(SANDSTONE_PIC_DESCRIPTION, sandstonePicDescription
+		);
+	}
+	
+	public List findBySiltstonePic(Object siltstonePic
+	) {
+		return findByProperty(SILTSTONE_PIC, siltstonePic
+		);
+	}
+	
+	public List findBySiltsstonePicDescription(Object siltsstonePicDescription
+	) {
+		return findByProperty(SILTSSTONE_PIC_DESCRIPTION, siltsstonePicDescription
+		);
+	}
+	
+	public List findByClayPic(Object clayPic
+	) {
+		return findByProperty(CLAY_PIC, clayPic
+		);
+	}
+	
+	public List findByClayPicDescription(Object clayPicDescription
+	) {
+		return findByProperty(CLAY_PIC_DESCRIPTION, clayPicDescription
+		);
+	}
+	
+	public List findByBasinLinePic(Object basinLinePic
+	) {
+		return findByProperty(BASIN_LINE_PIC, basinLinePic
+		);
+	}
+	
+	public List findByBasinLinePicDescription(Object basinLinePicDescription
+	) {
+		return findByProperty(BASIN_LINE_PIC_DESCRIPTION, basinLinePicDescription
+		);
+	}
+	
+	public List findByBasinPositionPic(Object basinPositionPic
+	) {
+		return findByProperty(BASIN_POSITION_PIC, basinPositionPic
+		);
+	}
+	
+	public List findByBasinPositionPicDescription(Object basinPositionPicDescription
+	) {
+		return findByProperty(BASIN_POSITION_PIC_DESCRIPTION, basinPositionPicDescription
+		);
+	}
+	
+	public List findByBasinGeologyPic(Object basinGeologyPic
+	) {
+		return findByProperty(BASIN_GEOLOGY_PIC, basinGeologyPic
+		);
+	}
+	
+	public List findByBasinGeologyPicDescription(Object basinGeologyPicDescription
+	) {
+		return findByProperty(BASIN_GEOLOGY_PIC_DESCRIPTION, basinGeologyPicDescription
+		);
+	}
+	
+	public List findByTerrainPic(Object terrainPic
+	) {
+		return findByProperty(TERRAIN_PIC, terrainPic
+		);
+	}
+	
+	public List findByTerrainPicDescription(Object terrainPicDescription
+	) {
+		return findByProperty(TERRAIN_PIC_DESCRIPTION, terrainPicDescription
+		);
+	}
+	
+	public List findByChanzhuangPic1(Object chanzhuangPic1
+	) {
+		return findByProperty(CHANZHUANG_PIC1, chanzhuangPic1
+		);
+	}
+	
+	public List findByChanzhuangPic1description(Object chanzhuangPic1description
+	) {
+		return findByProperty(CHANZHUANG_PIC1DESCRIPTION, chanzhuangPic1description
+		);
+	}
+	
+	public List findByChanzhuangPic2(Object chanzhuangPic2
+	) {
+		return findByProperty(CHANZHUANG_PIC2, chanzhuangPic2
+		);
+	}
+	
+	public List findByChanzhuangPic2description(Object chanzhuangPic2description
+	) {
+		return findByProperty(CHANZHUANG_PIC2DESCRIPTION, chanzhuangPic2description
+		);
+	}
+	
+	public List findByPositiveReliefPic(Object positiveReliefPic
+	) {
+		return findByProperty(POSITIVE_RELIEF_PIC, positiveReliefPic
+		);
+	}
+	
+	public List findByPositiveReliefPicDecsription(Object positiveReliefPicDecsription
+	) {
+		return findByProperty(POSITIVE_RELIEF_PIC_DECSRIPTION, positiveReliefPicDecsription
+		);
+	}
+	
+	public List findByNegativeReliefPic(Object negativeReliefPic
+	) {
+		return findByProperty(NEGATIVE_RELIEF_PIC, negativeReliefPic
+		);
+	}
+	
+	public List findByNegativeReliefPicDecsription(Object negativeReliefPicDecsription
+	) {
+		return findByProperty(NEGATIVE_RELIEF_PIC_DECSRIPTION, negativeReliefPicDecsription
+		);
+	}
+	
+	public List findByReliefPic(Object reliefPic
+	) {
+		return findByProperty(RELIEF_PIC, reliefPic
+		);
+	}
+	
+	public List findByReliefPicDescription(Object reliefPicDescription
+	) {
+		return findByProperty(RELIEF_PIC_DESCRIPTION, reliefPicDescription
+		);
+	}
+	
+	public List findByDependentShapePic(Object dependentShapePic
+	) {
+		return findByProperty(DEPENDENT_SHAPE_PIC, dependentShapePic
+		);
+	}
+	
+	public List findByDependentShapePicDescription(Object dependentShapePicDescription
+	) {
+		return findByProperty(DEPENDENT_SHAPE_PIC_DESCRIPTION, dependentShapePicDescription
+		);
+	}
+	
+	public List findBySlopeShapePic(Object slopeShapePic
+	) {
+		return findByProperty(SLOPE_SHAPE_PIC, slopeShapePic
+		);
+	}
+	
+	public List findBySlopeShapePicDescription(Object slopeShapePicDescription
+	) {
+		return findByProperty(SLOPE_SHAPE_PIC_DESCRIPTION, slopeShapePicDescription
+		);
+	}
+	
+	public List findByOverallScenePic(Object overallScenePic
+	) {
+		return findByProperty(OVERALL_SCENE_PIC, overallScenePic
+		);
+	}
+	
+	public List findByOverallScenePicDescription(Object overallScenePicDescription
+	) {
+		return findByProperty(OVERALL_SCENE_PIC_DESCRIPTION, overallScenePicDescription
+		);
+	}
+	
+	public List findByOverallEnvironmentPic(Object overallEnvironmentPic
+	) {
+		return findByProperty(OVERALL_ENVIRONMENT_PIC, overallEnvironmentPic
+		);
+	}
+	
+	public List findByOverallEnvironmentPicDescription(Object overallEnvironmentPicDescription
+	) {
+		return findByProperty(OVERALL_ENVIRONMENT_PIC_DESCRIPTION, overallEnvironmentPicDescription
+		);
+	}
+	
+
+	public List findAll() {
+		log.debug("finding all TbGeneralpic instances");
+		try {
+			String queryString = "from TbGeneralpic";
+		 	return getHibernateTemplate().find(queryString);
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
+	
+    public TbGeneralpic merge(TbGeneralpic detachedInstance) {
+        log.debug("merging TbGeneralpic instance");
+        try {
+            TbGeneralpic result = (TbGeneralpic) getHibernateTemplate()
+                    .merge(detachedInstance);
+            log.debug("merge successful");
+            return result;
+        } catch (RuntimeException re) {
+            log.error("merge failed", re);
+            throw re;
+        }
+    }
+
+    public void attachDirty(TbGeneralpic instance) {
+        log.debug("attaching dirty TbGeneralpic instance");
+        try {
+            getHibernateTemplate().saveOrUpdate(instance);
+            log.debug("attach successful");
+        } catch (RuntimeException re) {
+            log.error("attach failed", re);
+            throw re;
+        }
+    }
+    
+    public void attachClean(TbGeneralpic instance) {
+        log.debug("attaching clean TbGeneralpic instance");
+        try {
+            getHibernateTemplate().lock(instance, LockMode.NONE);
+            log.debug("attach successful");
+        } catch (RuntimeException re) {
+            log.error("attach failed", re);
+            throw re;
+        }
+    }
+
+	public static TbGeneralpicDAO getFromApplicationContext(ApplicationContext ctx) {
+    	return (TbGeneralpicDAO) ctx.getBean("TbGeneralpicDAO");
+	}
+}

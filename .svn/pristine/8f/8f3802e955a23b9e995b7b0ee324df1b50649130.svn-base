@@ -1,0 +1,57 @@
+package com.dx.action;
+import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.ServletActionContext;
+import org.springframework.stereotype.Controller;
+import java.util.*;
+
+import com.dx.bean.TbNews;
+import com.dx.dao.TbNewsDAO;
+
+
+public class DisplayNewsAction extends SessionAction{
+
+	private List<TbNews> newsList;
+	private List<String> newsTitleList;
+	private TbNews news;
+	private HttpServletRequest request;
+    private TbNewsDAO dao;
+	
+
+	public TbNewsDAO getDao() {
+		return dao;
+	}
+
+	public void setDao(TbNewsDAO dao) {
+		this.dao = dao;
+	}
+
+	public String execute(){
+		newsTitleList = new ArrayList();
+		List<TbNews> temp = dao.findAll();
+		for(int i = 0; i < temp.size() ; ++i)
+		{
+			newsTitleList.add(temp.get(i).getTitle());
+		}
+		request = ServletActionContext.getRequest();
+		request.getSession().setAttribute("newsList", temp);
+		return "success";
+	}
+	
+	public void setNewsList(List<TbNews> newsList) {
+		this.newsList = newsList;
+	}
+
+	public List<TbNews> getNewsList() {
+		return newsList;
+	}
+
+	public void setNews(TbNews news) {
+		this.news = news;
+	}
+
+	public TbNews getNews() {
+		return news;
+	}
+
+
+}

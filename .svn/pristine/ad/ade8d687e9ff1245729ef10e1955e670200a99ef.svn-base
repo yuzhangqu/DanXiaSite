@@ -1,0 +1,147 @@
+package com.dx.action;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.apache.struts2.ServletActionContext;
+
+import com.dx.bean.TbBasicinfo;
+import com.dx.dao.TbBasicinfoDAO;
+import com.opensymphony.xwork2.ActionContext;
+
+public class MapAction {
+    private String name;
+    private String longtitude;
+    private String latitude;
+    private String s;
+    private HttpServletRequest request;
+    private Map session;
+    private List<String> nList;
+    private List<String> longtitudeList;
+    private List<String> latitudeList;
+    private List<String> sList;
+    private List<TbBasicinfo>infoList;
+    private TbBasicinfo info;
+    private TbBasicinfoDAO dao;
+    
+	public String execute(){
+		nList = new ArrayList();
+		longtitudeList = new ArrayList();
+		latitudeList = new ArrayList();
+		sList = new ArrayList();
+        infoList = dao.findAll();
+        System.out.println(infoList.size());
+        for(int i =0 ; i <infoList.size(); i++){
+        	
+        	info = infoList.get(i);    
+        	name = info.getNameCurrent();
+        	latitude = info.getTbGeologyinfo().getCenterLatitude();
+        	
+        	longtitude = info.getTbGeologyinfo().getCenterLongitude();
+        	s = info.getTbGeologyinfo().getReliefContinuousArea();
+
+        	if((name != null) && (name.length()!=0)){
+        		if((latitude != null) && (latitude.length()!=0)){
+        			if((longtitude != null)&& (longtitude.length()!=0)){
+        				if((s != null)&&(s.length()!=0)){
+       
+        		nList.add(name);
+        		longtitudeList.add(longtitude);
+        		latitudeList.add(latitude);
+        		sList.add(s);}}}}
+		
+        }
+
+    	session = ActionContext.getContext().getSession();
+		session.put("nameList", nList);
+		session.put("longtitudeList",longtitudeList);
+		session.put("latitudeList", latitudeList);
+		session.put("sList", sList);
+    	return "success";
+    	
+    }
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public String getLongtitude() {
+		return longtitude;
+	}
+	public void setLongtitude(String longtitude) {
+		this.longtitude = longtitude;
+	}
+	public String getLatitude() {
+		return latitude;
+	}
+	public void setLatitude(String latitude) {
+		this.latitude = latitude;
+	}
+	public String getS() {
+		return s;
+	}
+	public void setS(String s) {
+		this.s = s;
+	}
+	public HttpServletRequest getRequest() {
+		return request;
+	}
+	public void setRequest(HttpServletRequest request) {
+		this.request = request;
+	}
+	public Map getSession() {
+		return session;
+	}
+	public void setSession(Map session) {
+		this.session = session;
+	}
+	public List<String> getnList() {
+		return nList;
+	}
+	public void setnList(List<String> nList) {
+		this.nList = nList;
+	}
+	public List<String> getLongtitudeList() {
+		return longtitudeList;
+	}
+	public void setLongtitudeList(List<String> longtitudeList) {
+		this.longtitudeList = longtitudeList;
+	}
+	public List<String> getLatitudeList() {
+		return latitudeList;
+	}
+	public void setLatitudeList(List<String> latitudeList) {
+		this.latitudeList = latitudeList;
+	}
+	public List<String> getsList() {
+		return sList;
+	}
+	public void setsList(List<String> sList) {
+		this.sList = sList;
+	}
+	public List<TbBasicinfo> getInfoList() {
+		return infoList;
+	}
+	public void setInfoList(List<TbBasicinfo> infoList) {
+		this.infoList = infoList;
+	}
+	public TbBasicinfo getInfo() {
+		return info;
+	}
+	public void setInfo(TbBasicinfo info) {
+		this.info = info;
+	}
+	public TbBasicinfoDAO getDao() {
+		return dao;
+	}
+	public void setDao(TbBasicinfoDAO dao) {
+		this.dao = dao;
+	}
+
+
+    
+}

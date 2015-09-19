@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<property name="driverClassName" value="com.mysql.jdbc.Driver">
+		</property>
+		<property name="url" value="jdbc:mysql://192.168.1.39:3306/db_info">
+		</property>
+		<property name="username" value="root"></property>
+		<property name="password" value="1123581321"></property>
+	</bean>
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+		<property name="dataSource">
+			<ref bean="dataSource" />
+		</property>
+		<property name="mappingResources">
+			<list>
+				<value>com/dx/bean/TbBasicinfo.hbm.xml</value>
+				<value>com/dx/bean/TbGeologyinfo.hbm.xml</value>
+				<value>com/dx/bean/TbEnvironmentinfo.hbm.xml</value>
+				<value>com/dx/bean/TbCultureinfo.hbm.xml</value>
+				<value>com/dx/bean/TbInvestigatorinfo.hbm.xml</value>
+				<value>com/dx/bean/TbProvincelevel.hbm.xml</value>
+				<value>com/dx/bean/TbGeneralpic.hbm.xml</value>
+				<value>com/dx/bean/TbLandmarkscene.hbm.xml</value>
+				<value>com/dx/bean/TbGeologyscene.hbm.xml</value>
+				<value>com/dx/bean/TbCulturescene.hbm.xml</value>
+				<value>com/dx/bean/TbAuditinfo.hbm.xml</value>
+				<value>com/dx/bean/TbCountrylevel.hbm.xml</value>
+				<value>com/dx/bean/TbWorldlevel.hbm.xml</value>
+				<value>com/dx/bean/TbLakelevel.hbm.xml</value>
+				<value>com/dx/bean/TbUserinfo.hbm.xml</value>
+				<value>com/dx/bean/TbNews.hbm.xml</value>
+			</list>
+		</property>
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">
+					org.hibernate.dialect.MySQLDialect
+				</prop>
+			</props>
+		</property>
+	</bean>
+	<bean id="TbLandmarksceneDAO"
+		class="com.dx.dao.TbLandmarksceneDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbProvincelevelDAO"
+		class="com.dx.dao.TbProvincelevelDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbAuditinfoDAO" class="com.dx.dao.TbAuditinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbUserinfoDAO" class="com.dx.dao.TbUserinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbGeneralpicDAO" class="com.dx.dao.TbGeneralpicDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbCultureinfoDAO" class="com.dx.dao.TbCultureinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbCulturesceneDAO" class="com.dx.dao.TbCulturesceneDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbGeologysceneDAO" class="com.dx.dao.TbGeologysceneDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbInvestigatorinfoDAO"
+		class="com.dx.dao.TbInvestigatorinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbEnvironmentinfoDAO"
+		class="com.dx.dao.TbEnvironmentinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbWorldlevelDAO" class="com.dx.dao.TbWorldlevelDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbCountrylevelDAO" class="com.dx.dao.TbCountrylevelDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbNewsDAO" class="com.dx.dao.TbNewsDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbLakelevelDAO" class="com.dx.dao.TbLakelevelDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbGeologyinfoDAO" class="com.dx.dao.TbGeologyinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	<bean id="TbBasicinfoDAO" class="com.dx.dao.TbBasicinfoDAO">
+		<property name="sessionFactory">
+			<ref bean="sessionFactory" />
+		</property>
+	</bean>
+	
+	<bean id="displayN" class="com.dx.action.DisplayNewsAction">  
+        <property name="dao">  
+            <ref bean="TbNewsDAO" />  
+        </property>  
+    </bean> 
+    
+         <bean id="register" class="com.dx.action.RegisterAction">  
+        <property name="dao">  
+            <ref bean="TbUserinfoDAO" />  
+        </property>  
+    </bean>
+
+    
+     <bean id="login" class="com.dx.action.LogInAction">  
+        <property name="dao">  
+            <ref bean="TbUserinfoDAO" />  
+        </property>  
+    </bean>
+    
+    <bean id="searchNewsAll" class="com.dx.action.SearchNewsAllAction">  
+        <property name="dao">  
+            <ref bean="TbNewsDAO" />  
+        </property>  
+    </bean>
+    
+    <bean id="searchNewsContent" class="com.dx.action.SearchNewsContentAction">  
+        <property name="dao">  
+            <ref bean="TbNewsDAO" />  
+        </property>  
+    </bean>
+    
+     <bean id="deleteNews" class="com.dx.action.deleteNewsAction">  
+        <property name="dao">  
+            <ref bean="TbNewsDAO" />  
+        </property>  
+    </bean>
+    
+    <bean id="saveNews" class="com.dx.action.SaveNewsAction">  
+        <property name="dao">  
+            <ref bean="TbNewsDAO" />  
+        </property>  
+    </bean>
+    
+    
+	<bean id="saveInfo" class="com.dx.action.SaveInfoAction">
+	    <property name="tbBasicinfoDAO">
+	        <ref bean="TbBasicinfoDAO"/>
+	    </property>
+	    <property name="tbGeologyinfoDAO">
+	        <ref bean="TbGeologyinfoDAO"/>
+	    </property>
+	    <property name="tbEnvironmentinfoDAO">
+	        <ref bean="TbEnvironmentinfoDAO"/>
+	    </property>
+	    <property name="tbCultureinfoDAO">
+	        <ref bean="TbCultureinfoDAO"/>
+	    </property>
+	    <property name="tbInvestigatorinfoDAO">
+	        <ref bean="TbInvestigatorinfoDAO"/>
+	    </property>
+	    <property name="tbWorldlevelDAO">
+	        <ref bean="TbWorldlevelDAO"/>
+	    </property>
+	    <property name="tbCountrylevelDAO">
+	        <ref bean="TbCountrylevelDAO"/>
+	    </property>
+	    <property name="tbProvincelevelDAO">
+	        <ref bean="TbProvincelevelDAO"/>
+	    </property>
+	    <property name="tbLakelevelDAO">
+	        <ref bean="TbLakelevelDAO"/>
+	    </property>
+	    <property name="tbGeneralpicDAO">
+	        <ref bean="TbGeneralpicDAO"/>
+	    </property>
+	    <property name="tbLandmarksceneDAO">
+	        <ref bean="TbLandmarksceneDAO"/>
+	    </property>
+	    <property name="tbGeologysceneDAO">
+	        <ref bean="TbGeologysceneDAO"/>
+	    </property>
+	    <property name="tbCulturesceneDAO">
+	        <ref bean="TbCulturesceneDAO"/>
+	    </property>
+	    <property name="tbAuditinfoDAO">
+	        <ref bean="TbAuditinfoDAO"/>
+	    </property>
+	</bean>
+	</beans>

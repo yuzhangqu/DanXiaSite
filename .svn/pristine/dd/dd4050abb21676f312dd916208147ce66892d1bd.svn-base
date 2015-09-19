@@ -1,0 +1,45 @@
+package com.dx.action;
+
+import java.util.Map;
+
+import com.dx.bean.TbNews;
+import com.dx.dao.TbNewsDAO;
+import com.opensymphony.xwork2.ActionContext;
+
+public class deleteNewsAction {
+  private int id;
+  private TbNewsDAO dao;
+  private TbNews news;
+  private Map session;
+  
+  public String execute(){
+	  System.out.println(id);
+	  news = dao.findById(id);
+	  dao.delete(news);
+	  session = ActionContext.getContext().getSession();
+	  session.remove("newsList");
+	  return "success";
+  }
+
+
+	public int getId() {
+		return id;
+	}
+	
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+	
+	public TbNewsDAO getDao() {
+		return dao;
+	}
+	
+	
+	public void setDao(TbNewsDAO dao) {
+		this.dao = dao;
+	}
+	  
+  
+}

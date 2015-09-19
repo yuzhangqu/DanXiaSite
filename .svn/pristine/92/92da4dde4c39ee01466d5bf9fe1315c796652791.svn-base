@@ -1,0 +1,863 @@
+package com.dx.dao;
+
+import java.util.List;
+
+import org.hibernate.LockMode;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.context.ApplicationContext;
+import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+
+import com.dx.bean.TbGeologyinfo;
+
+/**
+ 	* A data access object (DAO) providing persistence and search support for TbGeologyinfo entities.
+ 			* Transaction control of the save(), update() and delete() operations 
+		can directly support Spring container-managed transactions or they can be augmented	to handle user-managed Spring transactions. 
+		Each of these methods provides additional information for how to configure it for the desired type of transaction control. 	
+	 * @see com.dx.dao.TbGeologyinfo
+  * @author MyEclipse Persistence Tools 
+ */
+
+public class TbGeologyinfoDAO extends HibernateDaoSupport  {
+	     private static final Logger log = LoggerFactory.getLogger(TbGeologyinfoDAO.class);
+		//property constants
+	public static final String NORTH_LATITUDE = "northLatitude";
+	public static final String NORTH_LONGITUDE = "northLongitude";
+	public static final String SOUTH_LATITUDE = "southLatitude";
+	public static final String SOUTH_LONGITUDE = "southLongitude";
+	public static final String EAST_LATITUDE = "eastLatitude";
+	public static final String EAST_LONGITUDE = "eastLongitude";
+	public static final String WEST_LATITUDE = "westLatitude";
+	public static final String WEST_LONGITUDE = "westLongitude";
+	public static final String CENTER_LATITUDE = "centerLatitude";
+	public static final String CENTER_LONGITUDE = "centerLongitude";
+	public static final String RELIEF_CONTINUOUS_AREA = "reliefContinuousArea";
+	public static final String REDBED_CONTINUOUS_AREA = "redbedContinuousArea";
+	public static final String REDBED_TOTAL_AREA = "redbedTotalArea";
+	public static final String LOW_ALTITUDE = "lowAltitude";
+	public static final String HIGH_ALTITUDE = "highAltitude";
+	public static final String MEDIUM_ALTITUDE = "mediumAltitude";
+	public static final String REDBED_AGE = "redbedAge";
+	public static final String REDBED_AGE_DESCRIPTION = "redbedAgeDescription";
+	public static final String STRATUM_NAME1 = "stratumName1";
+	public static final String STRATUM_DESCRIPTION1 = "stratumDescription1";
+	public static final String STRATUM_NAME2 = "stratumName2";
+	public static final String STRATUM_DESCRIPTION2 = "stratumDescription2";
+	public static final String THICK_NAME1 = "thickName1";
+	public static final String THICKNESS1 = "thickness1";
+	public static final String THICK_NAME2 = "thickName2";
+	public static final String THICKNESS2 = "thickness2";
+	public static final String OFFSHORE1 = "offshore1";
+	public static final String OFFSHORE2 = "offshore2";
+	public static final String EOLIAN_DEPOSIT = "eolianDeposit";
+	public static final String EOLIAN_DEPOSIT_DESCRIPTION = "eolianDepositDescription";
+	public static final String CONGLOMERATE_SIZE = "conglomerateSize";
+	public static final String CONGLOMERATE_COLOR = "conglomerateColor";
+	public static final String CONGLOMERATE_INGREDIENT = "conglomerateIngredient";
+	public static final String CONGLOMERATE_CEMENT = "conglomerateCement";
+	public static final String CONGLOMERATE_STRUCTURE = "conglomerateStructure";
+	public static final String CONGLOMERATE_RESISTENCE = "conglomerateResistence";
+	public static final String CONGLOMERATE_FOSSIL = "conglomerateFossil";
+	public static final String CONGLOMERATE_APPEARANCE = "conglomerateAppearance";
+	public static final String CONGLOMERATE_PICKUP = "conglomeratePickup";
+	public static final String SANDSTONE_SIZE = "sandstoneSize";
+	public static final String SANDSTONE_COLOR = "sandstoneColor";
+	public static final String SANDSTONE_INGREDIENT = "sandstoneIngredient";
+	public static final String SANDSTONE_CEMENT = "sandstoneCement";
+	public static final String SANDSTONE_STRUCTURE = "sandstoneStructure";
+	public static final String SANDSTONE_RESISTENCE = "sandstoneResistence";
+	public static final String SANDSTONE_FOSSIL = "sandstoneFossil";
+	public static final String SANDSTONE_APPEARANCE = "sandstoneAppearance";
+	public static final String SANDSTONE_PICKUP = "sandstonePickup";
+	public static final String SILTSTONE_SIZE = "siltstoneSize";
+	public static final String SILTSTONE_COLOR = "siltstoneColor";
+	public static final String SILTSTONE_INGREDIENT = "siltstoneIngredient";
+	public static final String SILTSTONE_CEMENT = "siltstoneCement";
+	public static final String SILTSTONE_STRUCTURE = "siltstoneStructure";
+	public static final String SILTSTONE_RESISTENCE = "siltstoneResistence";
+	public static final String SILTSTONE_FOSSIL = "siltstoneFossil";
+	public static final String SILTSTONE_APPEARANCE = "siltstoneAppearance";
+	public static final String SILTSTONE_PICKUP = "siltstonePickup";
+	public static final String CLAY_SIZE = "claySize";
+	public static final String CLAY_COLOR = "clayColor";
+	public static final String CLAY_INGREDIENT = "clayIngredient";
+	public static final String CLAY_CEMENT = "clayCement";
+	public static final String CLAY_STRUCTURE = "clayStructure";
+	public static final String CLAY_RESISTENCE = "clayResistence";
+	public static final String CLAY_FOSSIL = "clayFossil";
+	public static final String CLAY_APPEARANCE = "clayAppearance";
+	public static final String CLAY_PICKUP = "clayPickup";
+	public static final String STRUCTURE_POSITION = "structurePosition";
+	public static final String BASIN_NAME = "basinName";
+	public static final String BASIN_AGE = "basinAge";
+	public static final String STRUCTURE_MOTION = "structureMotion";
+	public static final String STRUCTURE_LINE = "structureLine";
+	public static final String CRUMPLE = "crumple";
+	public static final String FAULT = "fault";
+	public static final String JOINT = "joint";
+	public static final String STRUCTURE_DESCRIPTION = "structureDescription";
+	public static final String RELIEF_UNIT = "reliefUnit";
+	public static final String RELIEF_POSITION = "reliefPosition";
+	public static final String TERRAIN = "terrain";
+	public static final String RELIEF_DESCRIPTION = "reliefDescription";
+	public static final String DEPENDENT_TYPE = "dependentType";
+	public static final String DEPENDENT_APPEARANCE = "dependentAppearance";
+	public static final String DEPENDENT_FORCE = "dependentForce";
+	public static final String SLOPE_TYPE = "slopeType";
+	public static final String SLOPE_ROCK = "slopeRock";
+	public static final String SLOPE_BODY = "slopeBody";
+	public static final String DANXIA_RAVINE = "danxiaRavine";
+	public static final String DANXIA_WALL = "danxiaWall";
+	public static final String DANXIA_CAVE = "danxiaCave";
+	public static final String DANXIA_VALT = "danxiaValt";
+	public static final String DEPENDENT_SHAPE = "dependentShape";
+	public static final String DEPENDENT_STAGE = "dependentStage";
+	public static final String DEPENDENT_DESCRIPTION = "dependentDescription";
+	public static final String CLIFF_MAX_HEIGHT = "cliffMaxHeight";
+	public static final String CLIFF_MEDIUM_HEIGHT = "cliffMediumHeight";
+	public static final String CLIFF_MAX_GRADIENT = "cliffMaxGradient";
+	public static final String CLIFF_MEDIUM_GRADIENT = "cliffMediumGradient";
+	public static final String SLOPE_SHAPE = "slopeShape";
+	public static final String CORNER_TYPE = "cornerType";
+	public static final String SLOPE_DESCRIPTION = "slopeDescription";
+	public static final String LANDMARK_SCENE = "landmarkScene";
+	public static final String SPECIAL_SCENE = "specialScene";
+	public static final String RELIEF_STRUCTURE = "reliefStructure";
+	public static final String OVERALL_SCENE = "overallScene";
+
+
+
+	protected void initDao() {
+		//do nothing
+	}
+    
+    public void save(TbGeologyinfo transientInstance) {
+        log.debug("saving TbGeologyinfo instance");
+        try {
+            getHibernateTemplate().save(transientInstance);
+            log.debug("save successful");
+        } catch (RuntimeException re) {
+            log.error("save failed", re);
+            throw re;
+        }
+    }
+    
+	public void delete(TbGeologyinfo persistentInstance) {
+        log.debug("deleting TbGeologyinfo instance");
+        try {
+            getHibernateTemplate().delete(persistentInstance);
+            log.debug("delete successful");
+        } catch (RuntimeException re) {
+            log.error("delete failed", re);
+            throw re;
+        }
+    }
+    
+    public TbGeologyinfo findById( java.lang.Integer id) {
+        log.debug("getting TbGeologyinfo instance with id: " + id);
+        try {
+            TbGeologyinfo instance = (TbGeologyinfo) getHibernateTemplate()
+                    .get("com.dx.bean.TbGeologyinfo", id);
+            return instance;
+        } catch (RuntimeException re) {
+            log.error("get failed", re);
+            throw re;
+        }
+    }
+    
+    
+    public List findByExample(TbGeologyinfo instance) {
+        log.debug("finding TbGeologyinfo instance by example");
+        try {
+            List results = getHibernateTemplate().findByExample(instance);
+            log.debug("find by example successful, result size: " + results.size());
+            return results;
+        } catch (RuntimeException re) {
+            log.error("find by example failed", re);
+            throw re;
+        }
+    }    
+    
+    public List findByProperty(String propertyName, Object value) {
+      log.debug("finding TbGeologyinfo instance with property: " + propertyName
+            + ", value: " + value);
+      try {
+         String queryString = "from TbGeologyinfo as model where model." 
+         						+ propertyName + "= ?";
+		 return getHibernateTemplate().find(queryString, value);
+      } catch (RuntimeException re) {
+         log.error("find by property name failed", re);
+         throw re;
+      }
+	}
+
+	public List findByNorthLatitude(Object northLatitude
+	) {
+		return findByProperty(NORTH_LATITUDE, northLatitude
+		);
+	}
+	
+	public List findByNorthLongitude(Object northLongitude
+	) {
+		return findByProperty(NORTH_LONGITUDE, northLongitude
+		);
+	}
+	
+	public List findBySouthLatitude(Object southLatitude
+	) {
+		return findByProperty(SOUTH_LATITUDE, southLatitude
+		);
+	}
+	
+	public List findBySouthLongitude(Object southLongitude
+	) {
+		return findByProperty(SOUTH_LONGITUDE, southLongitude
+		);
+	}
+	
+	public List findByEastLatitude(Object eastLatitude
+	) {
+		return findByProperty(EAST_LATITUDE, eastLatitude
+		);
+	}
+	
+	public List findByEastLongitude(Object eastLongitude
+	) {
+		return findByProperty(EAST_LONGITUDE, eastLongitude
+		);
+	}
+	
+	public List findByWestLatitude(Object westLatitude
+	) {
+		return findByProperty(WEST_LATITUDE, westLatitude
+		);
+	}
+	
+	public List findByWestLongitude(Object westLongitude
+	) {
+		return findByProperty(WEST_LONGITUDE, westLongitude
+		);
+	}
+	
+	public List findByCenterLatitude(Object centerLatitude
+	) {
+		return findByProperty(CENTER_LATITUDE, centerLatitude
+		);
+	}
+	
+	public List findByCenterLongitude(Object centerLongitude
+	) {
+		return findByProperty(CENTER_LONGITUDE, centerLongitude
+		);
+	}
+	
+	public List findByReliefContinuousArea(Object reliefContinuousArea
+	) {
+		return findByProperty(RELIEF_CONTINUOUS_AREA, reliefContinuousArea
+		);
+	}
+	
+	public List findByRedbedContinuousArea(Object redbedContinuousArea
+	) {
+		return findByProperty(REDBED_CONTINUOUS_AREA, redbedContinuousArea
+		);
+	}
+	
+	public List findByRedbedTotalArea(Object redbedTotalArea
+	) {
+		return findByProperty(REDBED_TOTAL_AREA, redbedTotalArea
+		);
+	}
+	
+	public List findByLowAltitude(Object lowAltitude
+	) {
+		return findByProperty(LOW_ALTITUDE, lowAltitude
+		);
+	}
+	
+	public List findByHighAltitude(Object highAltitude
+	) {
+		return findByProperty(HIGH_ALTITUDE, highAltitude
+		);
+	}
+	
+	public List findByMediumAltitude(Object mediumAltitude
+	) {
+		return findByProperty(MEDIUM_ALTITUDE, mediumAltitude
+		);
+	}
+	
+	public List findByRedbedAge(Object redbedAge
+	) {
+		return findByProperty(REDBED_AGE, redbedAge
+		);
+	}
+	
+	public List findByRedbedAgeDescription(Object redbedAgeDescription
+	) {
+		return findByProperty(REDBED_AGE_DESCRIPTION, redbedAgeDescription
+		);
+	}
+	
+	public List findByStratumName1(Object stratumName1
+	) {
+		return findByProperty(STRATUM_NAME1, stratumName1
+		);
+	}
+	
+	public List findByStratumDescription1(Object stratumDescription1
+	) {
+		return findByProperty(STRATUM_DESCRIPTION1, stratumDescription1
+		);
+	}
+	
+	public List findByStratumName2(Object stratumName2
+	) {
+		return findByProperty(STRATUM_NAME2, stratumName2
+		);
+	}
+	
+	public List findByStratumDescription2(Object stratumDescription2
+	) {
+		return findByProperty(STRATUM_DESCRIPTION2, stratumDescription2
+		);
+	}
+	
+	public List findByThickName1(Object thickName1
+	) {
+		return findByProperty(THICK_NAME1, thickName1
+		);
+	}
+	
+	public List findByThickness1(Object thickness1
+	) {
+		return findByProperty(THICKNESS1, thickness1
+		);
+	}
+	
+	public List findByThickName2(Object thickName2
+	) {
+		return findByProperty(THICK_NAME2, thickName2
+		);
+	}
+	
+	public List findByThickness2(Object thickness2
+	) {
+		return findByProperty(THICKNESS2, thickness2
+		);
+	}
+	
+	public List findByOffshore1(Object offshore1
+	) {
+		return findByProperty(OFFSHORE1, offshore1
+		);
+	}
+	
+	public List findByOffshore2(Object offshore2
+	) {
+		return findByProperty(OFFSHORE2, offshore2
+		);
+	}
+	
+	public List findByEolianDeposit(Object eolianDeposit
+	) {
+		return findByProperty(EOLIAN_DEPOSIT, eolianDeposit
+		);
+	}
+	
+	public List findByEolianDepositDescription(Object eolianDepositDescription
+	) {
+		return findByProperty(EOLIAN_DEPOSIT_DESCRIPTION, eolianDepositDescription
+		);
+	}
+	
+	public List findByConglomerateSize(Object conglomerateSize
+	) {
+		return findByProperty(CONGLOMERATE_SIZE, conglomerateSize
+		);
+	}
+	
+	public List findByConglomerateColor(Object conglomerateColor
+	) {
+		return findByProperty(CONGLOMERATE_COLOR, conglomerateColor
+		);
+	}
+	
+	public List findByConglomerateIngredient(Object conglomerateIngredient
+	) {
+		return findByProperty(CONGLOMERATE_INGREDIENT, conglomerateIngredient
+		);
+	}
+	
+	public List findByConglomerateCement(Object conglomerateCement
+	) {
+		return findByProperty(CONGLOMERATE_CEMENT, conglomerateCement
+		);
+	}
+	
+	public List findByConglomerateStructure(Object conglomerateStructure
+	) {
+		return findByProperty(CONGLOMERATE_STRUCTURE, conglomerateStructure
+		);
+	}
+	
+	public List findByConglomerateResistence(Object conglomerateResistence
+	) {
+		return findByProperty(CONGLOMERATE_RESISTENCE, conglomerateResistence
+		);
+	}
+	
+	public List findByConglomerateFossil(Object conglomerateFossil
+	) {
+		return findByProperty(CONGLOMERATE_FOSSIL, conglomerateFossil
+		);
+	}
+	
+	public List findByConglomerateAppearance(Object conglomerateAppearance
+	) {
+		return findByProperty(CONGLOMERATE_APPEARANCE, conglomerateAppearance
+		);
+	}
+	
+	public List findByConglomeratePickup(Object conglomeratePickup
+	) {
+		return findByProperty(CONGLOMERATE_PICKUP, conglomeratePickup
+		);
+	}
+	
+	public List findBySandstoneSize(Object sandstoneSize
+	) {
+		return findByProperty(SANDSTONE_SIZE, sandstoneSize
+		);
+	}
+	
+	public List findBySandstoneColor(Object sandstoneColor
+	) {
+		return findByProperty(SANDSTONE_COLOR, sandstoneColor
+		);
+	}
+	
+	public List findBySandstoneIngredient(Object sandstoneIngredient
+	) {
+		return findByProperty(SANDSTONE_INGREDIENT, sandstoneIngredient
+		);
+	}
+	
+	public List findBySandstoneCement(Object sandstoneCement
+	) {
+		return findByProperty(SANDSTONE_CEMENT, sandstoneCement
+		);
+	}
+	
+	public List findBySandstoneStructure(Object sandstoneStructure
+	) {
+		return findByProperty(SANDSTONE_STRUCTURE, sandstoneStructure
+		);
+	}
+	
+	public List findBySandstoneResistence(Object sandstoneResistence
+	) {
+		return findByProperty(SANDSTONE_RESISTENCE, sandstoneResistence
+		);
+	}
+	
+	public List findBySandstoneFossil(Object sandstoneFossil
+	) {
+		return findByProperty(SANDSTONE_FOSSIL, sandstoneFossil
+		);
+	}
+	
+	public List findBySandstoneAppearance(Object sandstoneAppearance
+	) {
+		return findByProperty(SANDSTONE_APPEARANCE, sandstoneAppearance
+		);
+	}
+	
+	public List findBySandstonePickup(Object sandstonePickup
+	) {
+		return findByProperty(SANDSTONE_PICKUP, sandstonePickup
+		);
+	}
+	
+	public List findBySiltstoneSize(Object siltstoneSize
+	) {
+		return findByProperty(SILTSTONE_SIZE, siltstoneSize
+		);
+	}
+	
+	public List findBySiltstoneColor(Object siltstoneColor
+	) {
+		return findByProperty(SILTSTONE_COLOR, siltstoneColor
+		);
+	}
+	
+	public List findBySiltstoneIngredient(Object siltstoneIngredient
+	) {
+		return findByProperty(SILTSTONE_INGREDIENT, siltstoneIngredient
+		);
+	}
+	
+	public List findBySiltstoneCement(Object siltstoneCement
+	) {
+		return findByProperty(SILTSTONE_CEMENT, siltstoneCement
+		);
+	}
+	
+	public List findBySiltstoneStructure(Object siltstoneStructure
+	) {
+		return findByProperty(SILTSTONE_STRUCTURE, siltstoneStructure
+		);
+	}
+	
+	public List findBySiltstoneResistence(Object siltstoneResistence
+	) {
+		return findByProperty(SILTSTONE_RESISTENCE, siltstoneResistence
+		);
+	}
+	
+	public List findBySiltstoneFossil(Object siltstoneFossil
+	) {
+		return findByProperty(SILTSTONE_FOSSIL, siltstoneFossil
+		);
+	}
+	
+	public List findBySiltstoneAppearance(Object siltstoneAppearance
+	) {
+		return findByProperty(SILTSTONE_APPEARANCE, siltstoneAppearance
+		);
+	}
+	
+	public List findBySiltstonePickup(Object siltstonePickup
+	) {
+		return findByProperty(SILTSTONE_PICKUP, siltstonePickup
+		);
+	}
+	
+	public List findByClaySize(Object claySize
+	) {
+		return findByProperty(CLAY_SIZE, claySize
+		);
+	}
+	
+	public List findByClayColor(Object clayColor
+	) {
+		return findByProperty(CLAY_COLOR, clayColor
+		);
+	}
+	
+	public List findByClayIngredient(Object clayIngredient
+	) {
+		return findByProperty(CLAY_INGREDIENT, clayIngredient
+		);
+	}
+	
+	public List findByClayCement(Object clayCement
+	) {
+		return findByProperty(CLAY_CEMENT, clayCement
+		);
+	}
+	
+	public List findByClayStructure(Object clayStructure
+	) {
+		return findByProperty(CLAY_STRUCTURE, clayStructure
+		);
+	}
+	
+	public List findByClayResistence(Object clayResistence
+	) {
+		return findByProperty(CLAY_RESISTENCE, clayResistence
+		);
+	}
+	
+	public List findByClayFossil(Object clayFossil
+	) {
+		return findByProperty(CLAY_FOSSIL, clayFossil
+		);
+	}
+	
+	public List findByClayAppearance(Object clayAppearance
+	) {
+		return findByProperty(CLAY_APPEARANCE, clayAppearance
+		);
+	}
+	
+	public List findByClayPickup(Object clayPickup
+	) {
+		return findByProperty(CLAY_PICKUP, clayPickup
+		);
+	}
+	
+	public List findByStructurePosition(Object structurePosition
+	) {
+		return findByProperty(STRUCTURE_POSITION, structurePosition
+		);
+	}
+	
+	public List findByBasinName(Object basinName
+	) {
+		return findByProperty(BASIN_NAME, basinName
+		);
+	}
+	
+	public List findByBasinAge(Object basinAge
+	) {
+		return findByProperty(BASIN_AGE, basinAge
+		);
+	}
+	
+	public List findByStructureMotion(Object structureMotion
+	) {
+		return findByProperty(STRUCTURE_MOTION, structureMotion
+		);
+	}
+	
+	public List findByStructureLine(Object structureLine
+	) {
+		return findByProperty(STRUCTURE_LINE, structureLine
+		);
+	}
+	
+	public List findByCrumple(Object crumple
+	) {
+		return findByProperty(CRUMPLE, crumple
+		);
+	}
+	
+	public List findByFault(Object fault
+	) {
+		return findByProperty(FAULT, fault
+		);
+	}
+	
+	public List findByJoint(Object joint
+	) {
+		return findByProperty(JOINT, joint
+		);
+	}
+	
+	public List findByStructureDescription(Object structureDescription
+	) {
+		return findByProperty(STRUCTURE_DESCRIPTION, structureDescription
+		);
+	}
+	
+	public List findByReliefUnit(Object reliefUnit
+	) {
+		return findByProperty(RELIEF_UNIT, reliefUnit
+		);
+	}
+	
+	public List findByReliefPosition(Object reliefPosition
+	) {
+		return findByProperty(RELIEF_POSITION, reliefPosition
+		);
+	}
+	
+	public List findByTerrain(Object terrain
+	) {
+		return findByProperty(TERRAIN, terrain
+		);
+	}
+	
+	public List findByReliefDescription(Object reliefDescription
+	) {
+		return findByProperty(RELIEF_DESCRIPTION, reliefDescription
+		);
+	}
+	
+	public List findByDependentType(Object dependentType
+	) {
+		return findByProperty(DEPENDENT_TYPE, dependentType
+		);
+	}
+	
+	public List findByDependentAppearance(Object dependentAppearance
+	) {
+		return findByProperty(DEPENDENT_APPEARANCE, dependentAppearance
+		);
+	}
+	
+	public List findByDependentForce(Object dependentForce
+	) {
+		return findByProperty(DEPENDENT_FORCE, dependentForce
+		);
+	}
+	
+	public List findBySlopeType(Object slopeType
+	) {
+		return findByProperty(SLOPE_TYPE, slopeType
+		);
+	}
+	
+	public List findBySlopeRock(Object slopeRock
+	) {
+		return findByProperty(SLOPE_ROCK, slopeRock
+		);
+	}
+	
+	public List findBySlopeBody(Object slopeBody
+	) {
+		return findByProperty(SLOPE_BODY, slopeBody
+		);
+	}
+	
+	public List findByDanxiaRavine(Object danxiaRavine
+	) {
+		return findByProperty(DANXIA_RAVINE, danxiaRavine
+		);
+	}
+	
+	public List findByDanxiaWall(Object danxiaWall
+	) {
+		return findByProperty(DANXIA_WALL, danxiaWall
+		);
+	}
+	
+	public List findByDanxiaCave(Object danxiaCave
+	) {
+		return findByProperty(DANXIA_CAVE, danxiaCave
+		);
+	}
+	
+	public List findByDanxiaValt(Object danxiaValt
+	) {
+		return findByProperty(DANXIA_VALT, danxiaValt
+		);
+	}
+	
+	public List findByDependentShape(Object dependentShape
+	) {
+		return findByProperty(DEPENDENT_SHAPE, dependentShape
+		);
+	}
+	
+	public List findByDependentStage(Object dependentStage
+	) {
+		return findByProperty(DEPENDENT_STAGE, dependentStage
+		);
+	}
+	
+	public List findByDependentDescription(Object dependentDescription
+	) {
+		return findByProperty(DEPENDENT_DESCRIPTION, dependentDescription
+		);
+	}
+	
+	public List findByCliffMaxHeight(Object cliffMaxHeight
+	) {
+		return findByProperty(CLIFF_MAX_HEIGHT, cliffMaxHeight
+		);
+	}
+	
+	public List findByCliffMediumHeight(Object cliffMediumHeight
+	) {
+		return findByProperty(CLIFF_MEDIUM_HEIGHT, cliffMediumHeight
+		);
+	}
+	
+	public List findByCliffMaxGradient(Object cliffMaxGradient
+	) {
+		return findByProperty(CLIFF_MAX_GRADIENT, cliffMaxGradient
+		);
+	}
+	
+	public List findByCliffMediumGradient(Object cliffMediumGradient
+	) {
+		return findByProperty(CLIFF_MEDIUM_GRADIENT, cliffMediumGradient
+		);
+	}
+	
+	public List findBySlopeShape(Object slopeShape
+	) {
+		return findByProperty(SLOPE_SHAPE, slopeShape
+		);
+	}
+	
+	public List findByCornerType(Object cornerType
+	) {
+		return findByProperty(CORNER_TYPE, cornerType
+		);
+	}
+	
+	public List findBySlopeDescription(Object slopeDescription
+	) {
+		return findByProperty(SLOPE_DESCRIPTION, slopeDescription
+		);
+	}
+	
+	public List findByLandmarkScene(Object landmarkScene
+	) {
+		return findByProperty(LANDMARK_SCENE, landmarkScene
+		);
+	}
+	
+	public List findBySpecialScene(Object specialScene
+	) {
+		return findByProperty(SPECIAL_SCENE, specialScene
+		);
+	}
+	
+	public List findByReliefStructure(Object reliefStructure
+	) {
+		return findByProperty(RELIEF_STRUCTURE, reliefStructure
+		);
+	}
+	
+	public List findByOverallScene(Object overallScene
+	) {
+		return findByProperty(OVERALL_SCENE, overallScene
+		);
+	}
+	
+
+	public List findAll() {
+		log.debug("finding all TbGeologyinfo instances");
+		try {
+			String queryString = "from TbGeologyinfo";
+		 	return getHibernateTemplate().find(queryString);
+		} catch (RuntimeException re) {
+			log.error("find all failed", re);
+			throw re;
+		}
+	}
+	
+    public TbGeologyinfo merge(TbGeologyinfo detachedInstance) {
+        log.debug("merging TbGeologyinfo instance");
+        try {
+            TbGeologyinfo result = (TbGeologyinfo) getHibernateTemplate()
+                    .merge(detachedInstance);
+            log.debug("merge successful");
+            return result;
+        } catch (RuntimeException re) {
+            log.error("merge failed", re);
+            throw re;
+        }
+    }
+
+    public void attachDirty(TbGeologyinfo instance) {
+        log.debug("attaching dirty TbGeologyinfo instance");
+        try {
+            getHibernateTemplate().saveOrUpdate(instance);
+            log.debug("attach successful");
+        } catch (RuntimeException re) {
+            log.error("attach failed", re);
+            throw re;
+        }
+    }
+    
+    public void attachClean(TbGeologyinfo instance) {
+        log.debug("attaching clean TbGeologyinfo instance");
+        try {
+            getHibernateTemplate().lock(instance, LockMode.NONE);
+            log.debug("attach successful");
+        } catch (RuntimeException re) {
+            log.error("attach failed", re);
+            throw re;
+        }
+    }
+
+	public static TbGeologyinfoDAO getFromApplicationContext(ApplicationContext ctx) {
+    	return (TbGeologyinfoDAO) ctx.getBean("TbGeologyinfoDAO");
+	}
+}

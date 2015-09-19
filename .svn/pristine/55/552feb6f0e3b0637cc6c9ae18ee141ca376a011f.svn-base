@@ -1,0 +1,1120 @@
+package com.dx.bean;
+
+/**
+ * TbGeologyinfo entity. @author MyEclipse Persistence Tools
+ */
+
+public class TbGeologyinfo implements java.io.Serializable {
+
+	// Fields
+
+	private Integer basicId;
+	private TbBasicinfo tbBasicinfo;
+	private String northLatitude;
+	private String northLongitude;
+	private String southLatitude;
+	private String southLongitude;
+	private String eastLatitude;
+	private String eastLongitude;
+	private String westLatitude;
+	private String westLongitude;
+	private String centerLatitude;
+	private String centerLongitude;
+	private String reliefContinuousArea;
+	private String redbedContinuousArea;
+	private String redbedTotalArea;
+	private String lowAltitude;
+	private String highAltitude;
+	private String mediumAltitude;
+	private String redbedAge;
+	private String redbedAgeDescription;
+	private String stratumName1;
+	private String stratumDescription1;
+	private String stratumName2;
+	private String stratumDescription2;
+	private String thickName1;
+	private String thickness1;
+	private String thickName2;
+	private String thickness2;
+	private String offshore1;
+	private String offshore2;
+	private String eolianDeposit;
+	private String eolianDepositDescription;
+	private String conglomerateSize;
+	private String conglomerateColor;
+	private String conglomerateIngredient;
+	private String conglomerateCement;
+	private String conglomerateStructure;
+	private String conglomerateResistence;
+	private String conglomerateFossil;
+	private String conglomerateAppearance;
+	private String conglomeratePickup;
+	private String sandstoneSize;
+	private String sandstoneColor;
+	private String sandstoneIngredient;
+	private String sandstoneCement;
+	private String sandstoneStructure;
+	private String sandstoneResistence;
+	private String sandstoneFossil;
+	private String sandstoneAppearance;
+	private String sandstonePickup;
+	private String siltstoneSize;
+	private String siltstoneColor;
+	private String siltstoneIngredient;
+	private String siltstoneCement;
+	private String siltstoneStructure;
+	private String siltstoneResistence;
+	private String siltstoneFossil;
+	private String siltstoneAppearance;
+	private String siltstonePickup;
+	private String claySize;
+	private String clayColor;
+	private String clayIngredient;
+	private String clayCement;
+	private String clayStructure;
+	private String clayResistence;
+	private String clayFossil;
+	private String clayAppearance;
+	private String clayPickup;
+	private String structurePosition;
+	private String basinName;
+	private String basinAge;
+	private String structureMotion;
+	private String structureLine;
+	private String crumple;
+	private String fault;
+	private String joint;
+	private String structureDescription;
+	private String reliefUnit;
+	private String reliefPosition;
+	private String terrain;
+	private String reliefDescription;
+	private String dependentType;
+	private String dependentAppearance;
+	private String dependentForce;
+	private String slopeType;
+	private String slopeRock;
+	private String slopeBody;
+	private String danxiaRavine;
+	private String danxiaWall;
+	private String danxiaCave;
+	private String danxiaValt;
+	private String dependentShape;
+	private String dependentStage;
+	private String dependentDescription;
+	private String cliffMaxHeight;
+	private String cliffMediumHeight;
+	private String cliffMaxGradient;
+	private String cliffMediumGradient;
+	private String slopeShape;
+	private String cornerType;
+	private String slopeDescription;
+	private String landmarkScene;
+	private String specialScene;
+	private String reliefStructure;
+	private String overallScene;
+
+	// Constructors
+
+	/** default constructor */
+	public TbGeologyinfo() {
+	}
+
+	/** minimal constructor */
+	public TbGeologyinfo(TbBasicinfo tbBasicinfo) {
+		this.tbBasicinfo = tbBasicinfo;
+	}
+
+	/** full constructor */
+	public TbGeologyinfo(TbBasicinfo tbBasicinfo, String northLatitude,
+			String northLongitude, String southLatitude, String southLongitude,
+			String eastLatitude, String eastLongitude, String westLatitude,
+			String westLongitude, String centerLatitude,
+			String centerLongitude, String reliefContinuousArea,
+			String redbedContinuousArea, String redbedTotalArea,
+			String lowAltitude, String highAltitude, String mediumAltitude,
+			String redbedAge, String redbedAgeDescription, String stratumName1,
+			String stratumDescription1, String stratumName2,
+			String stratumDescription2, String thickName1, String thickness1,
+			String thickName2, String thickness2, String offshore1,
+			String offshore2, String eolianDeposit,
+			String eolianDepositDescription, String conglomerateSize,
+			String conglomerateColor, String conglomerateIngredient,
+			String conglomerateCement, String conglomerateStructure,
+			String conglomerateResistence, String conglomerateFossil,
+			String conglomerateAppearance, String conglomeratePickup,
+			String sandstoneSize, String sandstoneColor,
+			String sandstoneIngredient, String sandstoneCement,
+			String sandstoneStructure, String sandstoneResistence,
+			String sandstoneFossil, String sandstoneAppearance,
+			String sandstonePickup, String siltstoneSize,
+			String siltstoneColor, String siltstoneIngredient,
+			String siltstoneCement, String siltstoneStructure,
+			String siltstoneResistence, String siltstoneFossil,
+			String siltstoneAppearance, String siltstonePickup,
+			String claySize, String clayColor, String clayIngredient,
+			String clayCement, String clayStructure, String clayResistence,
+			String clayFossil, String clayAppearance, String clayPickup,
+			String structurePosition, String basinName, String basinAge,
+			String structureMotion, String structureLine, String crumple,
+			String fault, String joint, String structureDescription,
+			String reliefUnit, String reliefPosition, String terrain,
+			String reliefDescription, String dependentType,
+			String dependentAppearance, String dependentForce,
+			String slopeType, String slopeRock, String slopeBody,
+			String danxiaRavine, String danxiaWall, String danxiaCave,
+			String danxiaValt, String dependentShape, String dependentStage,
+			String dependentDescription, String cliffMaxHeight,
+			String cliffMediumHeight, String cliffMaxGradient,
+			String cliffMediumGradient, String slopeShape, String cornerType,
+			String slopeDescription, String landmarkScene, String specialScene,
+			String reliefStructure, String overallScene) {
+		this.tbBasicinfo = tbBasicinfo;
+		this.northLatitude = northLatitude;
+		this.northLongitude = northLongitude;
+		this.southLatitude = southLatitude;
+		this.southLongitude = southLongitude;
+		this.eastLatitude = eastLatitude;
+		this.eastLongitude = eastLongitude;
+		this.westLatitude = westLatitude;
+		this.westLongitude = westLongitude;
+		this.centerLatitude = centerLatitude;
+		this.centerLongitude = centerLongitude;
+		this.reliefContinuousArea = reliefContinuousArea;
+		this.redbedContinuousArea = redbedContinuousArea;
+		this.redbedTotalArea = redbedTotalArea;
+		this.lowAltitude = lowAltitude;
+		this.highAltitude = highAltitude;
+		this.mediumAltitude = mediumAltitude;
+		this.redbedAge = redbedAge;
+		this.redbedAgeDescription = redbedAgeDescription;
+		this.stratumName1 = stratumName1;
+		this.stratumDescription1 = stratumDescription1;
+		this.stratumName2 = stratumName2;
+		this.stratumDescription2 = stratumDescription2;
+		this.thickName1 = thickName1;
+		this.thickness1 = thickness1;
+		this.thickName2 = thickName2;
+		this.thickness2 = thickness2;
+		this.offshore1 = offshore1;
+		this.offshore2 = offshore2;
+		this.eolianDeposit = eolianDeposit;
+		this.eolianDepositDescription = eolianDepositDescription;
+		this.conglomerateSize = conglomerateSize;
+		this.conglomerateColor = conglomerateColor;
+		this.conglomerateIngredient = conglomerateIngredient;
+		this.conglomerateCement = conglomerateCement;
+		this.conglomerateStructure = conglomerateStructure;
+		this.conglomerateResistence = conglomerateResistence;
+		this.conglomerateFossil = conglomerateFossil;
+		this.conglomerateAppearance = conglomerateAppearance;
+		this.conglomeratePickup = conglomeratePickup;
+		this.sandstoneSize = sandstoneSize;
+		this.sandstoneColor = sandstoneColor;
+		this.sandstoneIngredient = sandstoneIngredient;
+		this.sandstoneCement = sandstoneCement;
+		this.sandstoneStructure = sandstoneStructure;
+		this.sandstoneResistence = sandstoneResistence;
+		this.sandstoneFossil = sandstoneFossil;
+		this.sandstoneAppearance = sandstoneAppearance;
+		this.sandstonePickup = sandstonePickup;
+		this.siltstoneSize = siltstoneSize;
+		this.siltstoneColor = siltstoneColor;
+		this.siltstoneIngredient = siltstoneIngredient;
+		this.siltstoneCement = siltstoneCement;
+		this.siltstoneStructure = siltstoneStructure;
+		this.siltstoneResistence = siltstoneResistence;
+		this.siltstoneFossil = siltstoneFossil;
+		this.siltstoneAppearance = siltstoneAppearance;
+		this.siltstonePickup = siltstonePickup;
+		this.claySize = claySize;
+		this.clayColor = clayColor;
+		this.clayIngredient = clayIngredient;
+		this.clayCement = clayCement;
+		this.clayStructure = clayStructure;
+		this.clayResistence = clayResistence;
+		this.clayFossil = clayFossil;
+		this.clayAppearance = clayAppearance;
+		this.clayPickup = clayPickup;
+		this.structurePosition = structurePosition;
+		this.basinName = basinName;
+		this.basinAge = basinAge;
+		this.structureMotion = structureMotion;
+		this.structureLine = structureLine;
+		this.crumple = crumple;
+		this.fault = fault;
+		this.joint = joint;
+		this.structureDescription = structureDescription;
+		this.reliefUnit = reliefUnit;
+		this.reliefPosition = reliefPosition;
+		this.terrain = terrain;
+		this.reliefDescription = reliefDescription;
+		this.dependentType = dependentType;
+		this.dependentAppearance = dependentAppearance;
+		this.dependentForce = dependentForce;
+		this.slopeType = slopeType;
+		this.slopeRock = slopeRock;
+		this.slopeBody = slopeBody;
+		this.danxiaRavine = danxiaRavine;
+		this.danxiaWall = danxiaWall;
+		this.danxiaCave = danxiaCave;
+		this.danxiaValt = danxiaValt;
+		this.dependentShape = dependentShape;
+		this.dependentStage = dependentStage;
+		this.dependentDescription = dependentDescription;
+		this.cliffMaxHeight = cliffMaxHeight;
+		this.cliffMediumHeight = cliffMediumHeight;
+		this.cliffMaxGradient = cliffMaxGradient;
+		this.cliffMediumGradient = cliffMediumGradient;
+		this.slopeShape = slopeShape;
+		this.cornerType = cornerType;
+		this.slopeDescription = slopeDescription;
+		this.landmarkScene = landmarkScene;
+		this.specialScene = specialScene;
+		this.reliefStructure = reliefStructure;
+		this.overallScene = overallScene;
+	}
+
+	// Property accessors
+
+	public Integer getBasicId() {
+		return this.basicId;
+	}
+
+	public void setBasicId(Integer basicId) {
+		this.basicId = basicId;
+	}
+
+	public TbBasicinfo getTbBasicinfo() {
+		return this.tbBasicinfo;
+	}
+
+	public void setTbBasicinfo(TbBasicinfo tbBasicinfo) {
+		this.tbBasicinfo = tbBasicinfo;
+	}
+
+	public String getNorthLatitude() {
+		return this.northLatitude;
+	}
+
+	public void setNorthLatitude(String northLatitude) {
+		this.northLatitude = northLatitude;
+	}
+
+	public String getNorthLongitude() {
+		return this.northLongitude;
+	}
+
+	public void setNorthLongitude(String northLongitude) {
+		this.northLongitude = northLongitude;
+	}
+
+	public String getSouthLatitude() {
+		return this.southLatitude;
+	}
+
+	public void setSouthLatitude(String southLatitude) {
+		this.southLatitude = southLatitude;
+	}
+
+	public String getSouthLongitude() {
+		return this.southLongitude;
+	}
+
+	public void setSouthLongitude(String southLongitude) {
+		this.southLongitude = southLongitude;
+	}
+
+	public String getEastLatitude() {
+		return this.eastLatitude;
+	}
+
+	public void setEastLatitude(String eastLatitude) {
+		this.eastLatitude = eastLatitude;
+	}
+
+	public String getEastLongitude() {
+		return this.eastLongitude;
+	}
+
+	public void setEastLongitude(String eastLongitude) {
+		this.eastLongitude = eastLongitude;
+	}
+
+	public String getWestLatitude() {
+		return this.westLatitude;
+	}
+
+	public void setWestLatitude(String westLatitude) {
+		this.westLatitude = westLatitude;
+	}
+
+	public String getWestLongitude() {
+		return this.westLongitude;
+	}
+
+	public void setWestLongitude(String westLongitude) {
+		this.westLongitude = westLongitude;
+	}
+
+	public String getCenterLatitude() {
+		return this.centerLatitude;
+	}
+
+	public void setCenterLatitude(String centerLatitude) {
+		this.centerLatitude = centerLatitude;
+	}
+
+	public String getCenterLongitude() {
+		return this.centerLongitude;
+	}
+
+	public void setCenterLongitude(String centerLongitude) {
+		this.centerLongitude = centerLongitude;
+	}
+
+	public String getReliefContinuousArea() {
+		return this.reliefContinuousArea;
+	}
+
+	public void setReliefContinuousArea(String reliefContinuousArea) {
+		this.reliefContinuousArea = reliefContinuousArea;
+	}
+
+	public String getRedbedContinuousArea() {
+		return this.redbedContinuousArea;
+	}
+
+	public void setRedbedContinuousArea(String redbedContinuousArea) {
+		this.redbedContinuousArea = redbedContinuousArea;
+	}
+
+	public String getRedbedTotalArea() {
+		return this.redbedTotalArea;
+	}
+
+	public void setRedbedTotalArea(String redbedTotalArea) {
+		this.redbedTotalArea = redbedTotalArea;
+	}
+
+	public String getLowAltitude() {
+		return this.lowAltitude;
+	}
+
+	public void setLowAltitude(String lowAltitude) {
+		this.lowAltitude = lowAltitude;
+	}
+
+	public String getHighAltitude() {
+		return this.highAltitude;
+	}
+
+	public void setHighAltitude(String highAltitude) {
+		this.highAltitude = highAltitude;
+	}
+
+	public String getMediumAltitude() {
+		return this.mediumAltitude;
+	}
+
+	public void setMediumAltitude(String mediumAltitude) {
+		this.mediumAltitude = mediumAltitude;
+	}
+
+	public String getRedbedAge() {
+		return this.redbedAge;
+	}
+
+	public void setRedbedAge(String redbedAge) {
+		this.redbedAge = redbedAge;
+	}
+
+	public String getRedbedAgeDescription() {
+		return this.redbedAgeDescription;
+	}
+
+	public void setRedbedAgeDescription(String redbedAgeDescription) {
+		this.redbedAgeDescription = redbedAgeDescription;
+	}
+
+	public String getStratumName1() {
+		return this.stratumName1;
+	}
+
+	public void setStratumName1(String stratumName1) {
+		this.stratumName1 = stratumName1;
+	}
+
+	public String getStratumDescription1() {
+		return this.stratumDescription1;
+	}
+
+	public void setStratumDescription1(String stratumDescription1) {
+		this.stratumDescription1 = stratumDescription1;
+	}
+
+	public String getStratumName2() {
+		return this.stratumName2;
+	}
+
+	public void setStratumName2(String stratumName2) {
+		this.stratumName2 = stratumName2;
+	}
+
+	public String getStratumDescription2() {
+		return this.stratumDescription2;
+	}
+
+	public void setStratumDescription2(String stratumDescription2) {
+		this.stratumDescription2 = stratumDescription2;
+	}
+
+	public String getThickName1() {
+		return this.thickName1;
+	}
+
+	public void setThickName1(String thickName1) {
+		this.thickName1 = thickName1;
+	}
+
+	public String getThickness1() {
+		return this.thickness1;
+	}
+
+	public void setThickness1(String thickness1) {
+		this.thickness1 = thickness1;
+	}
+
+	public String getThickName2() {
+		return this.thickName2;
+	}
+
+	public void setThickName2(String thickName2) {
+		this.thickName2 = thickName2;
+	}
+
+	public String getThickness2() {
+		return this.thickness2;
+	}
+
+	public void setThickness2(String thickness2) {
+		this.thickness2 = thickness2;
+	}
+
+	public String getOffshore1() {
+		return this.offshore1;
+	}
+
+	public void setOffshore1(String offshore1) {
+		this.offshore1 = offshore1;
+	}
+
+	public String getOffshore2() {
+		return this.offshore2;
+	}
+
+	public void setOffshore2(String offshore2) {
+		this.offshore2 = offshore2;
+	}
+
+	public String getEolianDeposit() {
+		return this.eolianDeposit;
+	}
+
+	public void setEolianDeposit(String eolianDeposit) {
+		this.eolianDeposit = eolianDeposit;
+	}
+
+	public String getEolianDepositDescription() {
+		return this.eolianDepositDescription;
+	}
+
+	public void setEolianDepositDescription(String eolianDepositDescription) {
+		this.eolianDepositDescription = eolianDepositDescription;
+	}
+
+	public String getConglomerateSize() {
+		return this.conglomerateSize;
+	}
+
+	public void setConglomerateSize(String conglomerateSize) {
+		this.conglomerateSize = conglomerateSize;
+	}
+
+	public String getConglomerateColor() {
+		return this.conglomerateColor;
+	}
+
+	public void setConglomerateColor(String conglomerateColor) {
+		this.conglomerateColor = conglomerateColor;
+	}
+
+	public String getConglomerateIngredient() {
+		return this.conglomerateIngredient;
+	}
+
+	public void setConglomerateIngredient(String conglomerateIngredient) {
+		this.conglomerateIngredient = conglomerateIngredient;
+	}
+
+	public String getConglomerateCement() {
+		return this.conglomerateCement;
+	}
+
+	public void setConglomerateCement(String conglomerateCement) {
+		this.conglomerateCement = conglomerateCement;
+	}
+
+	public String getConglomerateStructure() {
+		return this.conglomerateStructure;
+	}
+
+	public void setConglomerateStructure(String conglomerateStructure) {
+		this.conglomerateStructure = conglomerateStructure;
+	}
+
+	public String getConglomerateResistence() {
+		return this.conglomerateResistence;
+	}
+
+	public void setConglomerateResistence(String conglomerateResistence) {
+		this.conglomerateResistence = conglomerateResistence;
+	}
+
+	public String getConglomerateFossil() {
+		return this.conglomerateFossil;
+	}
+
+	public void setConglomerateFossil(String conglomerateFossil) {
+		this.conglomerateFossil = conglomerateFossil;
+	}
+
+	public String getConglomerateAppearance() {
+		return this.conglomerateAppearance;
+	}
+
+	public void setConglomerateAppearance(String conglomerateAppearance) {
+		this.conglomerateAppearance = conglomerateAppearance;
+	}
+
+	public String getConglomeratePickup() {
+		return this.conglomeratePickup;
+	}
+
+	public void setConglomeratePickup(String conglomeratePickup) {
+		this.conglomeratePickup = conglomeratePickup;
+	}
+
+	public String getSandstoneSize() {
+		return this.sandstoneSize;
+	}
+
+	public void setSandstoneSize(String sandstoneSize) {
+		this.sandstoneSize = sandstoneSize;
+	}
+
+	public String getSandstoneColor() {
+		return this.sandstoneColor;
+	}
+
+	public void setSandstoneColor(String sandstoneColor) {
+		this.sandstoneColor = sandstoneColor;
+	}
+
+	public String getSandstoneIngredient() {
+		return this.sandstoneIngredient;
+	}
+
+	public void setSandstoneIngredient(String sandstoneIngredient) {
+		this.sandstoneIngredient = sandstoneIngredient;
+	}
+
+	public String getSandstoneCement() {
+		return this.sandstoneCement;
+	}
+
+	public void setSandstoneCement(String sandstoneCement) {
+		this.sandstoneCement = sandstoneCement;
+	}
+
+	public String getSandstoneStructure() {
+		return this.sandstoneStructure;
+	}
+
+	public void setSandstoneStructure(String sandstoneStructure) {
+		this.sandstoneStructure = sandstoneStructure;
+	}
+
+	public String getSandstoneResistence() {
+		return this.sandstoneResistence;
+	}
+
+	public void setSandstoneResistence(String sandstoneResistence) {
+		this.sandstoneResistence = sandstoneResistence;
+	}
+
+	public String getSandstoneFossil() {
+		return this.sandstoneFossil;
+	}
+
+	public void setSandstoneFossil(String sandstoneFossil) {
+		this.sandstoneFossil = sandstoneFossil;
+	}
+
+	public String getSandstoneAppearance() {
+		return this.sandstoneAppearance;
+	}
+
+	public void setSandstoneAppearance(String sandstoneAppearance) {
+		this.sandstoneAppearance = sandstoneAppearance;
+	}
+
+	public String getSandstonePickup() {
+		return this.sandstonePickup;
+	}
+
+	public void setSandstonePickup(String sandstonePickup) {
+		this.sandstonePickup = sandstonePickup;
+	}
+
+	public String getSiltstoneSize() {
+		return this.siltstoneSize;
+	}
+
+	public void setSiltstoneSize(String siltstoneSize) {
+		this.siltstoneSize = siltstoneSize;
+	}
+
+	public String getSiltstoneColor() {
+		return this.siltstoneColor;
+	}
+
+	public void setSiltstoneColor(String siltstoneColor) {
+		this.siltstoneColor = siltstoneColor;
+	}
+
+	public String getSiltstoneIngredient() {
+		return this.siltstoneIngredient;
+	}
+
+	public void setSiltstoneIngredient(String siltstoneIngredient) {
+		this.siltstoneIngredient = siltstoneIngredient;
+	}
+
+	public String getSiltstoneCement() {
+		return this.siltstoneCement;
+	}
+
+	public void setSiltstoneCement(String siltstoneCement) {
+		this.siltstoneCement = siltstoneCement;
+	}
+
+	public String getSiltstoneStructure() {
+		return this.siltstoneStructure;
+	}
+
+	public void setSiltstoneStructure(String siltstoneStructure) {
+		this.siltstoneStructure = siltstoneStructure;
+	}
+
+	public String getSiltstoneResistence() {
+		return this.siltstoneResistence;
+	}
+
+	public void setSiltstoneResistence(String siltstoneResistence) {
+		this.siltstoneResistence = siltstoneResistence;
+	}
+
+	public String getSiltstoneFossil() {
+		return this.siltstoneFossil;
+	}
+
+	public void setSiltstoneFossil(String siltstoneFossil) {
+		this.siltstoneFossil = siltstoneFossil;
+	}
+
+	public String getSiltstoneAppearance() {
+		return this.siltstoneAppearance;
+	}
+
+	public void setSiltstoneAppearance(String siltstoneAppearance) {
+		this.siltstoneAppearance = siltstoneAppearance;
+	}
+
+	public String getSiltstonePickup() {
+		return this.siltstonePickup;
+	}
+
+	public void setSiltstonePickup(String siltstonePickup) {
+		this.siltstonePickup = siltstonePickup;
+	}
+
+	public String getClaySize() {
+		return this.claySize;
+	}
+
+	public void setClaySize(String claySize) {
+		this.claySize = claySize;
+	}
+
+	public String getClayColor() {
+		return this.clayColor;
+	}
+
+	public void setClayColor(String clayColor) {
+		this.clayColor = clayColor;
+	}
+
+	public String getClayIngredient() {
+		return this.clayIngredient;
+	}
+
+	public void setClayIngredient(String clayIngredient) {
+		this.clayIngredient = clayIngredient;
+	}
+
+	public String getClayCement() {
+		return this.clayCement;
+	}
+
+	public void setClayCement(String clayCement) {
+		this.clayCement = clayCement;
+	}
+
+	public String getClayStructure() {
+		return this.clayStructure;
+	}
+
+	public void setClayStructure(String clayStructure) {
+		this.clayStructure = clayStructure;
+	}
+
+	public String getClayResistence() {
+		return this.clayResistence;
+	}
+
+	public void setClayResistence(String clayResistence) {
+		this.clayResistence = clayResistence;
+	}
+
+	public String getClayFossil() {
+		return this.clayFossil;
+	}
+
+	public void setClayFossil(String clayFossil) {
+		this.clayFossil = clayFossil;
+	}
+
+	public String getClayAppearance() {
+		return this.clayAppearance;
+	}
+
+	public void setClayAppearance(String clayAppearance) {
+		this.clayAppearance = clayAppearance;
+	}
+
+	public String getClayPickup() {
+		return this.clayPickup;
+	}
+
+	public void setClayPickup(String clayPickup) {
+		this.clayPickup = clayPickup;
+	}
+
+	public String getStructurePosition() {
+		return this.structurePosition;
+	}
+
+	public void setStructurePosition(String structurePosition) {
+		this.structurePosition = structurePosition;
+	}
+
+	public String getBasinName() {
+		return this.basinName;
+	}
+
+	public void setBasinName(String basinName) {
+		this.basinName = basinName;
+	}
+
+	public String getBasinAge() {
+		return this.basinAge;
+	}
+
+	public void setBasinAge(String basinAge) {
+		this.basinAge = basinAge;
+	}
+
+	public String getStructureMotion() {
+		return this.structureMotion;
+	}
+
+	public void setStructureMotion(String structureMotion) {
+		this.structureMotion = structureMotion;
+	}
+
+	public String getStructureLine() {
+		return this.structureLine;
+	}
+
+	public void setStructureLine(String structureLine) {
+		this.structureLine = structureLine;
+	}
+
+	public String getCrumple() {
+		return this.crumple;
+	}
+
+	public void setCrumple(String crumple) {
+		this.crumple = crumple;
+	}
+
+	public String getFault() {
+		return this.fault;
+	}
+
+	public void setFault(String fault) {
+		this.fault = fault;
+	}
+
+	public String getJoint() {
+		return this.joint;
+	}
+
+	public void setJoint(String joint) {
+		this.joint = joint;
+	}
+
+	public String getStructureDescription() {
+		return this.structureDescription;
+	}
+
+	public void setStructureDescription(String structureDescription) {
+		this.structureDescription = structureDescription;
+	}
+
+	public String getReliefUnit() {
+		return this.reliefUnit;
+	}
+
+	public void setReliefUnit(String reliefUnit) {
+		this.reliefUnit = reliefUnit;
+	}
+
+	public String getReliefPosition() {
+		return this.reliefPosition;
+	}
+
+	public void setReliefPosition(String reliefPosition) {
+		this.reliefPosition = reliefPosition;
+	}
+
+	public String getTerrain() {
+		return this.terrain;
+	}
+
+	public void setTerrain(String terrain) {
+		this.terrain = terrain;
+	}
+
+	public String getReliefDescription() {
+		return this.reliefDescription;
+	}
+
+	public void setReliefDescription(String reliefDescription) {
+		this.reliefDescription = reliefDescription;
+	}
+
+	public String getDependentType() {
+		return this.dependentType;
+	}
+
+	public void setDependentType(String dependentType) {
+		this.dependentType = dependentType;
+	}
+
+	public String getDependentAppearance() {
+		return this.dependentAppearance;
+	}
+
+	public void setDependentAppearance(String dependentAppearance) {
+		this.dependentAppearance = dependentAppearance;
+	}
+
+	public String getDependentForce() {
+		return this.dependentForce;
+	}
+
+	public void setDependentForce(String dependentForce) {
+		this.dependentForce = dependentForce;
+	}
+
+	public String getSlopeType() {
+		return this.slopeType;
+	}
+
+	public void setSlopeType(String slopeType) {
+		this.slopeType = slopeType;
+	}
+
+	public String getSlopeRock() {
+		return this.slopeRock;
+	}
+
+	public void setSlopeRock(String slopeRock) {
+		this.slopeRock = slopeRock;
+	}
+
+	public String getSlopeBody() {
+		return this.slopeBody;
+	}
+
+	public void setSlopeBody(String slopeBody) {
+		this.slopeBody = slopeBody;
+	}
+
+	public String getDanxiaRavine() {
+		return this.danxiaRavine;
+	}
+
+	public void setDanxiaRavine(String danxiaRavine) {
+		this.danxiaRavine = danxiaRavine;
+	}
+
+	public String getDanxiaWall() {
+		return this.danxiaWall;
+	}
+
+	public void setDanxiaWall(String danxiaWall) {
+		this.danxiaWall = danxiaWall;
+	}
+
+	public String getDanxiaCave() {
+		return this.danxiaCave;
+	}
+
+	public void setDanxiaCave(String danxiaCave) {
+		this.danxiaCave = danxiaCave;
+	}
+
+	public String getDanxiaValt() {
+		return this.danxiaValt;
+	}
+
+	public void setDanxiaValt(String danxiaValt) {
+		this.danxiaValt = danxiaValt;
+	}
+
+	public String getDependentShape() {
+		return this.dependentShape;
+	}
+
+	public void setDependentShape(String dependentShape) {
+		this.dependentShape = dependentShape;
+	}
+
+	public String getDependentStage() {
+		return this.dependentStage;
+	}
+
+	public void setDependentStage(String dependentStage) {
+		this.dependentStage = dependentStage;
+	}
+
+	public String getDependentDescription() {
+		return this.dependentDescription;
+	}
+
+	public void setDependentDescription(String dependentDescription) {
+		this.dependentDescription = dependentDescription;
+	}
+
+	public String getCliffMaxHeight() {
+		return this.cliffMaxHeight;
+	}
+
+	public void setCliffMaxHeight(String cliffMaxHeight) {
+		this.cliffMaxHeight = cliffMaxHeight;
+	}
+
+	public String getCliffMediumHeight() {
+		return this.cliffMediumHeight;
+	}
+
+	public void setCliffMediumHeight(String cliffMediumHeight) {
+		this.cliffMediumHeight = cliffMediumHeight;
+	}
+
+	public String getCliffMaxGradient() {
+		return this.cliffMaxGradient;
+	}
+
+	public void setCliffMaxGradient(String cliffMaxGradient) {
+		this.cliffMaxGradient = cliffMaxGradient;
+	}
+
+	public String getCliffMediumGradient() {
+		return this.cliffMediumGradient;
+	}
+
+	public void setCliffMediumGradient(String cliffMediumGradient) {
+		this.cliffMediumGradient = cliffMediumGradient;
+	}
+
+	public String getSlopeShape() {
+		return this.slopeShape;
+	}
+
+	public void setSlopeShape(String slopeShape) {
+		this.slopeShape = slopeShape;
+	}
+
+	public String getCornerType() {
+		return this.cornerType;
+	}
+
+	public void setCornerType(String cornerType) {
+		this.cornerType = cornerType;
+	}
+
+	public String getSlopeDescription() {
+		return this.slopeDescription;
+	}
+
+	public void setSlopeDescription(String slopeDescription) {
+		this.slopeDescription = slopeDescription;
+	}
+
+	public String getLandmarkScene() {
+		return this.landmarkScene;
+	}
+
+	public void setLandmarkScene(String landmarkScene) {
+		this.landmarkScene = landmarkScene;
+	}
+
+	public String getSpecialScene() {
+		return this.specialScene;
+	}
+
+	public void setSpecialScene(String specialScene) {
+		this.specialScene = specialScene;
+	}
+
+	public String getReliefStructure() {
+		return this.reliefStructure;
+	}
+
+	public void setReliefStructure(String reliefStructure) {
+		this.reliefStructure = reliefStructure;
+	}
+
+	public String getOverallScene() {
+		return this.overallScene;
+	}
+
+	public void setOverallScene(String overallScene) {
+		this.overallScene = overallScene;
+	}
+
+}

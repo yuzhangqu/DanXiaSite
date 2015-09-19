@@ -1,0 +1,532 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ page import="com.dx.servlet.Counter"%>
+<%@ page import="com.dx.bean.TbNews"%>
+<%@ page import="javax.servlet.http.Cookie"%>
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="maincss.css">
+<title>丹霞地貌信息系统</title>
+
+<script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/jquery.i18n.properties-1.0.9.js"></script>
+<style>
+#sddm li
+{	margin: 2px;
+	padding: 0;
+	list-style: none;
+	float: left;
+	font: bold 12px arial}
+	
+#sddm div
+{	position: absolute;
+	display: none;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
+	background: #EAEBD8;
+	border: 1px solid #5970B2}
+#sddm div a
+	{	position: relative;
+		display: block;
+		margin: 0;
+		padding: 5px 10px;
+		width: 150px;
+		white-space: nowrap;
+		text-align: center;
+		text-decoration: none;
+		background: #B00000;
+		color: white;
+		font: 14px Microsoft Yahei}
+
+	#sddm div a:hover
+	{	background: #49A3FF;
+		color: #FFF}
+</style>
+<!-- dd menu -->
+<script type="text/javascript">
+var old = 0;
+var timeout = 200;
+// open hidden layer
+function mopen(id)
+{
+	// get new layer and show it
+	if (id == old)
+	{
+		mcancelclosetime();
+	}
+	else
+	{
+		old = id;
+	}
+	$("#" + old).fadeTo("slow", 1);
+
+}
+// close showed layer
+function mclose()
+{
+	if(old) 
+	{
+		$("#" + old).fadeTo("slow", 0, function(){ $("#" + old).hide(); });
+	}
+}
+
+// go close timer
+function mclosetime()
+{
+	closetimer = window.setTimeout(mclose, timeout);
+}
+
+// cancel close timer
+function mcancelclosetime()
+{
+	if(closetimer)
+	{
+		window.clearTimeout(closetimer);
+		closetimer = null;
+	}
+}
+
+// close layer when click-out
+document.onclick = mclose;
+// -->
+</script>
+<script type="text/javascript">
+
+    $(document).ready(function(){
+    var filename='IndexStrings';
+    <%String lang = (String)session.getAttribute("language");
+    if (null == lang) {
+    	lang = "zh_CN";
+    }%>
+   
+    jQuery.i18n.properties({
+    
+     name:filename,
+     path:'',
+     mode:'map',
+     language: '<%=lang%>',
+     callback:function(){
+        //alert("1");
+        $('#s_home').val($.i18n.prop('Home'));
+        $('#s_uname').text($.i18n.prop('U_name'));
+        $('#switcher').val($.i18n.prop('switcher'));
+        $('#overview').val($.i18n.prop('P_overview'));
+        $('#specification').val($.i18n.prop('T_specifications'));
+        $('#classification').val($.i18n.prop('D_classifications'));
+        $('#platform').val($.i18n.prop('Platform'));
+        $('#communication').val($.i18n.prop('A_communication'));
+        $('#l_r').val($.i18n.prop('L_R'));
+        $('#import').val($.i18n.prop('D_import'));
+        $('#pword').text($.i18n.prop('P_word'));
+        $('#u_login').val($.i18n.prop('Login'));
+        $('#register').val($.i18n.prop('Register'));
+        $('#knowledge').val($.i18n.prop('D_knowledge'));
+        
+        
+        $('#what').text($.i18n.prop('DX_what'));
+        $('#character').text($.i18n.prop('DX_character'));
+        $('#category').text($.i18n.prop('DX_category'));
+        $('#distribution').text($.i18n.prop('DX_distribution'));
+        $('#condition').text($.i18n.prop('DX_condition'));
+        $('#rule').text($.i18n.prop('DX_rule'));
+        $('#culture').text($.i18n.prop('DX_culture'));
+        $('#history').text($.i18n.prop('DX_history'));
+        
+        
+        $('#scene').val($.i18n.prop('D_scene'));
+        $('#link').val($.i18n.prop('link'));
+        $('#news').val($.i18n.prop('news'));
+        $('#titbits').val($.i18n.prop('titbits'));
+        $('#query').val($.i18n.prop('I_inquery'));
+        $('#update').val($.i18n.prop('I_update'));
+        $('#delete').val($.i18n.prop('I_delete'));
+        $('#exit').val($.i18n.prop('U_exit'));
+        $('#more').val($.i18n.prop('I_more'));
+        $('#d_title').text($.i18n.prop('D_title'));
+        $('#d_welcome').text($.i18n.prop('D_welcome'));
+        
+        $('#a_comMemo').text($.i18n.prop('A_comMemo'));
+        $('#a_comBBS').text($.i18n.prop('A_comBBS'));
+     }
+    });
+    
+});
+function init(){       
+		var userName = "null";
+		<%Cookie[] cookies = request.getCookies();
+		String curName = "Guest";
+		String curFormHash = "null";
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				Cookie c = cookies[i];
+				if (c.getName().equals("dx_username")) {%>
+					var userName = "<%=c.getValue()%>";
+					<%curName = c.getValue();
+				}
+				if (c.getName().equals("dx_formhash")) {
+					curFormHash = c.getValue();
+				}
+			}
+		}%>
+		 
+		var vLogIn = window.document.getElementById("login");
+		var vLogIned = window.document.getElementById("logined");
+		if(userName == "null")
+		{
+			vLogIn.style.display="block";
+			vLogIned.style.display="none";
+		}
+		else
+		{
+			vLogIn.style.display="none";
+			vLogIned.style.display="block";
+		}
+	}
+	
+	function delete_validate(webLink){
+		var userName = "null";
+	    <%cookies = request.getCookies();
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				Cookie c = cookies[i];
+				if (c.getName().equals("dx_username")) {%>
+					var userName = "<%=c.getValue()%>";
+					<%curName = c.getValue();
+				}
+			}
+		}%>
+		if(userName == "null")
+		{
+			alert("请先登录本系统方可进行操作！");
+			return false;
+		}
+		var type = "null";
+		<%cookies = request.getCookies();
+		String curAdmin = "null";
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				Cookie c = cookies[i];
+				if (c.getName().equals("dx_usertype")) {%>
+					var type = "<%=c.getValue()%>";
+					<%curAdmin = c.getValue();
+				}
+			}
+		}%>
+
+		if(type === "admin"){
+		   window.location.href = webLink;
+		}
+		else{
+		    alert("不好意思，您无操作的权利");
+			return false;
+		}
+	
+	}
+
+	
+	function user_validate(webLink){
+	    var userName = "null";
+		<%cookies = request.getCookies();
+		if (cookies != null) {
+			for (int i = 0; i < cookies.length; i++) {
+				Cookie c = cookies[i];
+				if (c.getName().equals("dx_username")) {%>
+					var userName = "<%=c.getValue()%>";
+					<%curName = c.getValue();
+				}
+			}
+		}%>
+		if (userName == "null") {
+			alert("请先登录本系统方可进行操作！");
+			return false;
+		} else {
+			window.location.href = webLink;
+		}
+	}
+
+	function validate_form() {
+		if (document.thisForm.userName.value.length == 0) {
+			alert("用户名不能为空！");
+			document.thisForm.userName.focus();
+			return false;
+		}
+		if (document.thisForm.userName.value.length > 10) {
+			alert("用户名长度上限为10！");
+			document.thisForm.userName.focus();
+			return false;
+		}
+		if (document.thisForm.password.value.length == 0) {
+			alert("密码不能为空！");
+			document.thisForm.password.focus();
+			return false;
+		}
+		if (document.thisForm.password.value.length > 12) {
+			alert("密码长度上线为12！");
+			document.thisForm.password.focus();
+			return false;
+		}
+	}
+</script>
+
+</head>
+<body onload="init()">
+
+	<div class="indexmain">
+		<div class="main">
+			<img class="title" src="img/index2.jpg" alt="" />
+			<div class="index">
+				<div class="head">
+					<font id="d_title"></font>
+				</div>
+				<div class="path"></div>
+				<input type="button" class="button01" id="s_home" value=""
+					onclick="window.location.href='index.jsp'" /> <input type="button"
+					class="button01" id="switcher" name="switcher" value=""
+					onclick="window.location.href='Switch'" />
+			</div>
+			<ul class="nav" id="sddm" style="margin:0px">
+			<li>
+				<input type="button" class="button02" id="overview" name="overview"
+					value="" onclick="window.location.href='projectDescription.jsp'" />
+			</li>
+			<li>
+				<input type="button" class="button02" id="specification"
+					name="specification" value=""
+					onclick="window.location.href='files/techStandard.pdf'" /> 
+			</li>
+			<li>
+				<input type="button" class="button02" id="classification"
+					name="classification" value=""
+					onclick="window.location.href='files/classification.pdf'" /> 
+			</li>
+			<li>
+				<input type="button" class="button02" id="platform" name="platform"
+					value="" onclick="window.location.href='Map'" /> 
+			</li>
+			<li>
+				<input type="button" class="button02" id="communication"
+					name="communication" value="" onmouseover="mopen('m_communication')" onmouseout="mclosetime()"/>
+				<div id="m_communication" onmouseover="mcancelclosetime()" onmouseout="mclosetime()">
+					<a href="communication.jsp" id="a_comMemo"></a>
+					<a href="http://tcloud.sjtu.edu.cn:8888/bbs/" id="a_comBBS"></a>
+				</div>
+			</li>
+			<li>
+				<input type="button" class="button02" id="import" name="import" value=""
+					onclick="window.location.href='http://tcloud.sjtu.edu.cn:8888/#!/dashboard'" />
+			</li>
+			</ul>
+			<div class="main_left">
+				<script src="/bbs/static/js/logging.js?PiT" type="text/javascript"></script>
+				<input type="button" class="button02" id="l_r" name="l_r" value="" />
+				<div class="login" id="login">
+				
+					<form name="thisForm" action="/bbs/member.php?mod=logging&action=login&loginsubmit=yes&infloat=yes&lssubmit=yes" method="post">
+					<!--  <form name="thisForm" action="logIn" method="post"> -->
+						<table>
+							<tr>
+								<td><font id="s_uname"></font>
+								</td>
+								<td><input type="text" name="username" id="ls_username" style="width: 70px" />
+								</td>
+							</tr>
+							<tr>
+								<td><font id="pword"></font>
+								</td>
+								<td><input type="password" name="password" id="ls_password" style="width: 70px" />
+								</td>
+							</tr>
+						</table>
+						<br />
+						<!--有效期：
+                    <select>
+                        <option>无效</option>
+                        <option>有效</option>
+                    </select>-->
+						<div style="text-align: center">
+							<input type="submit" class="button03" id="u_login" name="u_login"
+								value="" />&nbsp;&nbsp;&nbsp;&nbsp; <input type="button"
+								class="button03" id="register" name="register" value=""
+								onclick="window.location.href='/bbs/member.php?mod=register'" />
+						</div>
+					</form>
+				</div>
+
+
+
+
+				<div class="logined" id="logined">
+					<p style="font-size: 18px;text-align: center">
+						<font id="d_welcome"></font>
+					</p>
+					<p style="font-size: 18px;text-align: center" id="text_username"><%=curName%></p>
+					<script type="text/javascript">$("#text_username").text(decodeURIComponent($("#text_username").text()));</script>
+					<div style="text-align: center">
+						<input type="button" class="button03" id="exit" name="exit"
+							value="" onclick="window.location.href='/bbs/member.php?mod=logging&action=logout&formhash=<%=curFormHash%>'" />
+					</div>
+				</div>
+
+
+
+
+
+
+				<input type="button" class="button02" id="knowledge"
+					name="knowledge" value="" style="margin-top: 10px"
+					onclick="window.location.href='danxiaDescription.jsp'" />
+				<div>
+					<div class="link2">
+						<a href="danxiaDescription.jsp"><font id="what"></font> </a>
+					</div>
+					<div class="link2">
+						<a href="danxiaDescription.jsp#tips2"><font id="character"></font>
+						</a>
+					</div>
+					<div class="link2">
+						<a href="danxiaDescription.jsp#tips3"><font id="category"></font>
+						</a>
+					</div>
+					<div class="link2">
+						<a href="danxiaDescription.jsp#tips4"><font id="distribution"></font>
+						</a>
+					</div>
+					<div class="link2">
+						<a href="danxiaDescription.jsp#tips5"><font id="condition"></font>
+						</a>
+					</div>
+					<div class="link2">
+						<a href="danxiaDescription.jsp#tips6"><font id="rule"></font>
+						</a>
+					</div>
+					<div class="link2">
+						<a href="danxiaDescription.jsp#tips7"><font id="history"></font>
+						</a>
+					</div>
+					<div class="link2">
+						<a href="danxiaDescription.jsp#tips8"><font id="culture"></font>
+						</a>
+					</div>
+					<br>
+				</div>
+				<input type="button" class="button02" id="scene" name="scene"
+					value="" style="margin-top: 10px" /> <img class="pic"
+					src="img/02.jpg" />
+			</div>
+			<div class="main_center">
+				<div class="mainmodule">
+					<img class="title" src="img/danxia2.jpg" alt=""
+						style="width: 675px; height: 300px;" />
+
+				</div>
+				<div class="mainmodule">
+					<input type="button" class="button02" id="news" name="news"
+						value="" onclick="user_validate('saveNews.jsp')" /> <br> <br>
+					<div class="newsDisplay">
+						<s:iterator value="newsList">
+							<a href="searchNewsContent?id=${id}">${title}</a>
+							<br>
+							<br>
+    						<s:property value="username"/>
+    						<s:property value="age"/>
+						</s:iterator>
+						
+					</div>
+					<input type="button" class="button02" id="more"
+						onclick="window.location.href='searchNewsAll'" />
+				</div>
+
+			</div>
+			<div class="main_right">
+				<!--<br><br><br><br><br><br><br>
+                <input type="button" class="button02" value="项目查询" />
+                -->
+				<!--<div class="search">
+                    Enter a keyword：<br />
+                    <input type="text" style="width: 150px" /><br />
+                    <input type="button" class="button03" value="search" />
+                </div>
+                -->
+				<img src="img/06.jpg" class="pic"> <input type="button"
+					class="button02" id="query" name="query" value=""
+					style="margin-top: 10px; display: none"
+					onclick="window.location.href='searchInfo.jsp'" />
+				<div>
+					<img src="img/07.jpg" class="pic" style="margin-top: 13px">
+					<!--<div class="link3">基本信息</div>
+                    <div class="link3">基本信息</div>
+                    <div class="link3">基本信息</div>
+                    <div class="link3">基本信息</div>
+                    <div class="link3">基本信息</div>
+                    <div class="link3">基本信息</div>-->
+				</div>
+				<input type="button" class="button02" id="update" name="update"
+					value="" style="margin-top: 10px; display: none"
+					onclick="user_validate('updateInfo.jsp')" /> <input type="button"
+					class="button02" id="delete" name="delete" value=""
+					style="margin-top: 10px; display: none"
+					onclick="delete_validate('deleteInfo.jsp')" /> 
+					<img class="pic" src="img/images.jpg" style="margin-top: 13px"/>
+					<img class="pic" src="img/04.jpg" style="margin-top: 13px"/>
+					<input type="button" class="button02" id="titbits" name="titbits"
+					value="" style="margin-top: 20px"
+					onclick="window.location.href='listTitbits'" />
+			</div>
+			<div style="clear: both"></div>
+			<div class="links2">
+				&nbsp;<input type="button" class="button02" id="link" />
+			</div>
+			<div class="links2">
+				<span><a href="http://www.gsc.org.cn/">中国地理学会</a> </span> <span><a
+					href="http://www.geosociety.org.cn/">中国地质学会</a> </span> <span><a
+					href="http://www.dili360.com/">中国国家地理</a> </span> <span><a
+					href="http://www.igu-net.org/">国际地理联合会</a> </span> <span><a href="http://www.dxdm.com/">丹霞工作组</a> </span>
+					<br /> 
+					<span><a
+					href="http://www.geomorph.org/">国际地貌学家协会</a> </span> <span><a
+					href="http://www.iucn.org/zh/china/">世界自然保护联盟</a> </span> <span><a
+					href="http://www.iugs.org/">国际地科联</a> </span> <span><a
+					href="http://whc.unesco.org/">世界遗产委员会</a> </span>
+			</div>
+			<div style="clear: both"></div>
+
+			<div class="footer">
+				<div>
+					版权：全国丹霞地貌基础数据调查项目组&nbsp;&nbsp;&nbsp; <a
+						href="http://weibo.com/SandstoneLandforms"> <img
+						src="img/weibo.jpg"
+						style="vertical-align:bottom;height:25px;width:25px" /> </a>
+
+					<%
+						int count = 0;
+						if (application.getAttribute("count") == null) {
+							count = Counter.readFile(application.getRealPath("/")
+									+ "count.txt");
+							application.setAttribute("count", new Integer(count));
+						}
+						count = (Integer) application.getAttribute("count");
+						if (session.isNew())
+							++count;
+						application.setAttribute("count", count);
+						Counter.writeFile(application.getRealPath("/") + "count.txt", count);
+					%>
+					<span>&nbsp;&nbsp;&nbsp;&nbsp;您是第&nbsp;<%=count%>&nbsp;位访客</span> <a
+						target="_blank"
+						href="http://wpa.qq.com/msgrd?v=3&uin=282696173&site=qq&menu=yes"><img
+						border="0" src="img/qq.jpg" alt="点击这里向测试QQ发消息"
+						title="点击这里向测试QQ发消息" /> </a>
+				</div>
+
+				<div>电话： 862084113980 传真：8620 84113980 mail:
+					danxiadimaoxitong@126.com 网址：http://tcloud.sjtu.edu.cn:8888</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

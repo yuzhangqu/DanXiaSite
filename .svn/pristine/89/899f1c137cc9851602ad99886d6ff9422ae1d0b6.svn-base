@@ -1,0 +1,8 @@
+package com.dx.servlet;
+
+public class MyDataClass {
+	public static final String generalPicPath = "C:\\apache-tomcat-7.0.53\\webapps\\DanXia\\pic\\generalPic\\";
+	public static final String cultureScenePath = "C:\\apache-tomcat-7.0.53\\webapps\\DanXia\\pic\\cultureScene\\";
+	public static final String geologyScenePath = "C:\\apache-tomcat-7.0.53\\webapps\\DanXia\\pic\\geologyScene\\";
+	public static final String landmarkScenePath = "C:\\apache-tomcat-7.0.53\\webapps\\DanXia\\pic\\landmarkScene\\";
+}

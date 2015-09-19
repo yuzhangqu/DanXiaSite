@@ -1,0 +1,59 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib uri="/struts-tags" prefix="s"%>
+<%@ page import="com.dx.servlet.Counter"%>
+<%@ page import="com.dx.bean.TbNews"%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta charset="utf-8" />
+<link rel="stylesheet" type="text/css" href="maincss.css">
+    <title>丹霞地貌信息系统</title>
+     <script src="http://code.jquery.com/jquery.js"></script>
+ <script src="js/bootstrap.js"></script>
+</head>
+<body>
+    <div class="indexmain">
+        <div class="main">
+            <img class="title" src="img/index2.jpg" alt="" />
+            
+           
+					<div class="content_pos">
+            	<div class="row-fluid">
+					<div class="span1">
+					</div>				
+					<div class="span10">
+                    	<br>
+						<h1>项目概况</h1>
+                        <br>
+                        <p style="font-size:18px; line-height: 30px;">
+                        
+                            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;丹霞地貌是中国学者提出的一种“以陡崖坡为特征的红层地貌”，已有80多年研究历史，被称为中国地学的“国粹”，2009年被国家地理杂志评为中国地理学“百年大发现”最重要的发现之一。但是，丹霞地貌研究一直局限于国内。近年来，配合中国丹霞申遗，先后于2009年5月和2011年10月召开了两届丹霞地貌国际学术讨论会，引起了国际地学界的重视。2009年7月第七届国际地貌学大会批准成立了国际地貌学家协会丹霞工作组，丹霞地貌全球研究被列入近期重点；2011年工作组第一次会议上，会议宣言提出“以中国的研究为基础，启动全球丹霞研究”的指导意见。因此，对中国丹霞地貌的基础研究提出了新的要求。
+
+							<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;中国丹霞地貌经过80多年研究，取得了重大进展，并轰轰烈烈地走向了世界。但以往的研究以地貌描述和旅游利用为主，作为全球研究的基础，仍然存在严重的不足，特别是系统性的基础性数据建设和科学集成工作尚未开展。围绕着丹霞地貌基础数据调查及数据管理平台的建设，具有以下重要意义：①是丹霞地貌科学体系建设的基础工程，将使得丹霞地貌学科走向规范和成熟；②将为丹霞地貌的国际对比研究提供数据平台；③将建立基础数据可视化系统和全球实时更新系统，是进行科学展示和全球推广的科学基础；④将为丹霞地貌区提供开发利用的基础资料，为科教旅游、生态修复和灾害防治等提供科学支撑，为应用研究提供最全面、权威、系统的技术信息服务；⑤该项工作将成为中国丹霞地貌研究国际化的重要基础，成为展示中国自主性科技成果的重要窗口和丹霞地貌全球研究的重要平台。
+
+							<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;基于计算机集成的要求，将采用调查与观察法（面上与典型调查相结合、遥感影像解译与地质图判读和实地观察相结合、仪器辅助观测等），实验法（岩石样本的理化测试，建立标准的岩性描述系统），数理计算法（对采集数据的编码与处理、聚类分析和系统分析等），计算机技术（基于云存储平台的分布式方法、人工智能数据法、可视化处理、非结构化数据管理平台技术）等地质地貌学的传统调研与现代技术手段相结合的方法，完成以下基础数据采集和处理工作：
+
+							<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（1）试点研究：选择中国东南部丹霞地貌基础研究较好的区域，进行标准化基础数据采集试点（位置、面积、高程、构造区、地貌单元、地层年代、岩性、地貌类型及特征、特殊景观、地貌过程和地质灾害等数据和图片），建立分类系统和技术标准，制定计算机编码。
+							<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（2）重点调研：根据预研究成果，对南方湿润区、西北干旱区、西南高原山地区等丹霞集中分布区的重点区域进行数据采集和实验检测，矫正并修订分类系统、技术标准和编码，初步建立数据库模型并进行平台设计。
+							<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（3）全面调研：根据技术规范，对全国代表性的丹霞地貌区300处左右进行全面调研、标准化数据采集和样品检测，统一进行计算机系统分类编码，修订数据库模型和平台建设方案。
+							<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（4）计算机集成：建立海量丹霞地貌基础数据库，完成调查技术标准设计和分类设计，制定各要素分类计算机编码系统；完成上述丹霞地貌的图片、数据等基础数据的计算机录入和分类编码集成。
+							<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;（5）云服务平台：进行基础数据空间可视化、地貌特征可视化和数据关系可视化处理，进行数据空间可视化、地貌特征可视化和数据关系可视化处理；开展补充调研，完善和充实数据系统；完成可视化展示系统，建立数据管理、访问管理和实时更新等云服务应用平台，并发支持上万用户，形成全球通用的丹霞数据访问技术规范和研究、展示平台。
+
+                          
+                        
+                        
+                            </p><br><br><br><br>
+                       
+ 					</div>
+                    
+ </div>
+   </div>
+ 
+
+ 
+          
+           
+            <div style="clear: both"></div>
+          <%@include file="footer_frame.jsp"%>

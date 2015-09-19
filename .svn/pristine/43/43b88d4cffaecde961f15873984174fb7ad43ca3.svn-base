@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.1//EN" "http://struts.apache.org/dtds/struts-2.1.dtd">
+<struts>
+	<constant name="struts.objectFactory" value="spring" />
+    <constant name= "struts.multipart.maxSize" value="999999999" />
+	<package name="demo-default" extends="struts-default"
+		namespace="/">
+
+		<action name="register" class="register">
+			<result name="success">/mainn.jsp</result>
+			<result name="false">/registerError.jsp</result>
+		</action>
+		<action name="displayNews" class="displayN">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		<action name="logIn" class="login">
+			<result name="success">/mainn.jsp</result>
+			<result name="false">/logInError.jsp</result>
+		</action>
+		<action name="logOut" class="com.dx.action.LogOutAction">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		<action name="searchNewsAll" class="searchNewsAll">
+			<result name="success">/searchNewsAll.jsp</result>
+		</action>
+		<action name="saveinfo" class="saveInfo">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		
+		<action name="searchNewsContent" class="searchNewsContent">
+			<result name="success">/searchNewsContent.jsp</result>
+		</action>
+		<action name="deleteNews" class="deleteNews">
+			<result name="success">/searchNewsAll.jsp</result>
+		</action>
+		
+		<action name="deleteInfo" class="deleteInfo">
+			<result name="success">/deleteInfo.jsp</result>
+		</action>
+		
+		<action name="saveNews" class="saveNews">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		<action name="Toenglish" class="com.dx.action.ToenglishAction">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		<action name="Switch" class="com.dx.action.SwitchAction">
+			<result name="success">/mainn.jsp</result>
+		</action>
+		
+		<action name="searchGeneralInfo" class="searchGeneralInfo">
+			<result name="success">/searchInfo.jsp</result>
+		</action>
+		
+		<action name="searchUpdate" class="com.dx.action.SearchUpdateInfoAction">
+			<result name="success">/updateInfo.jsp</result>
+		</action>
+		
+		<action name="searchDeleteInfo" class="com.dx.action.SearchDeleteInfoAction">
+			<result name="success">/deleteInfo.jsp</result>
+		</action>
+		
+		<action name="updateInfo" class="updateInfo">
+			<result name="success">/dataupdate.jsp</result>
+		</action>
+		
+		<action name="updateinfo" class="updateinfo">
+			<result name="success">/dataupdate.jsp</result>
+		</action>
+		
+	</package>
+</struts>    
